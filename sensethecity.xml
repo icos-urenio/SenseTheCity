@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+	<name>com_sensethecity</name>
+	<creationDate>20 September 2012</creationDate>
+	<copyright>Copyright (C) 2011 - 2012 URENIO Research Unit. All rights reserved.</copyright>
+	<license>GNU Affero General Public License version 3 or later; see LICENSE.txt</license>
+    <author>Ioannis Tsampoulatidis for the Information Technologies Institute (CERTH/ITI)</author>
+	<authorEmail>itsam@iti.gr</authorEmail>
+	<authorUrl>http://mklab.iti.gr/</authorUrl>
+	<version>1.0.0</version>
+	<description>SenseTheCity - An open source web application that receives and visualises air pollution data from sensors around the city</description>
+	<scriptfile>script.php</scriptfile>
+	<install>
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+  		</sql>
+    </install>
+    <uninstall>
+    	<sql>
+        	<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+  		</sql>
+    </uninstall>
+	<update> <!-- Runs on update; New in 2.5 -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>sensethecity.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<folder>bootstrap</folder>
+		<folder>views</folder>
+		<folder>models</folder>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+		<folder>css</folder>		
+	</files>
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB.com_sensethecity.ini</language>
+		<language tag="el-GR">language/el-GR.com_sensethecity.ini</language>
+	</languages>
+
+	<media destination="com_sensethecity" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+	</media>	
+	
+	<administration>
+		<menu img="../media/com_sensethecity/images/sensethecity-16x16.png">COM_SENSETHECITY</menu>
+		<submenu>
+			<menu img="../media/com_sensethecity/images/sensethecity-16x16.png" link="option=com_sensethecity&amp;view=stations" view="stations" alt="SenseTheCity/Issues">COM_SENSETHECITY_ITEMS</menu>
+			<menu img="../media/com_sensethecity/images/sensethecity-16x16.png" link="option=com_categories&amp;view=categories&amp;extension=com_sensethecity" view="categories" alt="SenseTheCity/Categories">COM_SENSETHECITY_CATEGORIES</menu>
+			<menu img="../media/com_sensethecity/images/sensethecity-16x16.png" link="option=com_sensethecity&amp;view=reports" view="reports" alt="SenseTheCity/Reports">COM_SENSETHECITY_REPORTS</menu>
+			<menu img="../media/com_sensethecity/images/sensethecity-16x16.png" link="option=com_sensethecity&amp;view=keys" view="keys" alt="SenseTheCity/Keys">COM_SENSETHECITY_KEYS</menu>
+		</submenu>
+		<files folder="administrator">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>sensethecity.php</filename>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+		<languages folder="administrator">
+			<language tag="en-GB">language/en-GB.com_sensethecity.ini</language>
+			<language tag="en-GB">language/en-GB.com_sensethecity.sys.ini</language>
+			<language tag="el-GR">language/el-GR.com_sensethecity.ini</language>
+			<language tag="el-GR">language/el-GR.com_sensethecity.sys.ini</language>
+		</languages>
+	</administration>
+	<updateservers>
+		<server type="extension" priority="1" name="SenseTheCity Update Site">http://mklab.iti.gr/sensethecity/autoupdates/sensethecity-update.xml</server>
+	</updateservers>	
+</extension>
+
