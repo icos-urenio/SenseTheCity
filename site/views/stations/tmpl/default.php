@@ -42,10 +42,10 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				
 				<!-- Mega Menu -->
 				<ul id="mega-menu">
-					<li id="drop-1"><a id="btn-1" href="javascript:void(0);" class="btn"><i class="icon-list-alt"></i> <?php echo JText::_('COM_IMPROVEMYCITY_FILTER_SELECTION')?></a>
+					<li id="drop-1"><a id="btn-1" href="javascript:void(0);" class="btn"><i class="icon-list-alt"></i> <?php echo JText::_('COM_SENSETHECITY_FILTER_SELECTION')?></a>
 						<div class="megadrop dropdown_6columns">
 							<div class="col_6">
-								<h2><?php echo JText::_('COM_IMPROVEMYCITY_CATEGORIES')?></h2>
+								<h2><?php echo JText::_('COM_SENSETHECITY_CATEGORIES')?></h2>
 							</div>
 							
 							<?php foreach($this->arCat as $c){?>		
@@ -54,129 +54,44 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 								</div>					
 							<?php }?>
 
-							<div class="col_6">
-								<h2><?php echo JText::_('COM_IMPROVEMYCITY_ISSUE_STATUS')?></h2>
-							</div>
-							
-							<div class="col_6">
-								<ul>
-								<?php echo $this->statusFilters; ?>
-								</ul>
-							</div>
-
 							<div class="col_6" style="text-align: center;">
-								<button type="submit" class="btn btn-success" name="Submit" value="<?php echo JText::_('COM_IMPROVEMYCITY_APPLY_FILTERS')?>"><i class="icon-ok icon-white"></i> <?php echo JText::_('COM_IMPROVEMYCITY_APPLY_FILTERS')?></button>
+								<button type="submit" class="btn btn-success" name="Submit" value="<?php echo JText::_('COM_SENSETHECITY_APPLY_FILTERS')?>"><i class="icon-ok icon-white"></i> <?php echo JText::_('COM_SENSETHECITY_APPLY_FILTERS')?></button>
 							</div>
 						</div>
 					</li>
-					<li id="drop-2"><a id="btn-2" href="javascript:void(0);" class="btn"><i class="icon-signal"></i> <?php echo JText::_('COM_IMPROVEMYCITY_ORDERING')?></a>
-						<div class="megadrop dropdown_2columns">
-							<div class="col_2">						
-								<ul>
-									<!-- dropdown menu links -->
-									<li><?php  echo JHtml::_('grid.sort', JText::_('COM_IMPROVEMYCITY_BY_DATE'), 'a.ordering', $listDirn, $listOrder);?></li>
-									<li><?php  echo JHtml::_('grid.sort', JText::_('COM_IMPROVEMYCITY_BY_VOTES'), 'a.votes', $listDirn, $listOrder);?></li>
-									<li><?php  echo JHtml::_('grid.sort', JText::_('COM_IMPROVEMYCITY_BY_STATUS'), 'a.currentstatus', $listDirn, $listOrder);?></li>
-								</ul>						
-							</div>
-						</div>
-					</li>
-					<li id="drop-3"><a id="btn-3" href="javascript:void(0);" class="btn"><i class="icon-check"></i> <?php echo JText::_('JGLOBAL_DISPLAY_NUM')?></a>
-						<div class="megadrop dropdown_1column">
-							<div class="col_1">						
-								<ul>
-									<!-- dropdown menu links -->
-									<?php echo $this->getLimitBox; ?>
-								</ul>						
-							</div>
-						</div>
-					</li>					
 				</ul>
 			</form>	
-
-			
 		</div>
 	</div>
 	
-	<div id="loading"><img src="<?php echo JURI::base().'components/com_improvemycity/images/ajax-loader.gif';?>" /></div>
+	<div id="loading"><img src="<?php echo JURI::base().'components/com_sensethecity/images/ajax-loader.gif';?>" /></div>
 	
 	<div id="imc-content">
 		<div id="imc-main-panel-fifty">
 			<?php if(empty($this->items)) : ?>
 				<div class="alert alert-error width75">
-				<?php echo JText::_('COM_IMPROVEMYCITY_FILTER_REVISION'); ?>
+				<?php echo JText::_('COM_SENSETHECITY_FILTER_REVISION'); ?>
 				</div>
 			<?php endif; ?>
 			<?php foreach($this->items as $item){ ?>
-				<div class="imc-issue-item" id="issueid-<?php echo $item->id;?>" onclick="location.href='<?php echo ImprovemycityHelper::generateRouteLink('index.php?option=com_improvemycity&view=issue&issue_id='.$item->id);?>';void(0);" >
+				<div class="imc-issue-item" id="issueid-<?php echo $item->id;?>" onclick="location.href='<?php echo ImprovemycityHelper::generateRouteLink('index.php?option=COM_SENSETHECITY&view=issue&issue_id='.$item->id);?>';void(0);" >
 					<div class="imc-issue-content">
 						<div class="imc-issue-review">
 							<h2 class="imc-issue-title">
 								<?php echo '#' . $item->id . '. ' .$item->title;?>
-								<?php $status = '';
-									switch($item->currentstatus){
-										case 1:
-										$status = 'OPEN';
-										break;
-										case 2:
-										$status = 'ACK';
-										break;
-										case 3:
-										$status = 'CLOSED';
-										break;
-									}
-								?>
-								<span class="status-<?php echo $status;?>">
-									<?php echo JText::_($status);?>
-								</span>
 							</h2>
-							<div class="imc-issue-address"><?php echo $item->address;?></div>
-							<div class="imc-issue-posted">
-								<?php 
-									echo JText::_('ISSUE_REPORTED') . ' ' . $item->reported_rel;
-									if($item->closed_rel != ''){
-										echo ' ' . JText::_('AND_CLOSED') . ' ' . $item->closed_rel;
-									}
-									else if($item->acknowledged_rel != ''){
-										echo ' ' . JText::_('AND_ACKNOWLEDGED') . ' ' . $item->acknowledged_rel;
-									}
-								?>
-							</div>
-							<div><span class="label"><?php echo $item->votes;?> <?php echo JText::_('VOTES');?></span></div>
 						</div>
 					</div>
-					<?php if ($item->photo != '') : ?>
-					<div class="imc-issue-photo">
-						<img src="<?php echo JURI::root().$item->photo;?>" alt="thumbnail photo">
-					</div>
-					<?php endif; ?>	
-					
-					
-					<?php /* UNCOMMENT IF YOU NEED DISCUSSION IN FRONT LIST...
-						<?php $i=0; foreach($item->discussion as $item_d){ $i++;?>
-						<div class="chat">
-							<span class="chat-info">(<?php echo $item_d->userid . ') ' . JText::_('COMMENT_REPORTED') . ' ' . $item_d->progressdate_rel;?></span>
-							<span class="chat-desc"><?php echo $item_d->description;?></span>
-						</div>
-						<?php 
-							if($i == 3){echo '<a href="'.ImprovemycityHelper::generateRouteLink('index.php?option=com_improvemycity&view=issue&issue_id='.$item->id).'">See all comments...</a>';break;}
-						}?>
-						<!--
-						<div class="issue-join"><a href="<?php echo JRoute::_('index.php?option=com_improvemycity&view=issue&issue_id='.$item->id);?>"><?php echo JText::_('JOIN_DISCUSSION');?></a></div>-->
-						*/
-					?>	
-					
 				</div>
 			<?php }	?>	
 			<div id="system">
 			<?php echo $this->pagination->getPagesLinks(); ?>
 			</div>
-			
 		</div>
 		<div id="imc-details-sidebar-fifty">
-			<div id="mapCanvas"><?php echo JText::_('COM_IMPROVEMYCITY');?></div>
+			<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>
 			<?php if($this->credits == 1) : ?>
-				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_IMPROVEMYCITY_INFOALERT');?></div>
+				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_SENSETHECITY_INFOALERT');?></div>
 			<?php endif; ?>
 		</div>	
 	</div>

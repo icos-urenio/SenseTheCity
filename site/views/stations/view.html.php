@@ -69,16 +69,6 @@ class SensethecityViewStations extends JView
 		//merge params
 		$this->params	= $this->state->get('params');
 		
-
-		/*
-		This method only for menu parameters namely: views/issues/tmpl/default.xml
-		$lang = JRequest::getVar('maplanguage');
-		$region = JRequest::getVar('mapregion');
-		$lat = JRequest::getFloat('latitude');
-		$lon = JRequest::getFloat('longitude');
-		$term = JRequest::getVar('searchterm');
-		*/
-		
 		$lang = $this->params->get('maplanguage');
 		$region = $this->params->get('mapregion');
 		$lat = $this->params->get('latitude');
@@ -259,25 +249,25 @@ class SensethecityViewStations extends JView
 		$document = JFactory::getDocument();
 		
 		if($this->loadbootstrapcss == 1)
-			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap.min.css');	
+			$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/bootstrap/css/bootstrap.min.css');	
 		
-		$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/css/mega-menu.css');	
-		$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/css/improvemycity.css');	
+		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/mega-menu.css');	
+		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/sensethecity.css');	
 
 		//add scripts
 		if($this->loadjquery == 1){
-			$document->addScript(JURI::root(true).'/components/com_improvemycity/js/jquery-1.7.1.min.js');
+			$document->addScript(JURI::root(true).'/components/com_sensethecity/js/jquery-1.7.1.min.js');
 			//jquery noConflict
 			$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
 		}
 		if($this->loadbootstrap == 1)
-			$document->addScript(JURI::root(true).'/components/com_improvemycity/bootstrap/js/bootstrap.min.js');
+			$document->addScript(JURI::root(true).'/components/com_sensethecity/bootstrap/js/bootstrap.min.js');
 
-		$document->addScript(JURI::root(true).'/components/com_improvemycity/js/improvemycity.js');	
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/sensethecity.js');	
 	
 		//add google maps
 		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
-		$document->addScript(JURI::root(true).'/components/com_improvemycity/js/infobox_packed.js');		
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/infobox_packed.js');		
 
 		$document->addScriptDeclaration('var jsonMarkers = '.json_encode($this->getMarkersArrayFromItems()).';');
 		
@@ -336,7 +326,7 @@ class SensethecityViewStations extends JView
 					,pixelOffset: new google.maps.Size(-100, 0)
 					,zIndex: null
 					,boxStyle: { 
-					  background: \"url(" . JURI::base().'components/com_improvemycity/images/tipbox.gif' . ") -40px 0 no-repeat\"
+					  background: \"url(" . JURI::base().'components/com_sensethecity/images/tipbox.gif' . ") -40px 0 no-repeat\"
 					  ,opacity: 0.75
 					  ,width: \"200px\"
 					 }
