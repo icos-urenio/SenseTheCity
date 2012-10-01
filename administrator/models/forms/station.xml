@@ -18,7 +18,7 @@
 		<field
 			name="catid"
 			type="category"
-			extension="com_improvemycity"
+			extension="com_sensethecity"
 			class="inputbox"
 			default=""
 			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CATID_LABEL"

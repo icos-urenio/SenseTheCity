@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.modeladmin');
 
 
-class SensethecityModelIssue extends JModelAdmin
+class SensethecityModelStation extends JModelAdmin
 {
 	/**
 	 * @var		string	The prefix to use with controller messages.

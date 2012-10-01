@@ -97,13 +97,12 @@ class SensethecityModelReports extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.*, #__categories.title AS category,catid, #__users.name AS username'
+				'a.*, #__categories.title AS category,catid'
 			)
 		);
 		
-		$query->from('#__improvemycity AS a');
+		$query->from('#__sensethecity AS a');
 		$query->leftJoin('#__categories on a.catid=#__categories.id');
-		$query->leftJoin('#__users on a.userid=#__users.id');
 		$query->where('a.state = 1');
 	
 

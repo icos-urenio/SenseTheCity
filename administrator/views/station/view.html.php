@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
 /**
  * View to edit
  */
-class SensethecityViewIssue extends JView
+class SensethecityViewStation extends JView
 {
 	protected $state;
 	protected $item;
@@ -26,7 +26,7 @@ class SensethecityViewIssue extends JView
 	protected $lat = '';
 	protected $lon = '';
 	protected $searchterm = '';
-	protected $issuer;
+	
 	/**
 	 * Display the view
 	 */
@@ -48,7 +48,7 @@ class SensethecityViewIssue extends JView
 		$this->lon = (empty($lon) ? 23.01861169311519 : $lon);
 		$this->searchterm = (empty($term) ? "" : $term);
 
-		$this->issuer = &JFactory::getUser($this->item->userid);
+		
 		
 
 		// Check for errors.
@@ -80,7 +80,7 @@ class SensethecityViewIssue extends JView
         } else {
             $checkedOut = false;
         }
-		$canDo		= ImprovemycityHelper::getActions();
+		$canDo		= SensethecityHelper::getActions();
 
 		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_ITEM'), 'item.png');
 
