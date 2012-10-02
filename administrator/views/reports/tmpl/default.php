@@ -20,18 +20,11 @@ JHtml::_('behavior.tooltip');
   <thead>
     <tr>
       <th>#</th>
-      <th><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_TITLE_LABEL');?></th>
-      <th><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CATID_LABEL');?></th>
-      <th><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_LATITUDE_LABEL');?></th>
-      <th><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_LONGITUDE_LABEL');?></th>
-      <th><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_ADDRESS_LABEL');?></th>
-      <th><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CURRENTSTATUS_LABEL');?></th>
-      
-      <th><?php echo JText::_('JOPTION_SELECT_STATUS_OPEN');?></th>
-      <th><?php echo JText::_('JOPTION_SELECT_STATUS_ACK');?></th>
-      <th><?php echo JText::_('JOPTION_SELECT_STATUS_CLOSED');?></th>
-      <th><?php echo JText::_('JGLOBAL_USERNAME');?></th>
-
+      <th><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_FIELD_TITLE_LABEL');?></th>
+      <th><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_FIELD_CATID_LABEL');?></th>
+      <th><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_FIELD_LATITUDE_LABEL');?></th>
+      <th><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_FIELD_LONGITUDE_LABEL');?></th>
+      <th><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_FIELD_ADDRESS_LABEL');?></th>
     </tr>
   </thead>
   <tbody>
@@ -46,24 +39,7 @@ JHtml::_('behavior.tooltip');
 		echo '<td>'.$item->latitude . '</td>' . "\n";
 		echo '<td>'.$item->longitude . '</td>' . "\n";
 		echo '<td>'.$item->address . '</td>' . "\n";
-		switch ($item->currentstatus){
-			case 1: 
-				echo '<td>'.JText::_('JOPTION_SELECT_STATUS_OPEN').'</td>' . "\n";
-			break;
-			case 2: 
-				echo '<td>'.JText::_('JOPTION_SELECT_STATUS_ACK').'</td>' . "\n";
-			break;
-			case 3:
-				echo '<td>'.JText::_('JOPTION_SELECT_STATUS_CLOSED').'</td>' . "\n";
-			break;
-		}
-		echo '<td>'.$item->reported . '</td>' . "\n";
-		echo '<td>'.$item->acknowledged . '</td>' . "\n";
-		echo '<td>'.$item->closed . '</td>' . "\n";
-		echo '<td>'.$item->username . '</td>' . "\n";
-		
 		echo '</tr>'; 
-		
 	}
 	?>
 

@@ -117,7 +117,7 @@ class SensethecityModelReports extends JModelList
 			}
 		}
 
-		$query->order('a.reported DESC');
+		//$query->order('a.reported DESC');
 
 
 		// Add the list ordering clause.

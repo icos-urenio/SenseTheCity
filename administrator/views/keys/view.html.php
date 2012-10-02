@@ -52,7 +52,7 @@ class SensethecityViewKeys extends JView
 		$state	= $this->get('State');
 		$canDo	= SensethecityHelper::getActions($state->get('filter.sensethecityid'));
 
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_KEYS'), 'items.png');
+		JToolBarHelper::title(JText::_('COM_SENSETHECITY_TITLE_KEYS'), 'items.png');
 
         //Check if the form exists before showing the add/edit buttons
         $formPath = JPATH_COMPONENT_ADMINISTRATOR.DS.'views'.DS.'key';

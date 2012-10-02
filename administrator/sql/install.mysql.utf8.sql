@@ -115,7 +115,7 @@ INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stam
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 03:00:00','2012-11-11 03:03:00',72.2,72.2);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 04:00:00','2012-11-11 04:03:00',71.2,71.2);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 05:00:00','2012-11-11 05:03:00',69.7,69.7);
-INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 06:00:00','2012-11-11 06:03:00',68.5,68.5);
+INSERT INTO `#__sensethecity_observation`  (stphen_off` (pation_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 06:00:00','2012-11-11 06:03:00',68.5,68.5);
 
 
 CREATE TABLE IF NOT EXISTS `#__sensethecity_phen_off` (

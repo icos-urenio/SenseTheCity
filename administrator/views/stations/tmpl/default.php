@@ -33,13 +33,13 @@ $saveOrder	= $listOrder == 'a.ordering';
 
 			<select name="filter_category_id" class="inputbox" onchange="this.form.submit()">
 				<option value=""><?php echo JText::_('JOPTION_SELECT_CATEGORY');?></option>
-				<?php echo JHtml::_('select.options', JHtml::_('category.options', 'com_improvemycity'), 'value', 'text', $this->state->get('filter.category_id'));?>
+				<?php echo JHtml::_('select.options', JHtml::_('category.options', 'com_sensethecity'), 'value', 'text', $this->state->get('filter.category_id'));?>
 			</select>			
 
 		</div>
 	</fieldset>
 	<div class="clr"> </div>
-	<?php if(empty($this->items)) {echo '<strong>'.JText::_('COM_IMPROVEMYCITY_NO_ISSUES_YET').'</strong>'; }?>
+	<?php if(empty($this->items)) {echo '<strong>'.JText::_('COM_SENSETHECITY_NO_ISSUES_YET').'</strong>'; }?>
 
 	<table class="adminlist">
 		<thead>
@@ -63,7 +63,7 @@ $saveOrder	= $listOrder == 'a.ordering';
                 <?php } ?>
                 <?php if (isset($this->items[0]->title)) { ?>
                 <th width="54%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'COM_IMPROVEMYCITY_IMPROVEMYCITY_HEADING_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_IMPROVEMYCITY_HEADING_TITLE', 'a.title', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>
                 <?php if (isset($this->items[0]->state)) { ?>
@@ -73,12 +73,12 @@ $saveOrder	= $listOrder == 'a.ordering';
                 <?php } ?>
                 <?php if (isset($this->items[0]->catid)) { ?>
                 <th width="30%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'COM_IMPROVEMYCITY_IMPROVEMYCITY_HEADING_CATEGORY', 'a.catid', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_IMPROVEMYCITY_HEADING_CATEGORY', 'a.catid', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>					
                 <?php if (isset($this->items[0]->currentstatus)) { ?>
                 <th width="30%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'COM_IMPROVEMYCITY_IMPROVEMYCITY_HEADING_CURRENTSTATUS', 'a.currentstatus', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_HEADING_CURRENTSTATUS', 'a.currentstatus', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>					
 				

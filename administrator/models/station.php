@@ -115,15 +115,8 @@ class SensethecityModelStation extends JModelAdmin
 				$max = $db->loadResult();
 				$table->ordering = $max+1;
 			}
-			//$table->reported = date('Y-m-d H:i:s');
+
 		}
-		
-		
-		if($table->userid == 0){
-			$user =& JFactory::getUser();
-			$table->userid = $user->id;  
-		}
-		
 
 	}
 }

@@ -54,9 +54,9 @@ class SensethecityViewKey extends JView
         } else {
             $checkedOut = false;
         }
-		$canDo		= ImprovemycityHelper::getActions();
+		$canDo		= SensethecityHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_KEY'), 'item.png');
+		JToolBarHelper::title(JText::_('COM_SENSETHECITY_TITLE_KEY'), 'item.png');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit')||($canDo->get('core.create'))))

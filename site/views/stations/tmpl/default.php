@@ -74,7 +74,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				</div>
 			<?php endif; ?>
 			<?php foreach($this->items as $item){ ?>
-				<div class="imc-issue-item" id="issueid-<?php echo $item->id;?>" onclick="location.href='<?php echo ImprovemycityHelper::generateRouteLink('index.php?option=COM_SENSETHECITY&view=issue&issue_id='.$item->id);?>';void(0);" >
+				<div class="imc-issue-item" id="issueid-<?php echo $item->id;?>" onclick="location.href='<?php echo SensethecityHelper::generateRouteLink('index.php?option=COM_SENSETHECITY&view=issue&issue_id='.$item->id);?>';void(0);" >
 					<div class="imc-issue-content">
 						<div class="imc-issue-review">
 							<h2 class="imc-issue-title">

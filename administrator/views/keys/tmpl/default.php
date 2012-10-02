@@ -1,10 +1,10 @@
 <?php
 /**
- * @version     2.5.x
- * @package     com_improvemycity
+ * @version     1.0.0
+ * @package     com_sensethecity
  * @copyright   Copyright (C) 2011 - 2012 URENIO Research Unit. All rights reserved.
  * @license     GNU Affero General Public License version 3 or later; see LICENSE.txt
- * @author      Ioannis Tsampoulatidis for the URENIO Research Unit
+ * @author      Ioannis Tsampoulatidis for the Information Technologies Institute (CERTH/ITI)
  */
 
 
@@ -17,11 +17,11 @@ $user	= JFactory::getUser();
 $userId	= $user->get('id');
 $listOrder	= $this->state->get('list.ordering');
 $listDirn	= $this->state->get('list.direction');
-$canOrder	= $user->authorise('core.edit.state', 'com_improvemycity');
+$canOrder	= $user->authorise('core.edit.state', 'com_sensethecity');
 $saveOrder	= $listOrder == 'a.ordering';
 ?>
 
-<form action="<?php echo JRoute::_('index.php?option=com_improvemycity&view=keys'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_sensethecity&view=keys'); ?>" method="post" name="adminForm" id="adminForm">
 	<fieldset id="filter-bar">
 		<div class="filter-search fltlft">
 			<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
@@ -33,7 +33,7 @@ $saveOrder	= $listOrder == 'a.ordering';
 		</div>
 	</fieldset>
 	<div class="clr"> </div>
-	<?php if(empty($this->items)) {echo '<strong>'.JText::_('COM_IMPROVEMYCITY_NO_KEYS_YET').'</strong>'; }?>
+	<?php if(empty($this->items)) {echo '<strong>'.JText::_('COM_SENSETHECITY_NO_KEYS_YET').'</strong>'; }?>
 
 	<table class="adminlist">
 		<thead>
@@ -57,12 +57,12 @@ $saveOrder	= $listOrder == 'a.ordering';
                 <?php } ?>
                 <?php if (isset($this->items[0]->created)) { ?>
                 <th width="10%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'COM_IMPROVEMYCITY_IMPROVEMYCITY_HEADING_DATE', 'a.created', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_HEADING_DATE', 'a.created', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>
                 <?php if (isset($this->items[0]->skey)) { ?>
                 <th width="35%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'COM_IMPROVEMYCITY_IMPROVEMYCITY_SKEY_TITLE', 'a.description', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_SKEY_TITLE', 'a.description', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>
                 <?php if (isset($this->items[0]->state)) { ?>
@@ -83,10 +83,10 @@ $saveOrder	= $listOrder == 'a.ordering';
 		<tbody>
 		<?php foreach ($this->items as $i => $item) :
 			$ordering	= ($listOrder == 'a.ordering');
-			$canCreate	= $user->authorise('core.create',		'com_improvemycity');
-			$canEdit	= $user->authorise('core.edit',			'com_improvemycity');
-			$canCheckin	= $user->authorise('core.manage',		'com_improvemycity');
-			$canChange	= $user->authorise('core.edit.state',	'com_improvemycity');
+			$canCreate	= $user->authorise('core.create',		'com_sensethecity');
+			$canEdit	= $user->authorise('core.edit',			'com_sensethecity');
+			$canCheckin	= $user->authorise('core.manage',		'com_sensethecity');
+			$canChange	= $user->authorise('core.edit.state',	'com_sensethecity');
 			?>
 			<tr class="row<?php echo $i % 2; ?>">
 				<td class="center">
@@ -125,7 +125,7 @@ $saveOrder	= $listOrder == 'a.ordering';
 
                <?php if (isset($this->items[0]->skey)) { ?>
 				<td>
-					<a href="<?php echo JRoute::_('index.php?option=com_improvemycity&task=key.edit&id=' . $item->id); ?>">
+					<a href="<?php echo JRoute::_('index.php?option=com_sensethecity&task=key.edit&id=' . $item->id); ?>">
 						<?php echo $item->skey; ?>
 					</a>		
 					<br />
@@ -136,15 +136,15 @@ $saveOrder	= $listOrder == 'a.ordering';
 					    <?php echo JHtml::_('jgrid.published', $item->state, $i, 'comments.', $canChange, 'cb'); ?>
 				    </td>
                 <?php } ?>		
-                <?php if (isset($this->items[0]->improvemycityid)) { ?>
+                <?php if (isset($this->items[0]->sensethecityid)) { ?>
 				<td>
 					<?php echo '<strong>'.$item->issuetitle.'</strong>'; 
 					?>
 				</td>
                 <?php } ?>	                
-                <?php if (isset($this->items[0]->improvemycityid)) { ?>
+                <?php if (isset($this->items[0]->sensethecityid)) { ?>
 				<td>
-					<?php echo '<strong>'.$item->improvemycityid .'</strong>'; 
+					<?php echo '<strong>'.$item->sensethecityid .'</strong>'; 
 					?>
 				</td>
                 <?php } ?>	                

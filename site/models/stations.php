@@ -22,11 +22,11 @@ JTable::addIncludePath(JPATH_ROOT . '/administrator/components/com_sensethecity/
  */
 class SensethecityModelStations extends JModelList
 {
-	//protected $_item;
+	protected $_item;
 	private $_categories = null;
 	private $_parent = null;
 	private $_params = null;
-	//public $_context = 'com_sensethecity.stations';	
+	public $_context = 'com_sensethecity.stations';	
 
 	/**
 	 * Constructor.
@@ -42,9 +42,7 @@ class SensethecityModelStations extends JModelList
 				'id', 'a.id',
 				'title', 'a.title',
 				'state', 'a.state',
-				'ordering', 'a.ordering',
-				'reported', 'a.reported',
-				'currentstatus', 'a.currentstatus'
+				'ordering', 'a.ordering'
 			);
 		}
 
@@ -56,9 +54,6 @@ class SensethecityModelStations extends JModelList
 	{
 		$app = JFactory::getApplication();
 		
-		//set filter status in state
-		$value = $app->getUserStateFromRequest($this->context.'.filter_status', 'status', array()); 
-		$this->setState('filter_status', $value);
 		//set filter category in state
 		$value = $app->getUserStateFromRequest($this->context.'.filter_category', 'cat', array()); 
 		$this->setState('filter_category', $value);
@@ -145,12 +140,7 @@ class SensethecityModelStations extends JModelList
 		// Convert the params field into an object, saving original in _params
 		for ($i = 0, $n = count($items); $i < $n; $i++) {
 			$item = &$items[$i];
-			
-			//calculate relative dates here
-			$item->reported_rel = SensethecityHelper::getRelativeTime($item->reported);
-			$item->acknowledged_rel = SensethecityHelper::getRelativeTime($item->acknowledged);
-			$item->closed_rel = SensethecityHelper::getRelativeTime($item->closed);
-			
+	
 			if (!isset($this->_params)) {
 				$params = new JRegistry();
 				$params->loadJSON($item->params);
@@ -181,11 +171,7 @@ class SensethecityModelStations extends JModelList
 		$query->where('a.state = 1');
 		
 		//consider filtering...
-		$filter_status = $this->getState('filter_status');
-		if(!empty($filter_status)){
-			$filter_status = implode(',', $filter_status);
-			$query->where('a.currentstatus IN ('.$filter_status.')');
-		}
+
 		
 		$filter_category = $this->getState('filter_category');
 		if(!empty($filter_category)){
