@@ -344,14 +344,11 @@ class SensethecityViewStations extends JView
 					var description = jsonMarkers[i].description;
 					var catid = jsonMarkers[i].catid;
 					var id = jsonMarkers[i].id;
-					//var photos = markers[i].photos;
-					
 
 					var point = new google.maps.LatLng(
 						parseFloat(jsonMarkers[i].lat),
 						parseFloat(jsonMarkers[i].lng)
 					);
-
 
 					var html = '<strong>' + name + '</strong>';
 					var icon = customIcons[catid] || {};
@@ -365,8 +362,6 @@ class SensethecityViewStations extends JView
 					
 					marker.catid = catid;
 					marker.id = id;
-					//marker.photos = photos;
-					
 					marker.description = description;
 					
 					//bindInfoWindow(marker, map, infoWindow, html);
@@ -377,6 +372,9 @@ class SensethecityViewStations extends JView
 
 				resetBounds();
 
+				google.maps.event.addListenerOnce(map, 'idle', function(){
+					google.maps.event.trigger(gmarkers[gmarkers.length-1], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
+				});
 				
 				jImc(\"#loading\").hide();
 			}
@@ -397,18 +395,18 @@ class SensethecityViewStations extends JView
 				boxText.innerHTML = html;			
 		
 				google.maps.event.addListener(marker, 'click', function() {
-					window.location.href = '". SensethecityHelper::generateRouteLink('index.php?option=com_sensethecity&view=station&station_id=') . "' + marker.id;
+					infoBox.setContent(boxText);
+					infoBox.open(map, marker);
+					showInfo(marker);					
 				});
 			  
 				google.maps.event.addListener(marker, 'mouseover', function() {
-					infoBox.setContent(boxText);
-					infoBox.open(map, marker);
-					jImc(\"#stationid-\"+marker.id).addClass(\"imc-highlight\");
+					//infoBox.setContent(boxText);
+					//infoBox.open(map, marker);
 				});			  
 				
 				google.maps.event.addListener(marker, 'mouseout', function() {
-					infoBox.close();
-					jImc(\"#stationid-\"+marker.id).removeClass(\"imc-highlight\");
+					//infoBox.close();
 				});			  
 			}			
 			
@@ -515,6 +513,16 @@ class SensethecityViewStations extends JView
 				google.maps.event.trigger(gmarkers[index],'mouseout');
 
 			}			
+			
+			function showInfo(marker){
+				jImc(\"#stationTitle\").html('<h2>' + marker.title + '</h2>');
+				jImc(\"#stationMeasures\").html('Measures here...');
+				
+				
+				jImc(\"#wrapper-info\").show(500);
+			}
+			
+			
 			
 			// Onload handler to fire off the app.
 			google.maps.event.addDomListener(window, 'load', initialize);

@@ -44,16 +44,31 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				<ul id="mega-menu">
 					<li id="drop-1"><a id="btn-1" href="javascript:void(0);" class="btn"><i class="icon-list-alt"></i> <?php echo JText::_('COM_SENSETHECITY_FILTER_SELECTION')?></a>
 						<div class="megadrop dropdown_6columns">
-							<div class="col_6">
+							<div class="col_3">
 								<h2><?php echo JText::_('COM_SENSETHECITY_CATEGORIES')?></h2>
+								<?php foreach($this->arCat as $c){?>		
+
+										<?php echo $c; ?>
+					
+								<?php }?>
+							</div>
+						
+							<div class="col_3">
+								<h2><?php echo JText::_('COM_SENSETHECITY_STATIONS')?></h2>
+								Stations here
 							</div>
 							
-							<?php foreach($this->arCat as $c){?>		
-								<div class="col_2">
-									<?php echo $c; ?>
-								</div>					
-							<?php }?>
-
+							<div class="col_6">
+								<h2><?php echo JText::_('COM_SENSETHECITY_DATES')?></h2>
+								Dates here
+							</div>
+							
+							<div class="col_6">
+								<h2><?php echo JText::_('COM_SENSETHECITY_PHENOMENON')?></h2>
+								Phenomenons here
+							</div>
+							
+							
 							<div class="col_6" style="text-align: center;">
 								<button type="submit" class="btn btn-success" name="Submit" value="<?php echo JText::_('COM_SENSETHECITY_APPLY_FILTERS')?>"><i class="icon-ok icon-white"></i> <?php echo JText::_('COM_SENSETHECITY_APPLY_FILTERS')?></button>
 							</div>
@@ -73,20 +88,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				<?php echo JText::_('COM_SENSETHECITY_FILTER_REVISION'); ?>
 				</div>
 			<?php endif; ?>
-			<?php foreach($this->items as $item){ ?>
-				<div class="imc-issue-item" id="issueid-<?php echo $item->id;?>" onclick="location.href='<?php echo SensethecityHelper::generateRouteLink('index.php?option=COM_SENSETHECITY&view=issue&issue_id='.$item->id);?>';void(0);" >
-					<div class="imc-issue-content">
-						<div class="imc-issue-review">
-							<h2 class="imc-issue-title">
-								<?php echo '#' . $item->id . '. ' .$item->title;?>
-							</h2>
-						</div>
-					</div>
+			<div id="wrapper-info">	
+				<div id="stationTitle">&nbsp;</div>
+				<div id="content-info">
+					<div id="stationMeasures"></div>
 				</div>
-			<?php }	?>	
-			<div id="system">
-			<?php echo $this->pagination->getPagesLinks(); ?>
-			</div>
+			</div>	
 		</div>
 		<div id="imc-details-sidebar-fifty">
 			<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>

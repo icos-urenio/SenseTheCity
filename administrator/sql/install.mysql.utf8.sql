@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `#__sensethecity_observation` (
   PRIMARY KEY(`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT COLLATE=utf8_general_ci;
 
+
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (1,1,'2012-09-11 11:00:00','2012-09-11 11:03:00',63, 63);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (1,3,'2012-09-11 11:00:00','2012-09-11 11:03:00',70, 70);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (1,5,'2012-09-11 11:00:00','2012-09-11 11:03:00',66.7, 66.7);
@@ -81,7 +82,69 @@ INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stam
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,6,'2012-09-11 11:00:00','2012-09-11 11:03:00',53.3, 53.3);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,8,'2012-09-11 11:00:00','2012-09-11 11:03:00',54.5, 54.5);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,9,'2012-09-11 11:00:00','2012-09-11 11:03:00',47.5, 47.5);
-                         
+
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:05:00','2012-09-11 11:03:00',60, 60);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:10:00','2012-09-11 11:03:00',58, 58);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:15:00','2012-09-11 11:03:00',45, 45);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:20:00','2012-09-11 11:03:00',65, 65);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:25:00','2012-09-11 11:03:00',25, 25);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:30:00','2012-09-11 11:03:00',67, 67);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:35:00','2012-09-11 11:03:00',56, 56);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:40:00','2012-09-11 11:03:00',55, 55);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:45:00','2012-09-11 11:03:00',49, 49);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:50:00','2012-09-11 11:03:00',48, 48);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 11:55:00','2012-09-11 11:03:00',55, 55);
+
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:05:00','2012-09-11 11:03:00',35, 35);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:10:00','2012-09-11 11:03:00',48, 48);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:15:00','2012-09-11 11:03:00',55, 55);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:20:00','2012-09-11 11:03:00',61, 61);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:25:00','2012-09-11 11:03:00',33, 33);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:30:00','2012-09-11 11:03:00',45, 45);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:35:00','2012-09-11 11:03:00',56, 56);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:40:00','2012-09-11 11:03:00',44, 44);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:45:00','2012-09-11 11:03:00',74, 74);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:50:00','2012-09-11 11:03:00',54, 54);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-11 12:55:00','2012-09-11 11:03:00',51, 51);
+
+
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:05:00','2012-09-11 11:03:00',60, 60);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:10:00','2012-09-11 11:03:00',58, 58);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:15:00','2012-09-11 11:03:00',45, 45);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:20:00','2012-09-11 11:03:00',65, 65);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:25:00','2012-09-11 11:03:00',25, 25);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:30:00','2012-09-11 11:03:00',67, 67);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:35:00','2012-09-11 11:03:00',56, 56);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:40:00','2012-09-11 11:03:00',55, 55);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:45:00','2012-09-11 11:03:00',49, 49);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:50:00','2012-09-11 11:03:00',48, 48);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-12 11:55:00','2012-09-11 11:03:00',55, 55);
+
+
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:05:00','2012-09-11 11:03:00',60, 60);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:10:00','2012-09-11 11:03:00',52, 52);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:15:00','2012-09-11 11:03:00',45, 45);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:20:00','2012-09-11 11:03:00',62, 62);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:25:00','2012-09-11 11:03:00',25, 25);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:30:00','2012-09-11 11:03:00',60, 60);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:35:00','2012-09-11 11:03:00',56, 56);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:40:00','2012-09-11 11:03:00',55, 55);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:45:00','2012-09-11 11:03:00',40, 40);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:50:00','2012-09-11 11:03:00',48, 48);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-15 11:55:00','2012-09-11 11:03:00',51, 51);
+
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:05:00','2012-09-11 11:03:00',60, 60);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:10:00','2012-09-11 11:03:00',54, 54);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:15:00','2012-09-11 11:03:00',45, 45);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:20:00','2012-09-11 11:03:00',65, 65);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:25:00','2012-09-11 11:03:00',42, 42);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:30:00','2012-09-11 11:03:00',67, 67);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:35:00','2012-09-11 11:03:00',56, 56);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:40:00','2012-09-11 11:03:00',55, 55);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:45:00','2012-09-11 11:03:00',47, 47);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:50:00','2012-09-11 11:03:00',43, 43);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (3,4,'2012-09-18 11:55:00','2012-09-11 11:03:00',53, 53);
+               
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (1,1,'2012-09-11 13:00:00','2012-09-11 13:03:00',50, 50);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (1,3,'2012-09-11 13:00:00','2012-09-11 13:03:00',60, 60);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (1,5,'2012-09-11 13:00:00','2012-09-11 13:03:00',65, 65);
@@ -115,7 +178,7 @@ INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stam
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 03:00:00','2012-11-11 03:03:00',72.2,72.2);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 04:00:00','2012-11-11 04:03:00',71.2,71.2);
 INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 05:00:00','2012-11-11 05:03:00',69.7,69.7);
-INSERT INTO `#__sensethecity_observation`  (stphen_off` (pation_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 06:00:00','2012-11-11 06:03:00',68.5,68.5);
+INSERT INTO `#__sensethecity_observation`  (station_id, phenomenon_id, time_stamp, time_stamp_inserted, numeric_value, corrected_value) VALUES (4,3,'2012-11-11 06:00:00','2012-11-11 06:03:00',68.5,68.5);
 
 
 CREATE TABLE IF NOT EXISTS `#__sensethecity_phen_off` (
