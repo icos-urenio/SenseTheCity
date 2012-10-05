@@ -90,10 +90,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<?php endif; ?>
 			<div id="wrapper-info">	
 				<div id="stationTitle">&nbsp;</div>
-				<div id="content-info">
-					<div id="stationMeasures"></div>
-				</div>
-			</div>	
+				<div id="stationInfo"></div>
+				<div id="stationMeasures"></div>
+			</div>
+			<div id="waitingIndicator"></div>
+			<div id="graphContainer" style="width : 400px; height: 220px; margin: 8px auto;"></div>
+			
 		</div>
 		<div id="imc-details-sidebar-fifty">
 			<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>

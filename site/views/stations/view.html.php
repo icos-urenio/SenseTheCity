@@ -263,7 +263,11 @@ class SensethecityViewStations extends JView
 		if($this->loadbootstrap == 1)
 			$document->addScript(JURI::root(true).'/components/com_sensethecity/bootstrap/js/bootstrap.min.js');
 
-		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/sensethecity.js');	
+		
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/sensethecity.js');
+		//add flotr2 	
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/flotr2.min.js');
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/flotr2.functions.js');
 	
 		//add google maps
 		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
@@ -516,10 +520,11 @@ class SensethecityViewStations extends JView
 			
 			function showInfo(marker){
 				jImc(\"#stationTitle\").html('<h2>' + marker.title + '</h2>');
-				jImc(\"#stationMeasures\").html('Measures here...');
-				
-				
+				jImc(\"#stationInfo\").html('Measures of station_id: '+ marker.id);
 				jImc(\"#wrapper-info\").show(500);
+					  		
+				getStationMeasures(marker.id, '".JUtility::getToken()."');
+				
 			}
 			
 			
@@ -599,5 +604,10 @@ class SensethecityViewStations extends JView
 		//add the javascript to the head of the html document
 		$document->addScriptDeclaration($googleMapInit);
 		$document->addScriptDeclaration($megamenu_js);
+		
+		//also pass base so as to display comment image indicator
+		$js = "var com_sensethecity = {};\n";
+		$js.= "com_sensethecity.base = '".JURI::root(true)."';\n";
+		$document->addScriptDeclaration($js);		
 	}
 }

@@ -16,7 +16,7 @@ jimport('joomla.application.categories');
 
 /**
  * Model
- */
+*/
 class SensethecityModelIssue extends JModelItem
 {
 	/**
@@ -46,7 +46,7 @@ class SensethecityModelIssue extends JModelItem
 		// Load the parameters.
 		$this->setState('params', $params);
 	}
-	
+
 
 	function &getItem($id = null)
 	{
@@ -56,21 +56,21 @@ class SensethecityModelIssue extends JModelItem
 			if ($this->_item === null) {
 				if (empty($id)) {
 					$id = $this->getState('sensethecity.id');
-				}				
+				}
 
 				$db		= $this->getDbo();
 				$query	= $db->getQuery(true);
 				$query->select(
-					'a.*'
-					);
+						'a.*'
+				);
 				$query->from('#__sensethecity as a');
 				$query->where('a.id = ' . (int) $id);
 
 				// Join on catid table.
 				$query->select('c.title AS catname');
-				$query->join('LEFT', '#__categories AS c on c.id = a.catid');	
+				$query->join('LEFT', '#__categories AS c on c.id = a.catid');
 
-				
+
 				$db->setQuery((string) $query);
 
 				if (!$db->query()) {
@@ -78,7 +78,7 @@ class SensethecityModelIssue extends JModelItem
 				}
 
 				$this->_item = $db->loadObject();
-				
+
 			}
 		}
 		if ($this->_item != null){
@@ -87,8 +87,8 @@ class SensethecityModelIssue extends JModelItem
 			$this->_item->closed_rel = SensethecityHelper::getRelativeTime($this->_item->closed);
 		}
 		return $this->_item;
-	}	
-	
+	}
+
 	public function getCategoryIcon($pk = 0)
 	{
 		$pk = (!empty($pk)) ? $pk : (int) $id = $this->getState('sensethecity.id');
@@ -100,15 +100,15 @@ class SensethecityModelIssue extends JModelItem
 		$query->where('a.id = ' . (int) $id);
 		// Join on catid table.
 		$query->select('c.params AS params');
-		$query->join('LEFT', '#__categories AS c on c.id = a.catid');	
-		
+		$query->join('LEFT', '#__categories AS c on c.id = a.catid');
+
 		$db->setQuery($query);
 		//$result = $db->loadResult();
 		$row = $db->loadAssoc();
 
 		$parameters = new JRegistry();
 		$parameters->loadJSON($row['params']);
-		$image = $parameters->get('image');		
+		$image = $parameters->get('image');
 
 		return $image;
 	}

@@ -106,6 +106,35 @@ class SensethecityControllerMobile extends JController
 		return;
 	}	
 	
+	
+	public function getStationOffering()
+	{
+		JRequest::checkToken('get') or jexit('Invalid Token');
+		//get model and items
+		$model = $this->getModel('measurements');
+		$items = array();
+		$items	= $model->getOffering();
+		echo json_encode($items);
+		return;		
+	}
+	
+	public function getStationObservation()
+	{
+		JRequest::checkToken('get') or jexit('Invalid Token');
+		
+		//get request
+		$stationId = JRequest::getInt('stationId');		
+		
+		//get model and items
+		$model = $this->getModel('measurements');
+		$items = array();
+		$items	= $model->getObservation($stationId);
+		echo json_encode($items);
+		return;
+	}
+
+	
+	
 	private function authenticate($username, $encrypted_password)
 	{
 		$code = "";
