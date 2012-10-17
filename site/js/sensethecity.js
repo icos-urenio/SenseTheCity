@@ -34,8 +34,8 @@ function getStationInfo(stationId, token){
 }
 
 function getMaxMeasures(token){
-	//var base = window.com_sensethecity.base;
-	//jImc('#waitingIndicator').append('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+	var base = window.com_sensethecity.base;
+	jImc('#waitingIndicatorStatistics').append('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 
 	jImc.ajax({
 		type : 'GET',
@@ -43,7 +43,7 @@ function getMaxMeasures(token){
 		datatype: 'json',
 		data: 'option=com_sensethecity&task=measures.getMaxMeasures&format=json&' + token + '=1',
 		success: function(data){
-			//jImc('#waitingIndicator').remove();
+			jImc('#waitingIndicatorStatistics').remove();
 			jImc('#measureStatistics').html(data.html);
 		}		
 	});

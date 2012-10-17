@@ -94,13 +94,17 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			</div>
 			<div id="waitingIndicator"></div>
 			<div id="graphContainer" style="width : 90%; height: 220px; margin: 8px auto;"></div>
-			<div id="measureStatistics"></div>
+			
 		</div>
 		<div id="imc-details-sidebar-fifty">
 			<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>
 			<?php if($this->credits == 1) : ?>
 				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_SENSETHECITY_INFOALERT');?></div>
 			<?php endif; ?>
+			<div class="stcStatistics">
+				<div id="waitingIndicatorStatistics"></div>
+				<div id="measureStatistics"></div>
+			</div>
 		</div>	
 	</div>
 </div>

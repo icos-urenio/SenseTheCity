@@ -34,10 +34,34 @@ abstract class SensethecityHelper
 	}
 	
 	public function formatMaxMeasures($items) {
-		$html  = '';
+		$html  = '
+		<table class="table table-striped">
+		
+		<caption>'.JText::_('COM_SENSETHECITY_MAX_MEASUREMENTS').'</caption>
+		<thead>
+		<tr>
+		<th>'.JText::_('COM_SENSETHECITY_MEASURE').'</th>
+		<th>'.JText::_('COM_SENSETHECITY_STATION').'</th>
+		<th>'.JText::_('COM_SENSETHECITY_VALUE').'</th>
+		<th>'.JText::_('COM_SENSETHECITY_DATE').'</th>
+		</tr>
+		</thead>
+		<tbody>
+		';
+		
+		
 		foreach($items as $item){
-			$html .= $item['unit'] . ' ' . $item['maximum'] . '<br />';
+			$html .='<tr>';
+			$html .= '<td>' . $item['name'] . '</td> ';
+			$html .= '<td>' . $item['station'] . '</td> ';
+			$html .= '<td>' . $item['maximum'] . ' '.$item['unit']. '</td> ';
+			$html .= '<td>' . date("m/d/Y h:i",strtotime($item['inserted'])) . '</td> ';
+			$html .='</tr>';
 		}
+		
+		$html .= '</tbody></table>';
+		
+		
 		return $html;
 	}
 		

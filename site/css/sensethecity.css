@@ -37,6 +37,11 @@
 #imc-wrapper .strong-link :hover{font-weight: bold; color: red;} 
 #imc-wrapper .desc{color: #45484C;} 
  
+
+.stcStatistics{padding-top: 4em;}
+table caption {font-size: 18px;font-weight:bold;}
+ 
+ 
 /* Layout*/
 #imc-content{padding: 5px 15px 15px 15px; overflow: hidden;}
 	/* 60 list - 40 map */
@@ -75,6 +80,7 @@
 
 /* sidebar */
 #imc-details-sidebar{min-height: 600px;} /* to display mega menu correctly if filters return no results*/
+
 
 
 /* issues list */

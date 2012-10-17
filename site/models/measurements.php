@@ -51,19 +51,12 @@ class SensethecityModelMeasurements extends JModel
 	
 	function getMaxMeasures()
 	{
-		/*
-			SELECT c.title, b.name, MAX( a.corrected_value ) AS maximum, b.unit
-			FROM batb5_sensethecity_observation AS a
-			LEFT JOIN batb5_sensethecity_phenomenon AS b ON b.id = a.phenomenon_id
-			LEFT JOIN batb5_sensethecity AS c ON c.id = a.station_id
-			GROUP BY a.phenomenon_id
-		 * */
 		
 		// Create a new query object.
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
-	
-		$query->select('c.title, b.name, MAX( a.corrected_value ) AS maximum, b.unit');
+		
+		$query->select('c.title AS station, b.name, MAX( a.corrected_value ) AS maximum, b.unit, a.time_stamp_inserted AS inserted');
 		$query->from('#__sensethecity_observation AS a');
 		$query->join('LEFT', '#__sensethecity_phenomenon AS b on b.id = a.phenomenon_id');
 		$query->join('LEFT', '#__sensethecity AS c on c.id = a.station_id');		
