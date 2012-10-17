@@ -22,22 +22,22 @@ class SensethecityHelper
 	{
 
 		JSubMenuHelper::addEntry(
-			JText::_('COM_IMPROVEMYCITY_TITLE_ITEMS'),
+			JText::_('COM_SENSETHECITY_TITLE_ITEMS'),
 			'index.php?option=com_sensethecity&view=stations',
 			$vName == 'stations'
 		);
 		JSubMenuHelper::addEntry(
-			JText::_('COM_IMPROVEMYCITY_SUBMENU_CATEGORIES'), 
+			JText::_('COM_SENSETHECITY_SUBMENU_CATEGORIES'), 
 			'index.php?option=com_categories&view=categories&extension=com_sensethecity', 
 			$vName == 'categories'
 		);
 		JSubMenuHelper::addEntry(
-				JText::_('COM_IMPROVEMYCITY_SUBMENU_REPORTS'),
+				JText::_('COM_SENSETHECITY_SUBMENU_REPORTS'),
 				'index.php?option=com_sensethecity&view=reports',
 				$vName == 'reports'
 		);
 		JSubMenuHelper::addEntry(
-				JText::_('COM_IMPROVEMYCITY_SUBMENU_KEYS'),
+				JText::_('COM_SENSETHECITY_SUBMENU_KEYS'),
 				'index.php?option=com_sensethecity&view=keys',
 				$vName == 'keys'
 		);		
@@ -48,7 +48,7 @@ class SensethecityHelper
 		$document->addStyleDeclaration('.icon-48-items {background-image: url(../media/com_sensethecity/images/sensethecity-48x48.png);}');
 		if ($vName == 'categories') 
 		{
-			$document->setTitle(JText::_('COM_IMPROVEMYCITY_ADMINISTRATION_CATEGORIES'));
+			$document->setTitle(JText::_('COM_SENSETHECITY_ADMINISTRATION_CATEGORIES'));
 		}
 	}
 

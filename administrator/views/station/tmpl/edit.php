@@ -29,7 +29,7 @@ $params = $this->form->getFieldsets('params');
 <form action="<?php echo JRoute::_('index.php?option=com_sensethecity&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
-			<legend><?php echo JText::_('COM_IMPROVEMYCITY_LEGEND_ITEM'); ?></legend>
+			<legend><?php echo JText::_('COM_SENSETHECITY_LEGEND_ITEM'); ?></legend>
 			<ul class="adminformlist">
 					<?php foreach($this->form->getFieldset('details') as $field): ?>
 						
@@ -58,17 +58,17 @@ $params = $this->form->getFieldsets('params');
 	</div>
 
 	<div class="width-40 fltrt">
-		<?php echo JHtml::_('sliders.start', 'improvemycity-slider2'); ?>
-		<?php echo JHtml::_('sliders.panel', JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_MAP'), 'map');?>
-			<div style="width: 100%;height: 400px;" id="mapCanvas"><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_MAP');?></div>				
+		<?php echo JHtml::_('sliders.start', 'sensethecity-slider2'); ?>
+		<?php echo JHtml::_('sliders.panel', JText::_('COM_SENSETHECITY_SENSETHECITY_MAP'), 'map');?>
+			<div style="width: 100%;height: 400px;" id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_MAP');?></div>				
 			<div id="infoPanel" style="margin: 15px;">
-			<b><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_GEOLOCATION');?></b>
+			<b><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_GEOLOCATION');?></b>
 			<div id="info"></div>
-			<b><?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_CLOSEST_ADDRESS');?></b>
+			<b><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_CLOSEST_ADDRESS');?></b>
 			<div id="near_address"></div>
 			<div id="geolocation">
 				<input id="address" type="textbox" size="75" value="">
-				<input style="background-color: #ccc;cursor:pointer;" type="button" value="<?php echo JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_LOCATE');?>" onclick="codeAddress()">
+				<input style="background-color: #ccc;cursor:pointer;" type="button" value="<?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_LOCATE');?>" onclick="codeAddress()">
 			</div>	
 			</div>	
 				

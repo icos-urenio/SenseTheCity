@@ -24,7 +24,7 @@ defined('_JEXEC') or die; ?>
 <?php $fieldSets = $this->form->getFieldsets('params');
 
 foreach ($fieldSets as $name => $fieldSet) :
-	$label = !empty($fieldSet->label) ? $fieldSet->label : 'COM_IMPROVEMYCITY_'.$name.'_FIELDSET_LABEL';
+	$label = !empty($fieldSet->label) ? $fieldSet->label : 'COM_SENSETHECITY_'.$name.'_FIELDSET_LABEL';
 	echo JHtml::_('sliders.panel',JText::_($label), $name.'-options');
 	if (isset($fieldSet->description) && trim($fieldSet->description)) :
 		echo '<p class="tip">'.$this->escape(JText::_($fieldSet->description)).'</p>';

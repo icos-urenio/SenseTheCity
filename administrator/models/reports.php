@@ -28,7 +28,7 @@ class SensethecityModelReports extends JModelList
 				'id', 'a.id',
 				'description', 'a.description',      
 				'state', 'a.state',
-				'improvemycityid', 'a.improvemycityid'                
+				'sensethecityid', 'a.sensethecityid'                
             );
         }
 

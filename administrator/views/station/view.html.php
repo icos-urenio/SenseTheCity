@@ -82,7 +82,7 @@ class SensethecityViewStation extends JView
         }
 		$canDo		= SensethecityHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_ITEM'), 'item.png');
+		JToolBarHelper::title(JText::_('COM_SENSETHECITY_TITLE_ITEM'), 'item.png');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit')||($canDo->get('core.create'))))
@@ -108,7 +108,7 @@ class SensethecityViewStation extends JView
 	{
 		$isNew = $this->item->id == 0;
 		$document = JFactory::getDocument();
-		$document->setTitle($isNew ? JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_CREATING') : JText::_('COM_IMPROVEMYCITY_IMPROVEMYCITY_EDITING'));
+		$document->setTitle($isNew ? JText::_('COM_SENSETHECITY_SENSETHECITY_CREATING') : JText::_('COM_SENSETHECITY_SENSETHECITY_EDITING'));
 		
 		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=".$this->language."&region=" . $this->region);
 
@@ -148,7 +148,7 @@ class SensethecityViewStation extends JView
 					updateMarkerAddress(results[0].formatted_address);			
 
 				  } else {
-					alert('".JText::_('COM_IMPROVEMYCITY_ADDRESS_NOT_FOUND')."');
+					alert('".JText::_('COM_SENSETHECITY_ADDRESS_NOT_FOUND')."');
 				  }
 				});		
 			}
@@ -162,7 +162,7 @@ class SensethecityViewStation extends JView
 				if (responses && responses.length > 0) {
 				  updateMarkerAddress(responses[0].formatted_address);
 				} else {
-				  updateMarkerAddress('".JText::_('COM_IMPROVEMYCITY_ADDRESS_NOT_FOUND')."');
+				  updateMarkerAddress('".JText::_('COM_SENSETHECITY_ADDRESS_NOT_FOUND')."');
 				}
 			  });
 			}
@@ -205,13 +205,13 @@ class SensethecityViewStation extends JView
 			  
 			  marker = new google.maps.Marker({
 				position: latLng,
-				title: '".JText::_('COM_IMPROVEMYCITY_REPORT_LOCATION')."',
+				title: '".JText::_('COM_SENSETHECITY_REPORT_LOCATION')."',
 				map: map,
 				draggable: true
 			  });
 			  
 			  
-			  var infoString = '".JText::_('COM_IMPROVEMYCITY_DRAG_MARKER')."';
+			  var infoString = '".JText::_('COM_SENSETHECITY_DRAG_MARKER')."';
 				
 			  var infowindow = new google.maps.InfoWindow({
 				content: infoString
@@ -225,7 +225,7 @@ class SensethecityViewStation extends JView
 			  // Add dragging event listeners.
 			  google.maps.event.addListener(marker, 'dragstart', function() {
 				infowindow.close();
-				updateMarkerAddress('".JText::_('COM_IMPROVEMYCITY_MOVING')."');
+				updateMarkerAddress('".JText::_('COM_SENSETHECITY_MOVING')."');
 			  });
 			  
 			  google.maps.event.addListener(marker, 'drag', function() {

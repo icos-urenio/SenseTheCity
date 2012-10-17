@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset name="map"
-		label="COM_IMPROVEMYCITY_SETTINGS_GOOGLE_MAP_LABEL"
-		description="COM_IMPROVEMYCITY_SETTINGS_GOOGLE_MAP_DESC"
+		label="COM_SENSETHECITY_SETTINGS_GOOGLE_MAP_LABEL"
+		description="COM_SENSETHECITY_SETTINGS_GOOGLE_MAP_DESC"
 	>
 
 			<field
 				name="latitude"
 				type="text"
-				label="COM_IMPROVEMYCITY_SETTINGS_INITIAL_LATITUDE_LABEL"
-				description="COM_IMPROVEMYCITY_SETTINGS_INITIAL_LATITUDE_DESC"
+				label="COM_SENSETHECITY_SETTINGS_INITIAL_LATITUDE_LABEL"
+				description="COM_SENSETHECITY_SETTINGS_INITIAL_LATITUDE_DESC"
 			/>
 			<field
 				name="longitude"
 				type="text"
-				label="COM_IMPROVEMYCITY_SETTINGS_INITIAL_LONGITUDE_LABEL"
-				description="COM_IMPROVEMYCITY_SETTINGS_INITIAL_LONGITUDE_DESC"
+				label="COM_SENSETHECITY_SETTINGS_INITIAL_LONGITUDE_LABEL"
+				description="COM_SENSETHECITY_SETTINGS_INITIAL_LONGITUDE_DESC"
 			/>
 			<field
 				name="zoom"
 				type="text"
-				label="COM_IMPROVEMYCITY_SETTINGS_INITIAL_MAP_ZOOM_LABEL"
-				description="COM_IMPROVEMYCITY_SETTINGS_INITIAL_MAP_ZOOM_DESC"
+				label="COM_SENSETHECITY_SETTINGS_INITIAL_MAP_ZOOM_LABEL"
+				description="COM_SENSETHECITY_SETTINGS_INITIAL_MAP_ZOOM_DESC"
 			/>
 			<field
 				name="maplanguage"
 				type="text"
-				label="COM_IMPROVEMYCITY_SETTINGS_MAP_LANGUAGE_LABEL"
-				description="COM_IMPROVEMYCITY_SETTINGS_MAP_LANGUAGE_DESC"
+				label="COM_SENSETHECITY_SETTINGS_MAP_LANGUAGE_LABEL"
+				description="COM_SENSETHECITY_SETTINGS_MAP_LANGUAGE_DESC"
 			/>			
 			<field
 				name="mapregion"
 				type="text"
-				label="COM_IMPROVEMYCITY_SETTINGS_MAP_REGION_LABEL"
-				description="COM_IMPROVEMYCITY_SETTINGS_MAP_REGION_DESC"
+				label="COM_SENSETHECITY_SETTINGS_MAP_REGION_LABEL"
+				description="COM_SENSETHECITY_SETTINGS_MAP_REGION_DESC"
 			/>
 			<field
 				name="searchterm"
 				type="text"
-				label="COM_IMPROVEMYCITY_SETTINGS_HIDDEN_SEARCH_TERM_LABEL"
-				description="COM_IMPROVEMYCITY_SETTINGS_HIDDEN_SEARCH_TERM_DESC"
+				label="COM_SENSETHECITY_SETTINGS_HIDDEN_SEARCH_TERM_LABEL"
+				description="COM_SENSETHECITY_SETTINGS_HIDDEN_SEARCH_TERM_DESC"
 			/>
 	</fieldset>
 
 	<fieldset name="general"
-		label="COM_IMPROVEMYCITY_SETTINGS_GENERAL_SETTINGS_LABEL"
-		description="COM_IMPROVEMYCITY_SETTINGS_GENERAL_SETTINGS_DESC"
+		label="COM_SENSETHECITY_SETTINGS_GENERAL_SETTINGS_LABEL"
+		description="COM_SENSETHECITY_SETTINGS_GENERAL_SETTINGS_DESC"
 	>
 	
 		
-			<field name="showrelativedates" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_RELATIVE_DATES_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_RELATIVE_DATES_DESC">
+			<field name="showrelativedates" type="radio" default="1" label="COM_SENSETHECITY_SETTINGS_SHOW_RELATIVE_DATES_LABEL" description="COM_SENSETHECITY_SETTINGS_SHOW_RELATIVE_DATES_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>	
 			<field name="dateformat" type="text"
-				label="COM_IMPROVEMYCITY_SETTINGS_DATE_FORMAT_LABEL"
-				description="COM_IMPROVEMYCITY_SETTINGS_DATE_FORMAT_DESC"
+				label="COM_SENSETHECITY_SETTINGS_DATE_FORMAT_LABEL"
+				description="COM_SENSETHECITY_SETTINGS_DATE_FORMAT_DESC"
 				default="m/d/Y h:i:s"
 			/>			
 				
@@ -64,37 +64,37 @@
 
 
 	<fieldset name="loadscripts"
-		label="COM_IMPROVEMYCITY_SETTINGS_ADVANCED_LABEL"
-		description="COM_IMPROVEMYCITY_SETTINGS_ADVANCED_DESC"
+		label="COM_SENSETHECITY_SETTINGS_ADVANCED_LABEL"
+		description="COM_SENSETHECITY_SETTINGS_ADVANCED_DESC"
 	>
-			<field name="loadjquery" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_JS_DESC">
+			<field name="loadjquery" type="radio" default="1" label="COM_SENSETHECITY_SETTINGS_LOAD_JQUERY_JS_LABEL" description="COM_SENSETHECITY_SETTINGS_LOAD_JQUERY_JS_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="loadjqueryui" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_UI_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_UI_JS_DESC">
+			<field name="loadjqueryui" type="radio" default="1" label="COM_SENSETHECITY_SETTINGS_LOAD_JQUERY_UI_JS_LABEL" description="COM_SENSETHECITY_SETTINGS_LOAD_JQUERY_UI_JS_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="loadbootstrap" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_JS_DESC">
+			<field name="loadbootstrap" type="radio" default="1" label="COM_SENSETHECITY_SETTINGS_LOAD_BOOTSTRAP_JS_LABEL" description="COM_SENSETHECITY_SETTINGS_LOAD_BOOTSTRAP_JS_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="loadbootstrapcss" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_CSS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_CSS_DESC">
+			<field name="loadbootstrapcss" type="radio" default="1" label="COM_SENSETHECITY_SETTINGS_LOAD_BOOTSTRAP_CSS_LABEL" description="COM_SENSETHECITY_SETTINGS_LOAD_BOOTSTRAP_CSS_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="popupmodal" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_AJAX_MODAL_CLASS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_AJAX_MODAL_CLASS_DESC">
+			<field name="popupmodal" type="radio" default="0" label="COM_SENSETHECITY_SETTINGS_AJAX_MODAL_CLASS_LABEL" description="COM_SENSETHECITY_SETTINGS_AJAX_MODAL_CLASS_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>			
-			<field name="enablejsoncontroller" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ENABLE_JSON_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ENABLE_JSON_DESC">
+			<field name="enablejsoncontroller" type="radio" default="0" label="COM_SENSETHECITY_SETTINGS_ENABLE_JSON_LABEL" description="COM_SENSETHECITY_SETTINGS_ENABLE_JSON_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>		
 	</fieldset>
 	
-	<fieldset name="credits" label="COM_IMPROVEMYCITY_SETTINGS_CREDITS_LABEL">
-			<field name="credits" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_CREDITS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_CREDITS_DESC">
+	<fieldset name="credits" label="COM_SENSETHECITY_SETTINGS_CREDITS_LABEL">
+			<field name="credits" type="radio" default="1" label="COM_SENSETHECITY_SETTINGS_SHOW_CREDITS_LABEL" description="COM_SENSETHECITY_SETTINGS_SHOW_CREDITS_DESC">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>	

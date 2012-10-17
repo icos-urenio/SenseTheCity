@@ -63,7 +63,7 @@ $saveOrder	= $listOrder == 'a.ordering';
                 <?php } ?>
                 <?php if (isset($this->items[0]->title)) { ?>
                 <th width="54%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_IMPROVEMYCITY_HEADING_TITLE', 'a.title', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_HEADING_TITLE', 'a.title', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>
                 <?php if (isset($this->items[0]->state)) { ?>
@@ -73,7 +73,7 @@ $saveOrder	= $listOrder == 'a.ordering';
                 <?php } ?>
                 <?php if (isset($this->items[0]->catid)) { ?>
                 <th width="30%" class="nowrap">
-                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_IMPROVEMYCITY_HEADING_CATEGORY', 'a.catid', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_HEADING_CATEGORY', 'a.catid', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>					
                 <?php if (isset($this->items[0]->currentstatus)) { ?>

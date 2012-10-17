@@ -8,8 +8,8 @@
 		<field
 			name="title"
 			type="text"
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_TITLE_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_TITLE_DESC"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_TITLE_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_TITLE_DESC"
 			size="46"
 			class="inputbox validate-title"
 			required="true"
@@ -21,8 +21,8 @@
 			extension="com_sensethecity"
 			class="inputbox"
 			default=""
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CATID_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CATID_DESC"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_CATID_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_CATID_DESC"
 			required="true"
 		>
 		
@@ -31,8 +31,8 @@
 		<field
 			name="latitude"
 			type="text"
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_LATITUDE_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_LATITUDE_DESC"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_LATITUDE_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_LATITUDE_DESC"
 			size="40"
 			class="inputbox validate-latitude"
 			required="false"
@@ -41,8 +41,8 @@
 		<field
 			name="longitude"
 			type="text"
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_LONGITUDE_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_LONGITUDE_DESC"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_LONGITUDE_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_LONGITUDE_DESC"
 			size="40"
 			class="inputbox validate-longitude"
 			required="false"
@@ -51,8 +51,8 @@
 		<field
 			name="address"
 			type="text"
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_ADDRESS_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_ADDRESS_DESC"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_ADDRESS_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_ADDRESS_DESC"
 			size="85"
 			class="inputbox validate-address"
 			required="false"
@@ -61,8 +61,8 @@
 		<field
 			name="description"
 			type="textarea"
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_DESCRIPTION_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_DESCRIPTION_DESC"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_DESCRIPTION_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_DESCRIPTION_DESC"
 			class="inputbox validate-description"
 			filter="safehtml"
 			buttons="false"
@@ -72,64 +72,6 @@
 			rows="5"
 			cols="200"
 		/>		
-		<field 
-			name="photo" 
-			type="media" 
-			hide_none="1" 
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_PHOTO_LABEL"
-			size="40"
-		/>			
-		<field
-			name="votes"
-			type="text"
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_VOTES_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_VOTES_DESC"
-			size="4"
-			class="inputbox validate-votes"
-			required="false"
-			default=""
-		/>		
-		<field
-			name="currentstatus"
-			type="list"
-			class="inputbox"
-			size="1"
-			default="1"
-			label="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CURRENTSTATUS_LABEL"
-			description="COM_IMPROVEMYCITY_IMPROVEMYCITY_FIELD_CURRENTSTATUS_DESC"
-			required="true"
-		>
-			<option value="1">JOPTION_SELECT_STATUS_OPEN</option>
-			<option value="2">JOPTION_SELECT_STATUS_ACK</option>
-			<option value="3">JOPTION_SELECT_STATUS_CLOSED</option>
-		</field>		
-		
-		<field type="spacer" name="spacer" hr="true" />		
-		
-		<field name="updatedates" type="list"
-			label="COM_IMPROVEMYCITY_FIELD_UPDATEDATES_LABEL" description="COM_IMPROVEMYCITY_FIELD_UPDATEDATES_DESC"
-			class="inputbox" size="1" default="1"
-		>
-			<option value="1">JOPTION_SELECT_UPDATEDATES_YES</option>
-			<option value="2">JOPTION_SELECT_UPDATEDATES_NO</option>
-		</field>		
-		
-		<field name="reported" type="calendar"
-			label="COM_IMPROVEMYCITY_FIELD_REPORTED_LABEL" description="COM_IMPROVEMYCITY_FIELD_REPORTED_DESC"
-			class="inputbox" size="22" format="%d-%m-%Y %H:%M:%S"
-		/>
-
-		<field name="acknowledged" type="calendar"
-			label="COM_IMPROVEMYCITY_FIELD_ACKNOWLEDGED_LABEL" description="COM_IMPROVEMYCITY_FIELD_ACKNOWLEDGED_DESC"
-			class="inputbox" size="22" format="%d-%m-%Y %H:%M:%S"
-		/>		
-		
-		<field name="closed" type="calendar"
-			label="COM_IMPROVEMYCITY_FIELD_CLOSED_LABEL" description="COM_IMPROVEMYCITY_FIELD_CLOSED_DESC"
-			class="inputbox" size="22" format="%d-%m-%Y %H:%M:%S"
-		/>
-			
-		<field type="spacer" name="spacer2" hr="true" />
 		
 		<field
 			name="userid"

@@ -52,7 +52,7 @@ class SensethecityViewStations extends JView
 		$state	= $this->get('State');
 		$canDo	= SensethecityHelper::getActions($state->get('filter.category_id'));
 		
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_ITEMS'), 'items.png');
+		JToolBarHelper::title(JText::_('COM_SENSETHECITY_TITLE_ITEMS'), 'items.png');
 
         //Check if the form exists before showing the add/edit buttons
         $formPath = JPATH_COMPONENT_ADMINISTRATOR.DS.'views'.DS.'station';

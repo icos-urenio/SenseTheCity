@@ -1,10 +1,10 @@
 <?php
 /**
- * @version     2.5.x
- * @package     com_improvemycity
+ * @version     1.0.0
+ * @package     com_sensethecity
  * @copyright   Copyright (C) 2011 - 2012 URENIO Research Unit. All rights reserved.
  * @license     GNU Affero General Public License version 3 or later; see LICENSE.txt
- * @author      Ioannis Tsampoulatidis for the URENIO Research Unit
+ * @author      Ioannis Tsampoulatidis for the Information Technologies Institute (CERTH/ITI)
  */
  
 defined('JPATH_BASE') or die;
