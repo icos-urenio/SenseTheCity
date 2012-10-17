@@ -17,6 +17,30 @@ abstract class SensethecityHelper
 		return JRoute::_($link.'&amp;Itemid='.JRequest::getint( 'Itemid' ));
 	}	
 
+	public function formatStationInfoData($data, $phen) {
+		$phenList = '(';
+		foreach ($phen as $name){
+			$phenList .= $name . ',';
+		}
+		$phenList = substr($phenList, 0, -1);
+		$phenList .= ')';
+		
+		$html  = '';
+		$html .= '<h2>' . $data['title'] . '</h2>';
+		$html .= '<i class="icon-info-sign"></i> ' .$data['description'] . '<br />';
+		$html .= '<i class="icon-map-marker"></i> LAT: ' . $data['latitude'].' , LON: '.$data['longitude'] . '<br />';
+		$html .= '<i class="icon-th-list"></i> ' .$phenList . '<br />';
+		return $html;
+	}
+	
+	public function formatMaxMeasures($items) {
+		$html  = '';
+		foreach($items as $item){
+			$html .= $item['unit'] . ' ' . $item['maximum'] . '<br />';
+		}
+		return $html;
+	}
+		
 	public static function getRelativeTime($time)
 	{
 		if(strtotime($time) <= 0)

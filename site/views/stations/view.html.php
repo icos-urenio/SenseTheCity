@@ -335,7 +335,7 @@ class SensethecityViewStations extends JView
 					  ,width: \"200px\"
 					 }
 					,closeBoxMargin: \"10px 2px 2px 2px\"
-					,closeBoxURL: \"http://www.google.com/intl/en_us/mapfiles/close.gif\"
+					,closeBoxURL: \"https://www.google.com/intl/en_us/mapfiles/close.gif\"
 					,infoBoxClearance: new google.maps.Size(1, 1)
 					,isHidden: false
 					,pane: \"floatPane\"
@@ -519,12 +519,9 @@ class SensethecityViewStations extends JView
 			}			
 			
 			function showInfo(marker){
-				jImc(\"#stationTitle\").html('<h2>' + marker.title + '</h2>');
-				jImc(\"#stationInfo\").html('Measures of station_id: '+ marker.id);
-				jImc(\"#wrapper-info\").show(500);
-					  		
-				getStationMeasures(marker.id, '".JUtility::getToken()."');
-				
+				getStationInfo(marker.id, '".JUtility::getToken()."');
+				getStationMeasures(marker.id, '".JUtility::getToken()."');				
+				getMaxMeasures('".JUtility::getToken()."');
 			}
 			
 			

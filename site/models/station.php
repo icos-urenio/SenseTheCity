@@ -81,11 +81,7 @@ class SensethecityModelIssue extends JModelItem
 
 			}
 		}
-		if ($this->_item != null){
-			$this->_item->reported_rel = SensethecityHelper::getRelativeTime($this->_item->reported);
-			$this->_item->acknowledged_rel = SensethecityHelper::getRelativeTime($this->_item->acknowledged);
-			$this->_item->closed_rel = SensethecityHelper::getRelativeTime($this->_item->closed);
-		}
+
 		return $this->_item;
 	}
 
