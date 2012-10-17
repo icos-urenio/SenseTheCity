@@ -270,7 +270,7 @@ class SensethecityViewStations extends JView
 		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/flotr2.functions.js');
 	
 		//add google maps
-		$document->addScript("http://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
+		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/infobox_packed.js');		
 
 		$document->addScriptDeclaration('var jsonMarkers = '.json_encode($this->getMarkersArrayFromItems()).';');
