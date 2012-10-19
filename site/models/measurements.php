@@ -15,7 +15,12 @@ defined('_JEXEC') or die;
  */
 class SensethecityModelMeasurements extends JModel
 {
-
+	function insertMeasurements($measurements)
+	{
+		return "TODO: insert into database this: " . $measurements;	
+	}
+	
+	
 	function getStationInfo($stationId)
 	{
 		// Create a new query object.
@@ -51,6 +56,15 @@ class SensethecityModelMeasurements extends JModel
 	
 	function getMaxMeasures()
 	{
+		
+		/*
+		 SELECT c.title, b.name, MAX(a.corrected_value) AS maximum, b.unit, DATE_FORMAT(a.time_stamp_inserted,"%W, %M %e, %Y @ %h:%i %p") AS inserted
+		FROM batb5_sensethecity_observation AS a
+		LEFT JOIN batb5_sensethecity_phenomenon AS b on b.id = a.phenomenon_id
+		LEFT JOIN batb5_sensethecity AS c on c.id = a.station_id
+		GROUP BY a.phenomenon_id
+		 */	
+
 		
 		// Create a new query object.
 		$db		= $this->getDbo();

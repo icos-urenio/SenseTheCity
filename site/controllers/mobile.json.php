@@ -47,6 +47,29 @@ class SensethecityControllerMobile extends JController
 	
 
 	//TODO: set here functions to receive data from sensors and insert to DB 
+	/* BELOW FUNCTIONS NEED valid username and encrypted_password */
+	
+	public function insertMeasurements()
+	{
+		$username = JRequest::getVar('username');
+		$password = JRequest::getVar('password');
+		//Check authentication
+		$auth = $this->authenticate($username, $password);
+		if(!empty($auth['error_message'])){
+			echo json_encode("Authentication failed");
+			return;
+		}
+		
+		$measurements = JRequest::getVar('measurements');
+	
+		//get model
+		$model = $this->getModel('measurements');
+	
+		$ret = $model->insertMeasurements($measurements);
+		echo json_encode($ret); //0 or 1
+		return;
+	}
+	
 	
 	
 	private function authenticate($username, $encrypted_password)
