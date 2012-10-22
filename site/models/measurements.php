@@ -17,7 +17,17 @@ class SensethecityModelMeasurements extends JModel
 {
 	function insertMeasurements($measurements)
 	{
-		return "TODO: insert into database this: " . $measurements;	
+		$input = json_decode($measurements, true);
+		//$sql = 'INSERT INTO #table statio';
+		$sql = '';
+		foreach ($input as $station){
+			$sql .= 'insert into station id:' . $station['serial'];
+			foreach($station['measurements'] as $data){
+				$sql .= 'id:' . $data['sensor'] . ' = ' . $data['raw'] . '<br />';
+			}
+		}		
+		//testing...
+		return $sql;	
 	}
 	
 	
