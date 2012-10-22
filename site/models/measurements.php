@@ -17,6 +17,16 @@ class SensethecityModelMeasurements extends JModel
 {
 	function insertMeasurements($measurements)
 	{
+		/*
+		ob_start();
+		echo 'hello';
+		$var = ob_get_contents();
+		ob_end_clean();
+		$fp=fopen('zlog.txt','w');
+		fputs($fp,$var);
+		fclose($fp);		
+		*/
+		
 		$sql = '';
 		$errors = 0;
 		$receivedCorrectly = false;
@@ -24,11 +34,6 @@ class SensethecityModelMeasurements extends JModel
 		if(empty($input))
 			return -1;
 		
-		
-		ob_start();
-		print_r($input);
-		
-		 		
 		foreach ($input as $station){
 			if(!empty($station['measurements']) && !empty($station['datetime']) ){
 				$sql .= 'INSERT INTO `#__sensethecity_observation` (`station_id`, `measurement_datetime`, `phenomenon_id`, `numeric_value`, `corrected_value`) VALUES '. "\r";
@@ -52,24 +57,26 @@ class SensethecityModelMeasurements extends JModel
 		
 		//if at least one record received correctly insert into DB
 		if($receivedCorrectly){
-			echo $sql;
+			//echo 'sql = '. $sql;
+			$db->setQuery($sql);
+			
+			if (!$db->query()) {
+				$this->setError($db->getErrorMsg());
+				return -1;
+			}
+			
+			//also return the number of sensor errors if any... (0 if none)
+			//echo 'errors= '. $errors;
+			return $errors;
+				
 		}
 		else {
 			//all went wrong			
 			return -1;
 		}
 		
-		echo 'errors= '. $errors;
 		
-		$var = ob_get_contents();
-		ob_end_clean();
-		$fp=fopen('zlog.txt','w');
-		fputs($fp,$var);
-		fclose($fp);		
 		
-
-		//just return the number of sensor errors (0 if none)
-		return $errors;
 
 			
 	}
