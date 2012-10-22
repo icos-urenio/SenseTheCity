@@ -59,14 +59,15 @@ class SensethecityControllerMobile extends JController
 			echo json_encode("Authentication failed");
 			return;
 		}
+		$username = JRequest::getVar('username');
 		
-		$measurements = JRequest::getVar('measurements');
-	
+		//$measurements = JRequest::getVar('measurements');
+		$measurements = file_get_contents('php://input');
+		
 		//get model
 		$model = $this->getModel('measurements');
-	
 		$ret = $model->insertMeasurements($measurements);
-		echo json_encode($ret); //0 or 1
+		echo json_encode($ret); //return the number of errors (0 if none)
 		return;
 	}
 	

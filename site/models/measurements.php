@@ -17,17 +17,61 @@ class SensethecityModelMeasurements extends JModel
 {
 	function insertMeasurements($measurements)
 	{
-		$input = json_decode($measurements, true);
-		//$sql = 'INSERT INTO #table statio';
 		$sql = '';
+		$errors = 0;
+		$receivedCorrectly = false;
+		$input = json_decode($measurements, true);
+		if(empty($input))
+			return -1;
+		
+		
+		ob_start();
+		print_r($input);
+		
+		 		
 		foreach ($input as $station){
-			$sql .= 'insert into station id:' . $station['serial'];
-			foreach($station['measurements'] as $data){
-				$sql .= 'id:' . $data['sensor'] . ' = ' . $data['raw'] . '<br />';
+			if(!empty($station['measurements']) && !empty($station['datetime']) ){
+				$sql .= 'INSERT INTO `#__sensethecity_observation` (`station_id`, `measurement_datetime`, `phenomenon_id`, `numeric_value`, `corrected_value`) VALUES '. "\r";
+				foreach($station['measurements'] as $data){
+					if(  isset($data['raw'])  && isset($data['value']) ) {
+						$receivedCorrectly = true;
+						$sql .= "('" . $station['id'] . "','" . date("Y-m-d H:i:s", $station['datetime']) . "','" . $data['sensor'] . "','" . $data['raw'] . "','" . $data['value'] . "')," . "\r";
+					}
+					else{
+						$errors++;
+					}
+				}
+				$sql = substr($sql, 0, -2);
+				$sql .= ';';
 			}
-		}		
-		//testing...
-		return $sql;	
+			else {
+				//just in case measurements are completely empty
+				return -1;				
+			}
+		}
+		
+		//if at least one record received correctly insert into DB
+		if($receivedCorrectly){
+			echo $sql;
+		}
+		else {
+			//all went wrong			
+			return -1;
+		}
+		
+		echo 'errors= '. $errors;
+		
+		$var = ob_get_contents();
+		ob_end_clean();
+		$fp=fopen('zlog.txt','w');
+		fputs($fp,$var);
+		fclose($fp);		
+		
+
+		//just return the number of sensor errors (0 if none)
+		return $errors;
+
+			
 	}
 	
 	
