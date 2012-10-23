@@ -17,7 +17,7 @@ abstract class SensethecityHelper
 		return JRoute::_($link.'&amp;Itemid='.JRequest::getint( 'Itemid' ));
 	}	
 
-	public function formatStationInfoData($data, $phen, $upd) {
+	public function formatStationInfoData($data, $phen, $latest) {
 
 		$phenList = '(';
 		foreach ($phen as $name){
@@ -31,9 +31,36 @@ abstract class SensethecityHelper
 		$html .= '<i class="icon-info-sign"></i> ' .$data['description'] . '<br />';
 		$html .= '<i class="icon-map-marker"></i> LAT: ' . $data['latitude'].' , LON: '.$data['longitude'] . '<br />';
 		$html .= '<i class="icon-th-list"></i> ' .$phenList . '<br />';
-		$html .= '<i class="icon-time"></i> ' .$upd['latest'] . '<br />';
+		$html .= '<i class="icon-time"></i> ' .$latest[0]['measurement_datetime'] . '<br />';
+		$html .= '<br /><br />';
+		//latest values 
+		$html  .= '
+		<table class="table table-striped">
+		
+		<caption>'.JText::_('COM_SENSETHECITY_LATEST_MEASUREMENTS').'</caption>
+		<thead>
+		<tr>
+		<th>'.JText::_('COM_SENSETHECITY_MEASURE').'</th>
+		<th>'.JText::_('COM_SENSETHECITY_VALUE').'</th>
+		</tr>
+		</thead>
+		<tbody>
+		';
+		
+		
+		foreach($latest as $item){
+			$html .='<tr>';
+			$html .= '<td>' . $item['name'] . '</td> ';
+			$html .= '<td>' . $item['corrected_value'] . '</td> ';
+			$html .='</tr>';
+		}
+		
+		$html .= '</tbody></table>';
+		
+		
 		return $html;
 	}
+	
 	
 	public function formatMaxMeasures($items) {
 		$html  = '

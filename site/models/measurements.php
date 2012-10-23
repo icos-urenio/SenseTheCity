@@ -99,18 +99,28 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}	
 	
-	function getStationLastUpdate($stationId)
+	function getStationLastMeasures($stationId)
 	{
 		// Create a new query object.
 		$db		= $this->getDbo();
+		/*
 		$query	= $db->getQuery(true);
-		
 		$query->select('a.*, MAX(a.measurement_datetime) AS latest');
 		$query->from('`#__sensethecity_observation` AS a');
 		$query->where('a.station_id='.$stationId);
+		$query->where('a.measurement_datetime=latest');
+		*/
+		$query = '
+			SELECT a.*, c.name  
+			FROM `#__sensethecity_observation` AS a
+			LEFT JOIN `#__sensethecity_phenomenon` AS c on c.id = a.phenomenon_id
+			WHERE a.measurement_datetime = ( 
+			SELECT MAX( b.measurement_datetime ) AS latest
+			FROM `#__sensethecity_observation` AS b
+			WHERE b.station_id = '.$stationId.' )'; 
 		
 		$db->setQuery($query);
-		$result = $db->loadAssoc();
+		$result = $db->loadAssocList();
 		return $result;
 	}
 	

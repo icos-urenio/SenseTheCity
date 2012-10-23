@@ -30,10 +30,10 @@ class SensethecityControllerMeasures extends JController
 		//get station phenomenon
 		$phen = $model->getStationPhenomenon($stationId);
 		
-		//get station last update from sensors
-		$upd = $model->getStationLastUpdate($stationId);
+		//get station last measures from sensors
+		$latest = $model->getStationLastMeasures($stationId);
 		
-		$ret['html'] = SensethecityHelper::formatStationInfoData($station, $phen, $upd); 
+		$ret['html'] = SensethecityHelper::formatStationInfoData($station, $phen, $latest); 
 		echo json_encode($ret);
 		return;
 	}
