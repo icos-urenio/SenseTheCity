@@ -51,7 +51,7 @@ abstract class SensethecityHelper
 		foreach($latest as $item){
 			$html .='<tr>';
 			$html .= '<td>' . $item['name'] . '</td> ';
-			$html .= '<td>' . $item['corrected_value'] . '</td> ';
+			$html .= '<td>' . $item['corrected_value'] . ' ' . $item['unit'] . '</td> ';
 			$html .='</tr>';
 		}
 		

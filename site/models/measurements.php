@@ -111,7 +111,7 @@ class SensethecityModelMeasurements extends JModel
 		$query->where('a.measurement_datetime=latest');
 		*/
 		$query = '
-			SELECT a.*, c.name  
+			SELECT a.*, c.name, c.unit  
 			FROM `#__sensethecity_observation` AS a
 			LEFT JOIN `#__sensethecity_phenomenon` AS c on c.id = a.phenomenon_id
 			WHERE a.measurement_datetime = ( 
