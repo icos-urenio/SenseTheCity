@@ -57,7 +57,7 @@ class SensethecityModelMeasurements extends JModel
 		
 		//if at least one record received correctly insert into DB
 		if($receivedCorrectly){
-			//echo 'sql = '. $sql;
+			$db	= $this->getDbo();
 			$db->setQuery($sql);
 			
 			if (!$db->query()) {
@@ -66,7 +66,6 @@ class SensethecityModelMeasurements extends JModel
 			}
 			
 			//also return the number of sensor errors if any... (0 if none)
-			//echo 'errors= '. $errors;
 			return $errors;
 				
 		}
@@ -75,10 +74,6 @@ class SensethecityModelMeasurements extends JModel
 			return -1;
 		}
 		
-		
-		
-
-			
 	}
 	
 	
@@ -100,7 +95,6 @@ class SensethecityModelMeasurements extends JModel
 	
 	function getStationPhenomenon($stationId)
 	{
-
 		// Create a new query object.
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
@@ -125,7 +119,6 @@ class SensethecityModelMeasurements extends JModel
 		LEFT JOIN batb5_sensethecity AS c on c.id = a.station_id
 		GROUP BY a.phenomenon_id
 		 */	
-
 		
 		// Create a new query object.
 		$db		= $this->getDbo();
