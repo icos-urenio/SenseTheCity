@@ -17,7 +17,8 @@ abstract class SensethecityHelper
 		return JRoute::_($link.'&amp;Itemid='.JRequest::getint( 'Itemid' ));
 	}	
 
-	public function formatStationInfoData($data, $phen) {
+	public function formatStationInfoData($data, $phen, $upd) {
+
 		$phenList = '(';
 		foreach ($phen as $name){
 			$phenList .= $name . ',';
@@ -30,6 +31,7 @@ abstract class SensethecityHelper
 		$html .= '<i class="icon-info-sign"></i> ' .$data['description'] . '<br />';
 		$html .= '<i class="icon-map-marker"></i> LAT: ' . $data['latitude'].' , LON: '.$data['longitude'] . '<br />';
 		$html .= '<i class="icon-th-list"></i> ' .$phenList . '<br />';
+		$html .= '<i class="icon-time"></i> ' .$upd['latest'] . '<br />';
 		return $html;
 	}
 	
