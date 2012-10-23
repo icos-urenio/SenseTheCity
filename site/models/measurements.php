@@ -24,7 +24,7 @@ class SensethecityModelMeasurements extends JModel
 		ob_end_clean();
 		$fp=fopen('zlog.txt','w');
 		fputs($fp,$var);
-		fclose($fp);		
+		fclose($fp);
 		*/
 		
 		$sql = '';
@@ -40,7 +40,13 @@ class SensethecityModelMeasurements extends JModel
 				foreach($station['measurements'] as $data){
 					if(  isset($data['raw'])  && isset($data['value']) ) {
 						$receivedCorrectly = true;
-						$sql .= "('" . $station['id'] . "','" . date("Y-m-d H:i:s", $station['datetime']) . "','" . $data['sensor'] . "','" . $data['raw'] . "','" . $data['value'] . "')," . "\r";
+						
+						//make datetime from custom string						
+						$dtString = $station['datetime'];
+						$dt = str_split($dtString, 2);
+						$dt = "20{$dt[0]}-{$dt[1]}-{$dt[2]} {$dt[3]}:{$dt[4]}:00";
+												
+						$sql .= "('" . $station['id'] . "','" . $dt . "','" . $data['sensor'] . "','" . $data['raw'] . "','" . $data['value'] . "')," . "\r";
 					}
 					else{
 						$errors++;
@@ -73,7 +79,7 @@ class SensethecityModelMeasurements extends JModel
 			//all went wrong			
 			return -1;
 		}
-		
+
 	}
 	
 	
