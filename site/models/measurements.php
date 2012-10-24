@@ -103,13 +103,7 @@ class SensethecityModelMeasurements extends JModel
 	{
 		// Create a new query object.
 		$db		= $this->getDbo();
-		/*
-		$query	= $db->getQuery(true);
-		$query->select('a.*, MAX(a.measurement_datetime) AS latest');
-		$query->from('`#__sensethecity_observation` AS a');
-		$query->where('a.station_id='.$stationId);
-		$query->where('a.measurement_datetime=latest');
-		*/
+
 		$query = '
 			SELECT a.*, c.name, c.unit  
 			FROM `#__sensethecity_observation` AS a
@@ -117,7 +111,7 @@ class SensethecityModelMeasurements extends JModel
 			WHERE a.measurement_datetime = ( 
 			SELECT MAX( b.measurement_datetime ) AS latest
 			FROM `#__sensethecity_observation` AS b
-			WHERE b.station_id = '.$stationId.' )'; 
+			WHERE b.station_id = '.$stationId.' ) AND a.station_id = ' . $stationId; 
 		
 		$db->setQuery($query);
 		$result = $db->loadAssocList();
