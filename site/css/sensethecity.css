@@ -9,6 +9,7 @@
 /* General  */
 #imc-wrapper {margin: 0;	padding: 0; overflow: hidden;}
 
+#imc-wrapper a {outline: 0;}
 /*
 #imc-wrapper a {outline: 0;color: #3875D7;}
 #imc-wrapper a:hover {color: #0B3068;}
