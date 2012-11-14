@@ -93,21 +93,24 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		
 		<div style="clear: both"></div>
 		
-<div class="tabbable tabs-below" style="margin: 2em 0;"> 
-	<div class="tab-content">
-		<div class="tab-pane active" id="tab1">
-			<div id="graphContainer" style="width:90%; height:220px; margin: 8px auto;"></div>
-		</div>
-			<div class="tab-pane" id="tab2">
-		<p>Howdy, I'm in Section 2.</p>
-		</div>
-	</div>
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="#tab1" data-toggle="tab">Γράφημα</a></li>
-		<li><a href="#tab2" data-toggle="tab">Γράφημα 2</a></li>
-	</ul>
-
-</div>		
+		
+		
+		
+		<div class="tabbable tabs-below" style="margin: 2em 0;"> 
+			<div class="tab-content">
+				<div class="tab-pane active" id="tab1">
+					<div id="graphContainer" style="width:95%; height:220px; margin: 8px auto;"></div>
+				</div>
+					<div class="tab-pane" id="tab2">
+					<div id="graphContainer2" style="width:95%; height:220px; margin: 8px auto;">I am another graph</div>
+				</div>
+			</div>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab1" data-toggle="tab">Γράφημα</a></li>
+				<li><a href="#tab2" data-toggle="tab">Γράφημα 2</a></li>
+			</ul>
+		
+		</div>		
 		
 		
 		
