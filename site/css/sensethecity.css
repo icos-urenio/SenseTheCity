@@ -8,7 +8,19 @@
 
 /* General  */
 #imc-wrapper {margin: 0;	padding: 0; overflow: hidden;}
-#imc-wrapper a {outline: 0;}  /* remove this line for accessibility issues */
+
+/*
+#imc-wrapper a {outline: 0;color: #3875D7;}
+#imc-wrapper a:hover {color: #0B3068;}
+*/
+
+.tab-content{
+	background-color: #fff;
+	border-left: 1px solid #e3e3e3;
+	border-right: 1px solid #e3e3e3;
+	border-top: 1px solid #e3e3e3;
+}
+
 #imc-header {
 	background: #ececed;
 	background: -moz-linear-gradient(top, #ececed, #dfdedf);
@@ -37,14 +49,16 @@
 #imc-wrapper .strong-link :hover{font-weight: bold; color: red;} 
 #imc-wrapper .desc{color: #45484C;} 
  
-
-.stcStatistics{padding-top: 4em;}
+#station-info-wrapper{padding-bottom: 1em;}
+.extra-info{padding-right: 1em;}
+.stcStatistics{border-left: 1px solid #ccc;}
 table caption {font-size: 18px;font-weight:bold;}
  
  
 /* Layout*/
 #imc-content{padding: 5px 15px 15px 15px; overflow: hidden;}
-	/* 60 list - 40 map */
+
+/* 60 list - 40 map */
 #imc-main-panel{
 	float:left;
 	width: 60%;
@@ -66,16 +80,13 @@ table caption {font-size: 18px;font-weight:bold;}
 	height: 450px;
 	margin: 0 auto;
 }
-#imc-details-sidebar #mapCanvas{
+
+#mapCanvas{
 	width: 100%; 
-	height: 300px;
+	height: 200px;
 	margin: 0 auto;
 }
-#imc-main-panel #mapCanvasNew{
-	width: 100%; 
-	height: 500px;
-	margin: 0 auto;
-}
+
 
 
 /* sidebar */

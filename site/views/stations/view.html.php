@@ -401,7 +401,7 @@ class SensethecityViewStations extends JView
 				google.maps.event.addListener(marker, 'click', function() {
 					infoBox.setContent(boxText);
 					infoBox.open(map, marker);
-					showInfo(marker);					
+					showInfo(marker.id);					
 				});
 			  
 				google.maps.event.addListener(marker, 'mouseover', function() {
@@ -492,8 +492,16 @@ class SensethecityViewStations extends JView
 				return false;
 			}			
 			
-			function markerclick(i) {
-				google.maps.event.trigger(gmarkers[i],'click');
+			function markerclick(id) {
+				var index;
+				for (var i=0; i<gmarkers.length; i++) {				
+					if(gmarkers[i].id == id){
+						index = i;
+						
+					}
+				}			
+				//alert(i);
+				google.maps.event.trigger(gmarkers[index],'click');
 			}			
 
 			function markerhover(id) {
@@ -517,10 +525,12 @@ class SensethecityViewStations extends JView
 				google.maps.event.trigger(gmarkers[index],'mouseout');
 
 			}			
-			
-			function showInfo(marker){
-				getStationInfo(marker.id, '".JUtility::getToken()."');
-				getStationMeasures(marker.id, '".JUtility::getToken()."');				
+			//marker.id
+			function showInfo(id){
+				
+				getStationInfo(id, '".JUtility::getToken()."');
+				getLatestStationMeasures(id, '".JUtility::getToken()."');
+				getStationMeasuresGraph(id, '".JUtility::getToken()."');
 				getMaxMeasures('".JUtility::getToken()."');
 			}
 			

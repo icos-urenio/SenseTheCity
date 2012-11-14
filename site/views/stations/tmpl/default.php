@@ -82,6 +82,38 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<div id="loading"><img src="<?php echo JURI::base().'components/com_sensethecity/images/ajax-loader.gif';?>" /></div>
 	
 	<div id="imc-content">
+		<div id="stationInfo"></div>
+		
+		<div id="wrapper-map">
+			<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>
+			<?php if($this->credits == 1) : ?>
+				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_SENSETHECITY_INFOALERT');?></div>
+			<?php endif; ?>
+		</div>
+		
+		<div style="clear: both"></div>
+		
+<div class="tabbable tabs-below" style="margin: 2em 0;"> 
+	<div class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<div id="graphContainer" style="width:90%; height:220px; margin: 8px auto;"></div>
+		</div>
+			<div class="tab-pane" id="tab2">
+		<p>Howdy, I'm in Section 2.</p>
+		</div>
+	</div>
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#tab1" data-toggle="tab">Γράφημα</a></li>
+		<li><a href="#tab2" data-toggle="tab">Γράφημα 2</a></li>
+	</ul>
+
+</div>		
+		
+		
+		
+		
+		
+		<div style="clear: both"></div>
 		<div id="imc-main-panel-fifty">
 			<?php if(empty($this->items)) : ?>
 				<div class="alert alert-error width75">
@@ -89,18 +121,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 				</div>
 			<?php endif; ?>
 			<div id="wrapper-info">	
-				<div id="stationInfo"></div>
-				<div id="stationMeasures"></div>
+				<div id="waitingIndicator"></div>
+				<div id="stationLatestMeasures">&nbsp;</div>
 			</div>
-			<div id="waitingIndicator"></div>
-			<div id="graphContainer" style="width : 90%; height: 220px; margin: 8px auto;"></div>
-			
 		</div>
+		
 		<div id="imc-details-sidebar-fifty">
-			<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>
-			<?php if($this->credits == 1) : ?>
-				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_SENSETHECITY_INFOALERT');?></div>
-			<?php endif; ?>
 			<div class="stcStatistics">
 				<div id="waitingIndicatorStatistics"></div>
 				<div id="measureStatistics"></div>

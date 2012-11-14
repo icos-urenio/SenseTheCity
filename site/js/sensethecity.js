@@ -1,7 +1,8 @@
 /*sensethecity js*/
+/*
 function getStationData(){
 	var base = window.com_sensethecity.base;
-	jImc('#waitingIndicator').append('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+	jImc('#waitingIndicator').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 	
 	jImc.ajax({
 		type : 'POST',
@@ -9,17 +10,17 @@ function getStationData(){
 		datatype: 'json',
 		data: jImc('#com_sensethecity_postdata').serialize(),
 		success: function(data){
-			jImc('#waitingIndicator').remove();
+			jImc('#waitingIndicator').html('');
 
 		}
 
 	});
 }
-
+*/
 
 function getStationInfo(stationId, token){
-	//var base = window.com_sensethecity.base;
-	//jImc('#waitingIndicator').append('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+	var base = window.com_sensethecity.base;
+	jImc('#waitingIndicator').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 
 	jImc.ajax({
 		type : 'GET',
@@ -27,15 +28,31 @@ function getStationInfo(stationId, token){
 		datatype: 'json',
 		data: 'option=com_sensethecity&task=measures.getStationInfo&format=json&stationId=' + stationId + '&' + token + '=1',
 		success: function(data){
-			//jImc('#waitingIndicator').remove();
+			jImc('#waitingIndicator').html('');
 			jImc('#stationInfo').html(data.html);
+		}		
+	});
+}
+
+function getLatestStationMeasures(stationId, token){
+	var base = window.com_sensethecity.base;
+	jImc('#waitingIndicator').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+
+	jImc.ajax({
+		type : 'GET',
+		url : 'index.php',
+		datatype: 'json',
+		data: 'option=com_sensethecity&task=measures.getLatestStationMeasures&format=json&stationId=' + stationId + '&' + token + '=1',
+		success: function(data){
+			jImc('#waitingIndicator').html('');
+			jImc('#stationLatestMeasures').html(data.html);
 		}		
 	});
 }
 
 function getMaxMeasures(token){
 	var base = window.com_sensethecity.base;
-	jImc('#waitingIndicatorStatistics').append('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+	jImc('#waitingIndicatorStatistics').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 
 	jImc.ajax({
 		type : 'GET',
@@ -43,15 +60,15 @@ function getMaxMeasures(token){
 		datatype: 'json',
 		data: 'option=com_sensethecity&task=measures.getMaxMeasures&format=json&' + token + '=1',
 		success: function(data){
-			jImc('#waitingIndicatorStatistics').remove();
+			jImc('#waitingIndicatorStatistics').html('');
 			jImc('#measureStatistics').html(data.html);
 		}		
 	});
 }
 
-function getStationMeasures(stationId, token){
+function getStationMeasuresGraph(stationId, token){
 	var base = window.com_sensethecity.base;
-	jImc('#waitingIndicator').append('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+	jImc('#waitingIndicator').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 
 	jImc.ajax({
 		type : 'GET',
@@ -59,7 +76,7 @@ function getStationMeasures(stationId, token){
 		datatype: 'json',
 		data: 'option=com_sensethecity&task=measures.getStationObservation&format=json&stationId=' + stationId + '&' + token + '=1',
 		success: function(data){
-			jImc('#waitingIndicator').remove();
+			jImc('#waitingIndicator').html('');
 			basic_bars_thermiSensors("graphContainer",data);
 			
 		}		

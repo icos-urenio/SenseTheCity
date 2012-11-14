@@ -149,7 +149,7 @@ class SensethecityModelMeasurements extends JModel
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 		
-		$query->select('c.title AS station, b.name, MAX( a.corrected_value ) AS maximum, b.unit, a.measurement_datetime AS inserted');
+		$query->select('c.id, c.title AS station, b.name, MAX( a.corrected_value ) AS maximum, b.unit, a.measurement_datetime AS inserted');
 		$query->from('#__sensethecity_observation AS a');
 		$query->join('LEFT', '#__sensethecity_phenomenon AS b on b.id = a.phenomenon_id');
 		$query->join('LEFT', '#__sensethecity AS c on c.id = a.station_id');		

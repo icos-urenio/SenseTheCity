@@ -17,7 +17,7 @@ abstract class SensethecityHelper
 		return JRoute::_($link.'&amp;Itemid='.JRequest::getint( 'Itemid' ));
 	}	
 
-	public function formatStationInfoData($data, $phen, $latest) {
+	public function formatStationInfoData($data, $phen) {
 
 		$phenList = '(';
 		foreach ($phen as $name){
@@ -26,17 +26,22 @@ abstract class SensethecityHelper
 		$phenList = substr($phenList, 0, -1);
 		$phenList .= ')';
 		
-		$html  = '';
+		$html  = '<div id="station-info-wrapper">';
 		$html .= '<h2>' . $data['title'] . '</h2>';
-		$html .= '<i class="icon-info-sign"></i> ' .$data['description'] . '<br />';
-		$html .= '<i class="icon-map-marker"></i> LAT: ' . $data['latitude'].' , LON: '.$data['longitude'] . '<br />';
-		$html .= '<i class="icon-th-list"></i> ' .$phenList . '<br />';
-		$html .= '<i class="icon-time"></i> ' .$latest[0]['measurement_datetime'] . '<br />';
-		$html .= '<br /><br />';
-		//latest values 
-		$html  .= '
-		<table class="table table-striped">
+		$html .= '<span class="extra-info"><i title="'.JText::_('COM_SENSETHECITY_EXTRA_INFO').'" class="icon-info-sign"></i> ' .$data['description'] . '</span>';
+		$html .= '<span class="extra-info"><i title="'.JText::_('COM_SENSETHECITY_GEOLOCATION').'"class="icon-map-marker"></i> LAT: ' . $data['latitude'].' , LON: '.$data['longitude'] . '</span>';
+		$html .= '<span class="extra-info"><i title="'.JText::_('COM_SENSETHECITY_MEASUREMENTS').'"class="icon-th-list"></i> ' .$phenList . '</span>';
+		$html .= '</div>';
 		
+		return $html;
+	}
+	
+	public function formatLatestStationMeasures($latest) {
+	
+		//latest values
+		$html = '
+		<table class="table table-striped">
+	
 		<caption>'.JText::_('COM_SENSETHECITY_LATEST_MEASUREMENTS').'</caption>
 		<thead>
 		<tr>
@@ -46,20 +51,22 @@ abstract class SensethecityHelper
 		</thead>
 		<tbody>
 		';
-		
-		
+	
 		foreach($latest as $item){
 			$html .='<tr>';
 			$html .= '<td>' . $item['name'] . '</td> ';
-			$html .= '<td>' . $item['corrected_value'] . ' ' . $item['unit'] . '</td> ';
+			$val = ($item['name'] == 'CO2' ? $item['corrected_value'] / 1.0e+156 : $item['corrected_value'] );
+			$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 			$html .='</tr>';
 		}
 		
 		$html .= '</tbody></table>';
+		$html .= '<i title="'.JText::_('COM_SENSETHECITY_LAST_MEASUREMENT_DATE').'"class="icon-time"></i> ' .date("d/m/Y H:i",strtotime($latest[0]['measurement_datetime'])) . '<br />';	
 		
 		
 		return $html;
-	}
+	}	
+	
 	
 	
 	public function formatMaxMeasures($items) {
@@ -82,9 +89,12 @@ abstract class SensethecityHelper
 		foreach($items as $item){
 			$html .='<tr>';
 			$html .= '<td>' . $item['name'] . '</td> ';
-			$html .= '<td>' . $item['station'] . '</td> ';
-			$html .= '<td>' . $item['maximum'] . ' '.$item['unit']. '</td> ';
-			$html .= '<td>' . date("m/d/Y h:i",strtotime($item['inserted'])) . '</td> ';
+			$html .= '<td><a href="javascript:void(0);" onclick="markerclick('.$item['id'].')">' . $item['station'] . '</a></td> ';
+			
+			$val = ($item['name'] == 'CO2' ? $item['maximum'] / 1.0e+156 : $item['maximum'] );
+			$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
+
+			$html .= '<td>' . date("d/m/Y H:i",strtotime($item['inserted'])) . '</td> ';
 			$html .='</tr>';
 		}
 		

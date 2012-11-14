@@ -76,7 +76,7 @@ function basic_bars_thermiSensors(element, input, mainTitle) {
 //alert(data);
 	Flotr.draw(container, [data], {
 			bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5},
-			mouse: {track: true, relative: true},
+			mouse: {track: false, relative: true},
 			yaxis: {min: 0, autoscaleMargin: 1},
 			title: mainTitle
 	});
