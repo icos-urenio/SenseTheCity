@@ -1,0 +1,188 @@
+
+.flotr-datagrid-container {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #999999 #999999 -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+}
+.flotr-datagrid {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.flotr-datagrid td, .flotr-datagrid th {
+    border: 1px solid #CCCCCC;
+    min-width: 2em;
+    padding: 1px 3px;
+}
+.flotr-datagrid tr:hover, .flotr-datagrid col.hover {
+    background: none repeat scroll 0 0 #F3F3F3;
+}
+.flotr-datagrid tr:hover th, .flotr-datagrid th.hover {
+    background: none repeat scroll 0 0 #999999;
+    color: #FFFFFF;
+}
+.flotr-datagrid th {
+    background: none repeat scroll 0 0 #E3E3E3;
+    border: 2px outset #FFFFFF;
+    text-align: left;
+}
+.flotr-datagrid-toolbar {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 1px;
+}
+.flotr-datagrid td:hover {
+    background: none repeat scroll 0 0 #CCCCCC;
+}
+.flotr-datagrid .first-row th {
+    text-align: center;
+}
+.flotr-canvas {
+    margin-bottom: -3px;
+    padding-bottom: 1px;
+}
+.flotr-tabs-group {
+    border-top: 1px solid #999999;
+}
+.flotr-tab {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #666666 #666666;
+    border-image: none;
+    border-radius: 0 0 4px 4px;
+    border-right: 1px solid #666666;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    cursor: pointer;
+    margin: 0 3px;
+    opacity: 0.5;
+    padding: 1px 4px;
+}
+.flotr-tab.selected {
+    background: none repeat scroll 0 0 #DDDDDD;
+    opacity: 1;
+}
+.flotr-tab:hover {
+    background: none repeat scroll 0 0 #CCCCCC;
+}
+.flotr-examples-large .flotr-example {
+    margin: 0 auto;
+    position: relative;
+    width: 1360px;
+}
+.flotr-examples-large .flotr-example-editor .editor .render {
+    margin-left: 0;
+    margin-right: 0;
+}
+.flotr-examples-large .flotr-example-editor .controls {
+    top: 0;
+}
+.flotr-examples-large .flotr-example-editor .source {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.flotr-examples-large.flotr-examples-collapsed .flotr-examples-reset, .flotr-examples-medium.flotr-examples-collapsed .flotr-examples-reset {
+    top: 16px;
+}
+.flotr-examples-large.flotr-examples-collapsed .flotr-examples-thumbs, .flotr-examples-medium.flotr-examples-collapsed .flotr-examples-thumbs {
+    background: none repeat scroll 0 0 #FFFFFF;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    width: 400px;
+}
+.flotr-examples-large.flotr-examples-collapsed .flotr-examples-thumb, .flotr-examples-medium.flotr-examples-collapsed .flotr-examples-thumb {
+    display: block;
+    margin: 10px auto;
+}
+.flotr-examples-large.flotr-examples-collapsed .flotr-examples-container, .flotr-examples-medium.flotr-examples-collapsed .flotr-examples-container {
+    margin-left: 400px;
+}
+.flotr-examples-small .flotr-example, .flotr-examples-medium .flotr-example {
+    width: 720px;
+}
+.flotr-examples-small .flotr-example-editor .source, .flotr-examples-medium .flotr-example-editor .source {
+    position: relative;
+}
+.flotr-datagrid-container {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #999999 #999999 -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+}
+.flotr-datagrid {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.flotr-datagrid td, .flotr-datagrid th {
+    border: 1px solid #CCCCCC;
+    min-width: 2em;
+    padding: 1px 3px;
+}
+.flotr-datagrid tr:hover, .flotr-datagrid col.hover {
+    background: none repeat scroll 0 0 #F3F3F3;
+}
+.flotr-datagrid tr:hover th, .flotr-datagrid th.hover {
+    background: none repeat scroll 0 0 #999999;
+    color: #FFFFFF;
+}
+.flotr-datagrid th {
+    background: none repeat scroll 0 0 #E3E3E3;
+    border: 2px outset #FFFFFF;
+    text-align: left;
+}
+.flotr-datagrid-toolbar {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border-bottom: 1px solid #CCCCCC;
+    padding: 1px;
+}
+.flotr-datagrid td:hover {
+    background: none repeat scroll 0 0 #CCCCCC;
+}
+.flotr-datagrid .first-row th {
+    text-align: center;
+}
+.flotr-canvas {
+    margin-bottom: -3px;
+    padding-bottom: 1px;
+}
+.flotr-tabs-group {
+    border-top: 1px solid #999999;
+}
+.flotr-tab {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #666666 #666666;
+    border-image: none;
+    border-radius: 0 0 4px 4px;
+    border-right: 1px solid #666666;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    cursor: pointer;
+    margin: 0 3px;
+    opacity: 0.5;
+    padding: 1px 4px;
+}
+.flotr-tab.selected {
+    background: none repeat scroll 0 0 #DDDDDD;
+    opacity: 1;
+}
+.flotr-tab:hover {
+    background: none repeat scroll 0 0 #CCCCCC;
+}

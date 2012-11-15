@@ -81,7 +81,17 @@ function getStationMeasuresGraph(stationId, token){
 			jImc('#graphTabs').html(data.html);
 			
 			for(a=0;a<data.phenom.length;a++){
-				basic_bars_thermiSensors("graphContainer"+data.phenom[a].id, data.graphdata[data.phenom[a].id], data.phenom[a].description, 'Ημερομηνία', data.phenom[a].unit, data.phenom[a].name);
+				basic_graph_thermiSensors("graphContainer"+data.phenom[a].id, 
+										  data.graphdata[data.phenom[a].id],
+										  data.phenom[a].description, 
+										  'Ημερομηνία', 
+										  data.phenom[a].unit, 
+										  data.phenom[a].name,
+										  30,
+										  65,
+										  'κάτω όριο',
+										  'άνω όριο'
+										  );
 			}
 			//basic_bars_thermiSensors("graphContainer3",data.graphdata[3]);
 
