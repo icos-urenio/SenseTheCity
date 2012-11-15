@@ -1,4 +1,5 @@
 /*sensethecity js*/
+
 /*
 function getStationData(){
 	var base = window.com_sensethecity.base;
@@ -68,7 +69,7 @@ function getMaxMeasures(token){
 
 function getStationMeasuresGraph(stationId, token){
 	var base = window.com_sensethecity.base;
-	jImc('#waitingIndicator').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+	jImc('#waitingIndicatorGraphTabs').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 
 	jImc.ajax({
 		type : 'GET',
@@ -76,9 +77,18 @@ function getStationMeasuresGraph(stationId, token){
 		datatype: 'json',
 		data: 'option=com_sensethecity&task=measures.getStationObservation&format=json&stationId=' + stationId + '&' + token + '=1',
 		success: function(data){
-			jImc('#waitingIndicator').html('');
-			basic_bars_thermiSensors("graphContainer",data);
+			jImc('#waitingIndicatorGraphTabs').html('');
+			jImc('#graphTabs').html(data.html);
+			//alert(data.graphdata);
 			
+			for(a=0;a<data.phenom.length;a++){
+				basic_bars_thermiSensors("graphContainer"+data.phenom[a],data.graphdata[data.phenom[a]]);
+			}
+			//basic_bars_thermiSensors("graphContainer3",data.graphdata[3]);
+
+			//trick to allow displaying graphs and also autoheight
+			jImc('a[href=#tab4]').tab('show');
+			jImc('a[href=#tab3]').tab('show');
 		}		
 	});
 }

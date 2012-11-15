@@ -20,8 +20,8 @@ abstract class SensethecityHelper
 	public function formatStationInfoData($data, $phen) {
 
 		$phenList = '(';
-		foreach ($phen as $name){
-			$phenList .= $name . ',';
+		foreach ($phen as $ph){
+			$phenList .= $ph['name'] . ',';
 		}
 		$phenList = substr($phenList, 0, -1);
 		$phenList .= ')';
@@ -67,6 +67,40 @@ abstract class SensethecityHelper
 		return $html;
 	}	
 	
+	public function formatGraphTabs($phenomenons) {
+		//print_r($phenomenons);
+		$html = '
+		<div class="tabbable tabs-below" style="margin: 2em 0;"> 
+			<div class="tab-content">';
+
+		foreach($phenomenons as $phenomenon){
+			$html .= '
+				<div class="tab-pane active" id="tab'.$phenomenon['id'].'">
+					<div id="graphContainer'.$phenomenon['id'].'" style="width:95%; height:220px; margin: 8px auto;"></div>
+				</div>';
+		}
+		
+		$html .= '
+			</div>
+			<ul class="nav nav-tabs">
+		';
+		
+		$i = 0;
+		foreach($phenomenons as $phenomenon){
+			$i++;	
+			if($i == 1){
+				$html .= '<li class="active"><a href="#tab'.$phenomenon['id'].'" data-toggle="tab">'.$phenomenon['name'].'</a></li>';
+			}
+			else{
+				$html .= '<li><a href="#tab'.$phenomenon['id'].'" data-toggle="tab">'.$phenomenon['name'].'</a></li>';
+			}
+		}
+		$html .= '
+				</ul>
+			</div>
+		';
+		return $html;
+	}
 	
 	
 	public function formatMaxMeasures($items) {

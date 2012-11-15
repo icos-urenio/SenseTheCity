@@ -6,6 +6,16 @@
 			type="hidden"
 		/>
 		<field
+			name="serial"
+			type="text"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_SERIAL_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_SERIAL_DESC"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>		
+		<field
 			name="title"
 			type="text"
 			label="COM_SENSETHECITY_SENSETHECITY_FIELD_TITLE_LABEL"

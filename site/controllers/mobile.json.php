@@ -45,8 +45,6 @@ class SensethecityControllerMobile extends JController
 		
 	}
 	
-
-	//TODO: set here functions to receive data from sensors and insert to DB 
 	/* BELOW FUNCTIONS NEED valid username and encrypted_password */
 	
 	public function insertMeasurements()

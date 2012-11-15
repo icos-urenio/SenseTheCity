@@ -55,12 +55,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 						
 							<div class="col_3">
 								<h2><?php echo JText::_('COM_SENSETHECITY_DATES')?></h2>
-							    <script>
-							    jImc(function() {
-							    	jImc( "#datepicker_from" ).datepicker();
-							    	jImc( "#datepicker_to" ).datepicker();
-							    });
-							    </script>								
+							
 								<label for="datepicker_from"><?php echo JText::_('COM_SENSETHECITY_FROM')?></label><input type="text" id="datepicker_from" />
 								<label for="datepicker_to"><?php echo JText::_('COM_SENSETHECITY_TO')?></label><input type="text" id="datepicker_to" />
 							</div>
@@ -93,29 +88,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		</div>
 		
 		<div style="clear: both"></div>
+	
 		
+		<div id="graphTabs"></div>
+		<div id="waitingIndicatorGraphTabs"></div>	
 		
-		
-		
-		<div class="tabbable tabs-below" style="margin: 2em 0;"> 
-			<div class="tab-content">
-				<div class="tab-pane active" id="tab1">
-					<div id="graphContainer" style="width:95%; height:220px; margin: 8px auto;"></div>
-				</div>
-					<div class="tab-pane" id="tab2">
-					<div id="graphContainer2" style="width:95%; height:220px; margin: 8px auto;">I am another graph</div>
-				</div>
-			</div>
-			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab1" data-toggle="tab">Γράφημα</a></li>
-				<li><a href="#tab2" data-toggle="tab">Γράφημα 2</a></li>
-			</ul>
-		
-		</div>		
-		
-		
-		
-		
+
 		
 		<div style="clear: both"></div>
 		<div id="imc-main-panel-fifty">

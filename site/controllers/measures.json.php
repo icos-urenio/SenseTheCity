@@ -15,7 +15,9 @@ jimport('joomla.application.component.helper');
 
 class SensethecityControllerMeasures extends JController
 {
-
+	/*
+	 * get info like title, geolocation and what measure types (CO2, etc) the station supports
+	 */
 	public function getStationInfo()
 	{
 		JRequest::checkToken('get') or jexit('Invalid Token');
@@ -35,6 +37,9 @@ class SensethecityControllerMeasures extends JController
 		return;
 	}
 	
+	/*
+	 * get the latest measures of the specified station
+	 */
 	public function getLatestStationMeasures()
 	{
 		JRequest::checkToken('get') or jexit('Invalid Token');
@@ -53,6 +58,9 @@ class SensethecityControllerMeasures extends JController
 	}	
 	
 
+	/*
+	 * get Max Measures for every measurement type from every station
+	 */
 	public function getMaxMeasures()
 	{
 		JRequest::checkToken('get') or jexit('Invalid Token');
@@ -66,6 +74,7 @@ class SensethecityControllerMeasures extends JController
 		return;
 	}	
 	
+	/*
 	public function getStationOffering()
 	{
 		JRequest::checkToken('get') or jexit('Invalid Token');
@@ -75,20 +84,37 @@ class SensethecityControllerMeasures extends JController
 		$items	= $model->getOffering();
 		echo json_encode($items);
 		return;		
-	}
+	}*/
 	
 	public function getStationObservation()
 	{
 		JRequest::checkToken('get') or jexit('Invalid Token');
 		
+		
 		//get request
 		$stationId = JRequest::getInt('stationId');		
-		
-		//get model and items
+
 		$model = $this->getModel('measurements');
+
+		//get station offering (and pass it over to create the tabs dynamically)
+		$phenomenons = $model->getStationPhenomenon($stationId);		
+		
+		//get data items for every phenomenon
 		$items = array();
-		$items	= $model->getObservation($stationId);
-		echo json_encode($items);
+		$phenom = array();
+		$i=0;
+		foreach($phenomenons as $phen){
+			$items[$phen['id']] = $model->getObservation($stationId, $phen['id']);
+			$phenom[$i] = $phen['id'];
+			$i++;
+		}
+		
+		
+		$ret['html'] = SensethecityHelper::formatGraphTabs($phenomenons);
+		$ret['graphdata'] = $items;
+		$ret['phenom'] = $phenom;
+
+		echo json_encode($ret);
 		return;
 	}
 	

@@ -253,13 +253,19 @@ class SensethecityViewStations extends JView
 		
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/sensethecity.css');	
+		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/jquery-ui.css');
 
 		//add scripts
 		if($this->loadjquery == 1){
 			$document->addScript(JURI::root(true).'/components/com_sensethecity/js/jquery-1.7.1.min.js');
+			$document->addScript(JURI::root(true).'/components/com_sensethecity/js/jquery-ui-1.9.1.custom.min.js');
+			
 			//jquery noConflict
 			$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
 		}
+				
+		$document->addScriptDeclaration( 'jImc(function() {jImc( "#datepicker_from" ).datepicker();jImc( "#datepicker_to" ).datepicker();	});' );		
+		
 		if($this->loadbootstrap == 1)
 			$document->addScript(JURI::root(true).'/components/com_sensethecity/bootstrap/js/bootstrap.min.js');
 
@@ -527,15 +533,12 @@ class SensethecityViewStations extends JView
 			}			
 			//marker.id
 			function showInfo(id){
-				
 				getStationInfo(id, '".JUtility::getToken()."');
 				getLatestStationMeasures(id, '".JUtility::getToken()."');
 				getStationMeasuresGraph(id, '".JUtility::getToken()."');
 				getMaxMeasures('".JUtility::getToken()."');
 			}
-			
-			
-			
+
 			// Onload handler to fire off the app.
 			google.maps.event.addDomListener(window, 'load', initialize);
 		";

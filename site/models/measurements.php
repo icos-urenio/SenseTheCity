@@ -36,7 +36,7 @@ class SensethecityModelMeasurements extends JModel
 		
 		foreach ($input as $station){
 			if(!empty($station['measurements']) && !empty($station['datetime']) ){
-				$sql .= 'INSERT INTO `#__sensethecity_observation` (`station_id`, `measurement_datetime`, `phenomenon_id`, `numeric_value`, `corrected_value`) VALUES '. "\r";
+				$sql .= 'INSERT INTO `#__sensethecity_observation` (`station_id`, `measurement_datetime`, `phenomenon_id`, `numeric_value`, `corrected_value`, `battery`, `temperature`, `serial`) VALUES '. "\r";
 				foreach($station['measurements'] as $data){
 					if(  isset($data['raw'])  && isset($data['value']) ) {
 						$receivedCorrectly = true;
@@ -46,7 +46,7 @@ class SensethecityModelMeasurements extends JModel
 						$dt = str_split($dtString, 2);
 						$dt = "20{$dt[0]}-{$dt[1]}-{$dt[2]} {$dt[3]}:{$dt[4]}:00";
 												
-						$sql .= "('" . $station['id'] . "','" . $dt . "','" . $data['sensor'] . "','" . $data['raw'] . "','" . $data['value'] . "')," . "\r";
+						$sql .= "('{$station['id']}','{$dt}','{$data['sensor']}','{$data['raw']}','{$data['value']}','{$station['battery']}','{$station['temperature']}','{$station['serial']}')," . "\r";
 					}
 					else{
 						$errors++;
@@ -124,13 +124,14 @@ class SensethecityModelMeasurements extends JModel
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 	
-		$query->select('b.name');
+		$query->select('b.id AS id, b.name AS name');
 		$query->from('#__sensethecity_sta_phen AS a');
 		$query->where('a.station_id='.$stationId);
 		$query->join('LEFT', '`#__sensethecity_phenomenon` AS b on b.id = a.phenomenon_id');
 	
 		$db->setQuery($query);
-		$result = $db->loadResultArray();
+		$result = $db->loadAssocList();
+
 		return $result;
 	}
 	
@@ -176,7 +177,7 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}	
 	
-	function getObservation($stationId)
+	function getObservation($stationId, $phenomenonId = 1)
 	{
 		// Create a new query object.
 		$db		= $this->getDbo();
@@ -185,6 +186,7 @@ class SensethecityModelMeasurements extends JModel
 		$query->select('a.measurement_datetime, a.corrected_value');
 		$query->from('`#__sensethecity_observation` AS a');
 		$query->where('a.station_id='.$stationId);
+		$query->where('a.phenomenon_id='.$phenomenonId);
 		
 		$db->setQuery($query);
 		$result = $db->loadRowList();

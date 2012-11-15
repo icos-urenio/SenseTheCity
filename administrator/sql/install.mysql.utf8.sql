@@ -1,6 +1,7 @@
 
 CREATE TABLE IF NOT EXISTS `#__sensethecity` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `serial` varchar(100) NOT NULL,
   `title` varchar(100) NOT NULL,
   `catid` int(11) NOT NULL DEFAULT '0',
   `latitude` varchar(20) NOT NULL,
@@ -56,8 +57,11 @@ CREATE TABLE IF NOT EXISTS `#__sensethecity_observation` (
   `phenomenon_id` int(11) NOT NULL,
   `time_stamp` TIMESTAMP NOT NULL,
   `time_stamp_inserted` TIMESTAMP NOT NULL,
-  `numeric_value` FLOAT,
-  `corrected_value` FLOAT,
+  `numeric_value` DOUBLE,
+  `corrected_value` DOUBLE,
+  `battery` int(11),
+  `temperature` DOUBLE,
+  `serial` varchar(100),
   PRIMARY KEY(`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT COLLATE=utf8_general_ci;
 
