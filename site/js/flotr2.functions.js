@@ -59,7 +59,7 @@ function basic_time_thermiSensors (element, input, mainTitle) {
 
 
 
-function basic_bars_thermiSensors(element, input, mainTitle) {
+function basic_bars_thermiSensors(element, input, mainTitle, xtitle, ytitle) {
 
 	var container = document.getElementById(element);
 	
@@ -67,17 +67,31 @@ function basic_bars_thermiSensors(element, input, mainTitle) {
 	var point, i;
 
 	// Generate first data set
+	
 	for (i = 0; i < input.length; i++) {
 		x = (new Date(input[i][0])).getTime();
 		y = input[i][1];
 		y = Math.round(y*100)/100;
 		data.push([i, y]);
 	}
-//alert(data);
+	
+	
 	Flotr.draw(container, [data], {
 			bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5},
 			mouse: {track: false, relative: true},
-			yaxis: {min: 0, autoscaleMargin: 1},
+			yaxis: {
+				min: 0, 
+				autoscaleMargin: 1,
+				title: ytitle
+			},
+            xaxis: {
+                minorTickFreq: 4,
+                title : xtitle,
+                tickDecimals: 0,
+                noTicks: 10,
+                mode : 'time',
+                timeformat : '%y/%m/%d'
+            }, 
 			title: mainTitle
 	});
 	

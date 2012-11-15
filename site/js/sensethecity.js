@@ -79,14 +79,13 @@ function getStationMeasuresGraph(stationId, token){
 		success: function(data){
 			jImc('#waitingIndicatorGraphTabs').html('');
 			jImc('#graphTabs').html(data.html);
-			//alert(data.graphdata);
 			
 			for(a=0;a<data.phenom.length;a++){
-				basic_bars_thermiSensors("graphContainer"+data.phenom[a],data.graphdata[data.phenom[a]]);
+				basic_bars_thermiSensors("graphContainer"+data.phenom[a].id, data.graphdata[data.phenom[a].id], data.phenom[a].description, 'Ημερομηνία', data.phenom[a].unit);
 			}
 			//basic_bars_thermiSensors("graphContainer3",data.graphdata[3]);
 
-			//trick to allow displaying graphs and also autoheight
+			//trick to allow displaying graphs and also autoheight current tab afterwards
 			jImc('a[href=#tab4]').tab('show');
 			jImc('a[href=#tab3]').tab('show');
 		}		

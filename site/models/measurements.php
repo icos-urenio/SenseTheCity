@@ -125,7 +125,7 @@ class SensethecityModelMeasurements extends JModel
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 	
-		$query->select('b.id AS id, b.name AS name');
+		$query->select('b.id AS id, b.name AS name, b.unit AS unit, b.description AS description');
 		$query->from('#__sensethecity_sta_phen AS a');
 		$query->where('a.station_id='.$stationId);
 		$query->join('LEFT', '`#__sensethecity_phenomenon` AS b on b.id = a.phenomenon_id');

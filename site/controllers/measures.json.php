@@ -101,14 +101,16 @@ class SensethecityControllerMeasures extends JController
 		
 		//get data items for every phenomenon
 		$items = array();
+		
 		$phenom = array();
+
 		$i=0;
 		foreach($phenomenons as $phen){
 			$items[$phen['id']] = $model->getObservation($stationId, $phen['id']);
-			$phenom[$i] = $phen['id'];
+			$phenom[$i] = array('id' => $phen['id'], 'name' => $phen['name'], 'unit' => $phen['unit'], 'description' => $phen['description']);
+			//$phenom[$i] = $phen['id'];
 			$i++;
 		}
-		
 		
 		$ret['html'] = SensethecityHelper::formatGraphTabs($phenomenons);
 		$ret['graphdata'] = $items;
