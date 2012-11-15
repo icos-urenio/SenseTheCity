@@ -59,7 +59,7 @@ function basic_time_thermiSensors (element, input, mainTitle) {
 
 
 
-function basic_bars_thermiSensors(element, input, mainTitle, xtitle, ytitle) {
+function basic_bars_thermiSensors(element, input, mainTitle, xtitle, ytitle, label) {
 
 	var container = document.getElementById(element);
 	
@@ -69,30 +69,58 @@ function basic_bars_thermiSensors(element, input, mainTitle, xtitle, ytitle) {
 	// Generate first data set
 	
 	for (i = 0; i < input.length; i++) {
-		x = (new Date(input[i][0])).getTime();
+		//x = (new Date(input[i][0])).getTime();
+		//x = +new Date(input[i][0]);
+		x = input[i][0];
+
 		y = input[i][1];
 		y = Math.round(y*100)/100;
-		data.push([i, y]);
+		data.push([x, y]);
 	}
 	
 	
-	Flotr.draw(container, [data], {
-			bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5},
+	
+	Flotr.draw(container, [{data:data,label: label}], {
+			//bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5},
+			lines: {fill: true, show: true},
+	        points: {show: false},
 			mouse: {track: false, relative: true},
+			title: mainTitle,
+			
 			yaxis: {
 				min: 0, 
+				autoscale: true,
 				autoscaleMargin: 1,
 				title: ytitle
 			},
             xaxis: {
-                minorTickFreq: 4,
-                title : xtitle,
-                tickDecimals: 0,
-                noTicks: 10,
-                mode : 'time',
-                timeformat : '%y/%m/%d'
-            }, 
-			title: mainTitle
+            	autoscale: true,
+				autoscaleMargin: 1,
+                tickFormatter: function(o) {
+                    /* comment this block if Date is not used*/
+                    var
+                    d = new Date(parseInt(o, 10)),
+                        year = d.getFullYear(),
+                        month = d.getMonth(),
+                        day = d.getDate(),
+                        tick = '';
+
+                    if (day < 10) {
+                        tick += '0';
+                    }
+                    tick += day + '/';
+
+                    if (month < 10) {
+                        tick += '0';
+                    }
+                    tick += month + '/';
+                    tick += year.toString().substring(2,4);
+                    return tick;
+                },                
+                title : xtitle
+                	
+            } 
+            
 	});
 	
 }

@@ -192,6 +192,14 @@ class SensethecityModelMeasurements extends JModel
 		$db->setQuery($query);
 		$result = $db->loadRowList();
 	
+		//convert datetime so as to display graphically (ticks)
+		$i = 0;
+		foreach($result as $res){
+			$result[$i][0] = (int)(strtotime($res[0])*1000);
+			$i++;
+		}
+		
+		
 		return $result;
 	}	
 }
