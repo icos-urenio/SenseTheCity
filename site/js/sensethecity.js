@@ -1,4 +1,10 @@
-/*sensethecity js*/
+/**
+ * @version     1.0.0
+ * @package     com_sensethecity
+ * @copyright   Copyright (C) 2011 - 2012 URENIO Research Unit. All rights reserved.
+ * @license     GNU Affero General Public License version 3 or later; see LICENSE.txt
+ * @author      Ioannis Tsampoulatidis for the Information Technologies Institute (CERTH/ITI)
+ */
 
 /*
 function getStationData(){
@@ -87,8 +93,8 @@ function getStationMeasuresGraph(stationId, token){
 										  'Ημερομηνία', 
 										  data.phenom[a].unit, 
 										  data.phenom[a].name,
-										  30,
-										  65,
+										  data.phenom[a].lower,
+										  data.phenom[a].upper,
 										  'κάτω όριο',
 										  'άνω όριο'
 										  );

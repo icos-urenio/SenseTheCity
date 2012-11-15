@@ -107,8 +107,13 @@ class SensethecityControllerMeasures extends JController
 		$i=0;
 		foreach($phenomenons as $phen){
 			$items[$phen['id']] = $model->getObservation($stationId, $phen['id']);
-			$phenom[$i] = array('id' => $phen['id'], 'name' => $phen['name'], 'unit' => $phen['unit'], 'description' => $phen['description']);
-			//$phenom[$i] = $phen['id'];
+			$phenom[$i] = array('id' => $phen['id'], 
+								'name' => $phen['name'], 
+								'unit' => $phen['unit'], 
+								'description' => $phen['description'], 
+								'upper' => $phen['upper'], 
+								'lower' => $phen['lower']);
+			
 			$i++;
 		}
 		
