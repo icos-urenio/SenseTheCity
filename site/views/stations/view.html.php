@@ -254,6 +254,7 @@ class SensethecityViewStations extends JView
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/sensethecity.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/jquery-ui.css');
+		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/flotr2.css');
 
 		//add scripts
 		if($this->loadjquery == 1){

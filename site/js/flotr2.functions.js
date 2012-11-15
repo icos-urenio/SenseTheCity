@@ -63,11 +63,12 @@ function basic_bars_thermiSensors(element, input, mainTitle, xtitle, ytitle, lab
 
 	var container = document.getElementById(element);
 	
+	var upperdata = [];
+	var lowerdata = [];
 	var data = [];
 	var point, i;
 
 	// Generate first data set
-	
 	for (i = 0; i < input.length; i++) {
 		//x = (new Date(input[i][0])).getTime();
 		//x = +new Date(input[i][0]);
@@ -76,53 +77,79 @@ function basic_bars_thermiSensors(element, input, mainTitle, xtitle, ytitle, lab
 		y = input[i][1];
 		y = Math.round(y*100)/100;
 		data.push([x, y]);
+		
+		upper_y = 65;
+		lower_y = 35;
+		upperdata.push([x,upper_y]);
+		lowerdata.push([x,lower_y]);
 	}
-	
-	
-	
-	Flotr.draw(container, [{data:data,label: label}], {
-			//bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5},
-			lines: {fill: true, show: true},
-	        points: {show: false},
-			mouse: {track: false, relative: true},
-			title: mainTitle,
-			
-			yaxis: {
-				min: 0, 
-				autoscale: true,
-				autoscaleMargin: 1,
-				title: ytitle
-			},
-            xaxis: {
-            	autoscale: true,
-				autoscaleMargin: 1,
-                tickFormatter: function(o) {
-                    /* comment this block if Date is not used*/
-                    var
-                    d = new Date(parseInt(o, 10)),
-                        year = d.getFullYear(),
-                        month = d.getMonth(),
-                        day = d.getDate(),
-                        tick = '';
 
-                    if (day < 10) {
-                        tick += '0';
-                    }
-                    tick += day + '/';
+	
+	
+	Flotr.draw(container, [
+	    {
+			data:data,
+			label: label, 
+			lines: {fill: true, show: true}
+		},
+		{
+			data:upperdata, 
+			label: "άνω όριο",
+			lines: {fill: false, show: true}
+		},
+		{
+			data:lowerdata, 
+			label: "κάτω όριο",
+			lines: {fill: false, show: true}
+		}
+		
+		],
 
-                    if (month < 10) {
-                        tick += '0';
-                    }
-                    tick += month + '/';
-                    tick += year.toString().substring(2,4);
-                    return tick;
-                },                
-                title : xtitle
-                	
-            } 
-            
+		
+		{
+		//bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5},
+		title: label,
+		subtitle: mainTitle,
+		yaxis: {
+			min: 0, 
+			autoscale: true,
+			autoscaleMargin: 1,
+			title: ytitle
+		},
+        xaxis: {
+        	autoscale: true,
+			autoscaleMargin: 1,
+			labelsAngle: 45,
+            tickFormatter: function(o) {
+                /* comment this block if Date is not used*/
+                var
+                d = new Date(parseInt(o, 10)),
+                    year = d.getFullYear(),
+                    month = d.getMonth(),
+                    day = d.getDate(),
+                    tick = '';
+
+                if (day < 10) {
+                    tick += '0';
+                }
+                tick += day + '/';
+
+                if (month < 10) {
+                    tick += '0';
+                }
+                tick += month + '/';
+                tick += year.toString().substring(2,4);
+                return tick;
+            },
+            title : xtitle
+        },
+        spreadsheet: {
+            show: true,
+            tickFormatter: function(e) {
+                return e + "";
+            }
+        }        
 	});
-	
 }
 
 
