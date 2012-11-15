@@ -111,7 +111,8 @@ class SensethecityModelMeasurements extends JModel
 			WHERE a.measurement_datetime = ( 
 			SELECT MAX( b.measurement_datetime ) AS latest
 			FROM `#__sensethecity_observation` AS b
-			WHERE b.station_id = '.$stationId.' ) AND a.station_id = ' . $stationId; 
+			WHERE b.station_id = '.$stationId.' ) AND a.station_id = ' . $stationId . ' '.
+			'ORDER BY c.id'; 
 		
 		$db->setQuery($query);
 		$result = $db->loadAssocList();
