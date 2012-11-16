@@ -138,7 +138,6 @@ class SensethecityModelMeasurements extends JModel
 	
 	function getMaxMeasures()
 	{
-		
 		/*
 		 SELECT c.title, b.name, MAX(a.corrected_value) AS maximum, b.unit, DATE_FORMAT(a.time_stamp_inserted,"%W, %M %e, %Y @ %h:%i %p") AS inserted
 		FROM batb5_sensethecity_observation AS a

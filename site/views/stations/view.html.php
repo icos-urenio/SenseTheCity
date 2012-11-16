@@ -278,7 +278,8 @@ class SensethecityViewStations extends JView
 	
 		//add google maps
 		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
-		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/infobox_packed.js');		
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/infobox_packed.js');
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/geolocationmarker-compiled.js');
 
 		$document->addScriptDeclaration('var jsonMarkers = '.json_encode($this->getMarkersArrayFromItems()).';');
 		
@@ -292,6 +293,7 @@ class SensethecityViewStations extends JView
 		$googleMapInit = "
 			var geocoder = new google.maps.Geocoder();
 			var map = null;
+			var GeoMarker;
 			var gmarkers = [];
 			
 			function zoomIn() {
@@ -328,6 +330,14 @@ class SensethecityViewStations extends JView
 				},
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
+				
+				
+			    draw_circle = new google.maps.Circle({
+			        strokeWeight: 2,
+			        fillOpacity: 0.1,
+			    });				
+				
+				GeoMarker = new GeolocationMarker(map, null, draw_circle);
 
 				infoWindow = new google.maps.InfoWindow;
 				
@@ -615,6 +625,8 @@ class SensethecityViewStations extends JView
 		//add the javascript to the head of the html document
 		$document->addScriptDeclaration($googleMapInit);
 		$document->addScriptDeclaration($megamenu_js);
+		
+		
 		
 		//also pass base so as to display comment image indicator
 		$js = "var com_sensethecity = {};\n";

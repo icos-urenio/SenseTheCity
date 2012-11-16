@@ -78,6 +78,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<div id="loading"><img src="<?php echo JURI::base().'components/com_sensethecity/images/ajax-loader.gif';?>" /></div>
 	
 	<div id="imc-content">
+		<a href="javascript:void(0);" onclick="alert(GeoMarker.getAccuracy());">test: get accuracy in meters</a>
 		<div id="stationInfo"></div>
 		
 		<div id="wrapper-map">
@@ -88,13 +89,10 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		</div>
 		
 		<div style="clear: both"></div>
-	
 		
 		<div id="graphTabs"></div>
 		<div id="waitingIndicatorGraphTabs"></div>	
-		
 
-		
 		<div style="clear: both"></div>
 		<div id="imc-main-panel-fifty">
 			<?php if(empty($this->items)) : ?>
