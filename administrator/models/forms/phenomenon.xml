@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form addrulepath="/administrator/components/com_sensethecity/models/rules">
-	<fieldset name="details">
+	<fieldset name="details" addfieldpath="/administrator/components/com_sensethecity/models/fields">
 		<field
 			name="id"
 			type="hidden"
 		/>
+		<!-- 
+		<field 
+			name="measurementtest" type="Measurement" label="Measurement"
+        	description="Select measurement type"
+        	required="false" 
+        />	
+         -->	
 		<field
 			name="name"
 			type="text"

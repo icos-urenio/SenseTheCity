@@ -45,7 +45,7 @@ class SensethecityViewReports extends JView
 	protected function addToolbar()
 	{
 		require_once JPATH_COMPONENT.DS.'helpers'.DS.'sensethecity.php';
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_REPORT'), 'items.png');
+		JToolBarHelper::title(JText::_('COM_SENSETHECITY_REPORT'), 'items.png');
 		JToolBarHelper::back('JTOOLBAR_BACK', 'index.php?option=com_sensethecity');
 	}
 
