@@ -69,6 +69,15 @@
 			default=""
 		/>			
 		<field
+			name="email"
+			type="text"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_EMAIL_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_EMAIL_DESC"
+			size="85"
+			required="false"
+			default=""
+		/>		
+		<field
 			name="description"
 			type="textarea"
 			label="COM_SENSETHECITY_SENSETHECITY_FIELD_DESCRIPTION_LABEL"

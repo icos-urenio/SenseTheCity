@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS `#__sensethecity` (
   `longitude` varchar(20) NOT NULL,
   `description` text,
   `address` text,
+  `email` text,
   `ordering` int(11) NOT NULL DEFAULT '0',
   `params` text NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '1',
