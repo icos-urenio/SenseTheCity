@@ -210,6 +210,10 @@ CREATE TABLE IF NOT EXISTS `#__sensethecity_sta_phen` (
   `phenomenon_id` int(11) NOT NULL,  
   `min_phen_value` FLOAT,
   `max_phen_value` FLOAT,
+  `x1` DOUBLE NOT NULL DEFAULT '0',
+  `y1` DOUBLE NOT NULL DEFAULT '0',
+  `x2` DOUBLE NOT NULL DEFAULT '0',
+  `y2` DOUBLE NOT NULL DEFAULT '0', 
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT COLLATE=utf8_general_ci;
 
