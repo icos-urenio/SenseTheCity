@@ -96,6 +96,31 @@ class SensethecityModelStation extends JModelAdmin
 		return $item;
 	}
 
+	
+	/**
+	 * Method to get latest battery and temperature measures
+	 */
+	public function getStationStatus($pk = null)
+	{
+		$pk = (!empty($pk)) ? $pk : (int) $id = $this->getState('station.id');
+		// Create a new query object.
+		$db		= $this->getDbo();
+		
+		$query = '
+		SELECT a.*, c.name, c.unit
+		FROM `#__sensethecity_observation` AS a
+		LEFT JOIN `#__sensethecity_phenomenon` AS c on c.id = a.phenomenon_id
+		WHERE a.measurement_datetime = (
+		SELECT MAX( b.measurement_datetime ) AS latest
+		FROM `#__sensethecity_observation` AS b
+		WHERE b.station_id = '.$pk.' ) AND a.station_id = ' . $pk . ' '.
+		'ORDER BY c.id';
+		
+		$db->setQuery($query);
+		$result = $db->loadAssocList();
+		return $result;		
+	
+	}
 
 	/**
 	 * Prepare and sanitise the table prior to saving.

@@ -59,35 +59,81 @@ $params = $this->form->getFieldsets('params');
 
 	<div class="width-40 fltrt">
 		<?php echo JHtml::_('sliders.start', 'sensethecity-slider2'); ?>
-		<?php echo JHtml::_('sliders.panel', JText::_('COM_SENSETHECITY_SENSETHECITY_MAP'), 'map');?>
+		
+			<?php echo JHtml::_('sliders.panel', JText::_('COM_SENSETHECITY_SENSETHECITY_MAP'), 'map');?>
 			<div style="width: 100%;height: 400px;" id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_MAP');?></div>				
 			<div id="infoPanel" style="margin: 15px;">
-			<b><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_GEOLOCATION');?></b>
-			<div id="info"></div>
-			<b><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_CLOSEST_ADDRESS');?></b>
-			<div id="near_address"></div>
-			<div id="geolocation">
-				<input id="address" type="textbox" size="75" value="">
-				<input style="background-color: #ccc;cursor:pointer;" type="button" value="<?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_LOCATE');?>" onclick="codeAddress()">
+				<b><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_GEOLOCATION');?></b>
+				<div id="info"></div>
+				<b><?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_CLOSEST_ADDRESS');?></b>
+				<div id="near_address"></div>
+				<div id="geolocation">
+					<input id="address" type="textbox" size="75" value="">
+					<input style="background-color: #ccc;cursor:pointer;" type="button" value="<?php echo JText::_('COM_SENSETHECITY_SENSETHECITY_LOCATE');?>" onclick="codeAddress()">
+				</div>	
 			</div>	
-			</div>	
-				
-		<?php foreach ($params as $name => $fieldset): ?>
-				<?php echo JHtml::_('sliders.panel', JText::_($fieldset->label), $name.'-params');?>
-			<?php if (isset($fieldset->description) && trim($fieldset->description)): ?>
-				<p class="tip"><?php echo $this->escape(JText::_($fieldset->description));?></p>
-			<?php endif;?>
-				<fieldset class="panelform" >
-					<ul class="adminformlist">
-			<?php foreach ($this->form->getFieldset($name) as $field) : ?>
-						<li><?php echo $field->label; ?><?php echo $field->input; ?></li>
-			<?php endforeach; ?>
-					</ul>
-				</fieldset>
-		<?php endforeach; ?>
+					
 
-	
-		<?php echo JHtml::_('sliders.end'); ?>
+			<?php /*	
+			<?php foreach ($params as $name => $fieldset): ?>
+					<?php echo JHtml::_('sliders.panel', JText::_($fieldset->label), $name.'-params');?>
+				<?php if (isset($fieldset->description) && trim($fieldset->description)): ?>
+					<p class="tip"><?php echo $this->escape(JText::_($fieldset->description));?></p>
+				<?php endif;?>
+					<fieldset class="panelform" >
+						<ul class="adminformlist">
+				<?php foreach ($this->form->getFieldset($name) as $field) : ?>
+							<li><?php echo $field->label; ?><?php echo $field->input; ?></li>
+				<?php endforeach; ?>
+						</ul>
+					</fieldset>
+			<?php endforeach; ?>				
+			*/ ?>
+		
+			<?php echo JHtml::_('sliders.panel', JText::_('COM_SENSETHECITY_STATION_STATUS'), 'station-status'); ?>
+			<fieldset class="panelform">
+				<p><strong><?php echo JText::_('COM_SENSETHECITY_STATION_LATEST_MEASUREMENTS');?>: </strong><?php echo $this->stationStatus[0]['measurement_datetime'];?></p>
+				<p><strong><?php echo JText::_('COM_SENSETHECITY_STATION_STATUS_BATTERY');?>: </strong><?php echo $this->stationStatus[0]['battery'];?></p>
+				<p><strong><?php echo JText::_('COM_SENSETHECITY_STATION_STATUS_TEMPERATURE');?>: </strong><?php echo $this->stationStatus[0]['temperature'];?></p>
+				
+				
+			</fieldset>
+
+			<?php echo JHtml::_('sliders.panel', JText::_('COM_SENSETHECITY_STATION_LATEST_MEASUREMENTS'), 'station-latest-measurements'); ?>
+			<fieldset class="panelform">
+				<p><strong><?php echo JText::_('COM_SENSETHECITY_STATION_LATEST_MEASUREMENTS');?>: </strong><?php echo $this->stationStatus[0]['measurement_datetime'];?></p>
+				<?php  
+				$html = '
+				<table class="table table-striped">
+				<thead>
+				<tr>
+				<th>'.JText::_('COM_SENSETHECITY_MEASURE').'</th>
+				<th>'.JText::_('COM_SENSETHECITY_VALUE').'</th>
+				</tr>
+				</thead>
+				<tbody>
+				';
+				
+				foreach($this->stationStatus as $item){
+					$html .='<tr>';
+					$html .= '<td>' . $item['name'] . '</td> ';
+					$val = ($item['name'] == 'CO2' ? $item['corrected_value'] / 1.0e+156 : $item['corrected_value'] );
+					$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
+					$html .='</tr>';
+				}
+				
+				$html .= '</tbody></table>';
+
+				echo $html;				
+				?>
+			</fieldset>
+			
+			
+			
+			
+		<?php echo JHtml::_('sliders.end'); ?>		
+		
+		
 	</div>
 	<div class="clr"></div>	
 

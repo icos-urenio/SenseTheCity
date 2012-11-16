@@ -20,6 +20,7 @@ class SensethecityViewStation extends JView
 	protected $state;
 	protected $item;
 	protected $form;
+	protected $stationStatus;
 
 	protected $language = '';
 	protected $region = '';
@@ -35,7 +36,8 @@ class SensethecityViewStation extends JView
 		$this->state	= $this->get('State');
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
-
+		$this->stationStatus = $this->get('StationStatus');
+		
 		$lang = $this->state->params->get('maplanguage');
 		$region = $this->state->params->get('mapregion');
 		$lat = $this->state->params->get('latitude');
