@@ -92,14 +92,6 @@
 			cols="200"
 		/>		
 		<field
-			name="language"
-			type="contentlanguage"
-			label="JFIELD_LANGUAGE_LABEL"
-			description="COM_CATEGORIES_FIELD_LANGUAGE_DESC"
-			class="inputbox">
-			<option value="*">JALL</option>
-		</field>			
-		<field
 			name="userid"
 			type="hidden"
 		/>			

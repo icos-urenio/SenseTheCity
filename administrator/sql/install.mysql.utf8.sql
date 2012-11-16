@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `#__sensethecity_phenomenon` (
   `name` varchar(255),
   `description` varchar(255),
   `unit` varchar(30) NOT NULL,
+  `state` tinyint(3) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT COLLATE=utf8_general_ci;
 
