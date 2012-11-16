@@ -32,6 +32,11 @@ class SensethecityHelper
 			$vName == 'categories'
 		);
 		JSubMenuHelper::addEntry(
+				JText::_('COM_SENSETHECITY_SUBMENU_PHENOMENONS'),
+				'index.php?option=com_sensethecity&view=phenomenons',
+				$vName == 'phenomenons'
+		);		
+		JSubMenuHelper::addEntry(
 				JText::_('COM_SENSETHECITY_SUBMENU_REPORTS'),
 				'index.php?option=com_sensethecity&view=reports',
 				$vName == 'reports'
