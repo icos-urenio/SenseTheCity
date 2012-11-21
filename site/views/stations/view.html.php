@@ -338,6 +338,7 @@ class SensethecityViewStations extends JView
 			    });				
 				
 				GeoMarker = new GeolocationMarker(map, null, draw_circle);
+				GeoMarker.setMinimumAccuracy(250);
 
 				infoWindow = new google.maps.InfoWindow;
 				

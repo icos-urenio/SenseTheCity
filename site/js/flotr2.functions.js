@@ -35,8 +35,8 @@ function basic_graph_thermiSensors(element, input, mainTitle, xtitle, ytitle, la
 	    {
 			data:data,
 			label: label, 
-			lines: {fill: true, show: true}
-	    	//bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5}
+			//lines: {fill: true, show: true}
+	    	bars: {show: true, horizontal: false, shadowSize: 0, barWidth: 0.5}
 		},
 		{
 			data:upperdata, 

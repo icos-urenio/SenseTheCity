@@ -194,7 +194,7 @@ class SensethecityModelMeasurements extends JModel
 		//convert datetime so as to display graphically (ticks)
 		$i = 0;
 		foreach($result as $res){
-			$result[$i][0] = (int)(strtotime($res[0])*1000);
+			$result[$i][0] = (int)(strtotime( $res[0] )*1000 );
 			$i++;
 		}
 		

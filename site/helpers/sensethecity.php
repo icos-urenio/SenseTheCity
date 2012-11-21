@@ -55,7 +55,10 @@ abstract class SensethecityHelper
 		foreach($latest as $item){
 			$html .='<tr>';
 			$html .= '<td>' . $item['name'] . '</td> ';
-			$val = ($item['name'] == 'CO2' ? $item['corrected_value'] / 1.0e+156 : $item['corrected_value'] );
+			
+			//$val = ($item['name'] == 'CO2' ? $item['corrected_value'] / 1.0e+156 : $item['corrected_value'] );
+			$val = $item['corrected_value'];
+			
 			$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 			$html .='</tr>';
 		}
@@ -125,7 +128,9 @@ abstract class SensethecityHelper
 			$html .= '<td>' . $item['name'] . '</td> ';
 			$html .= '<td><a href="javascript:void(0);" onclick="markerclick('.$item['id'].')">' . $item['station'] . '</a></td> ';
 			
-			$val = ($item['name'] == 'CO2' ? $item['maximum'] / 1.0e+156 : $item['maximum'] );
+			//$val = ($item['name'] == 'CO2' ? $item['maximum'] / 1.0e+156 : $item['maximum'] );
+			$val = $item['maximum'];
+			
 			$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 
 			$html .= '<td>' . date("d/m/Y H:i",strtotime($item['inserted'])) . '</td> ';

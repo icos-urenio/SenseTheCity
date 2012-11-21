@@ -117,7 +117,8 @@ $params = $this->form->getFieldsets('params');
 				foreach($this->stationStatus as $item){
 					$html .='<tr>';
 					$html .= '<td>' . $item['name'] . '</td> ';
-					$val = ($item['name'] == 'CO2' ? $item['corrected_value'] / 1.0e+156 : $item['corrected_value'] );
+					//$val = ($item['name'] == 'CO2' ? $item['corrected_value'] / 1.0e+156 : $item['corrected_value'] );
+					$val = $item['corrected_value'];
 					$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 					$html .='</tr>';
 				}
