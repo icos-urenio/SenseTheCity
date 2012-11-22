@@ -331,7 +331,6 @@ class SensethecityViewStations extends JView
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 				});
 				
-				
 			    draw_circle = new google.maps.Circle({
 			        strokeWeight: 2,
 			        fillOpacity: 0.1,
