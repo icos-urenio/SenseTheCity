@@ -28,13 +28,36 @@ class SensethecityController extends JController
 
 		// Load the submenu.
 		SensethecityHelper::addSubmenu(JRequest::getCmd('view', 'stations'));
-
 		$view = JRequest::getCmd('view', 'stations');
-        
 		JRequest::setVar('view', $view);
 		
-		parent::display();
+		
+		$viewName = JRequest::getCmd('view', $this->default_view);
+		 
+		switch ($viewName) {
+			case "station":
+				$document = JFactory::getDocument();
+				$viewType = $document->getType();
+				$viewLayout = JRequest::getCmd('layout', 'default');
+		
+				$view = $this->getView($viewName, $viewType, '', array('base_path' => $this->basePath, 'layout' => $viewLayout));
+				
+				// Get/Create the model
+				$view->setModel($this->getModel('Station'), true);
 
-		return $this;
+				$view->setModel($this->getModel('Staphens'));
+				
+				$view->assignRef('document', $document);
+				$view->display();
+		
+				break;
+			default:
+				// call parent behavior
+				parent::display($cachable, $urlparams);
+				break;
+		}		
+		
+		//parent::display();
+		//return $this;
 	}
 }

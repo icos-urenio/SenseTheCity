@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_sensethecity/models/rules">
+	<fieldset name="details">
+		<field
+			name="id"
+			type="hidden"
+		/>
+		<field
+			name="station_id"
+			type="hidden"
+		/>
+		
+		<field 
+			name="phenomenon_id" 
+			type="Measurement" 
+			label="Measurement"
+        	description="Select measurement type"
+        	required="false" 
+        />			
+		<field
+			name="min_phen_value"
+			type="text"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_MINPHEN_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_MINPHEN_DESC"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>
+		<field
+			name="max_phen_value"
+			type="text"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_MAXPHEN_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_MAXPHEN_DESC"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>
+
+		<field
+			name="x1"
+			type="text"
+			label="x1"
+			description="x1"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>
+		<field
+			name="y1"
+			type="text"
+			label="y1"
+			description="y1"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>
+	
+		<field
+			name="x2"
+			type="text"
+			label="x2"
+			description="x2"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>
+		<field
+			name="y2"
+			type="text"
+			label="y2"
+			description="y2"
+			size="46"
+			class="inputbox validate-title"
+			required="true"
+			default=""
+		/>	
+	
+		<field
+			name="a"
+			type="text"
+			label="a"
+			description="a"
+			size="46"
+			class="inputbox validate-title"
+			readonly="true"
+			default=""
+		/>
+		
+		<field
+			name="b"
+			type="text"
+			label="b"
+			description="b"
+			size="46"
+			class="inputbox validate-title"
+			readonly="true"
+			default=""
+		/>	
+			
+		
+		<field
+			name="userid"
+			type="hidden"
+		/>			
+	</fieldset>
+	
+</form>

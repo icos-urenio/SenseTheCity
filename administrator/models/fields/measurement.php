@@ -49,6 +49,10 @@ class JFormFieldMeasurement extends JFormField
 		$result = $db->loadAssocList();		
 		
 		$html = '<select id="'.$this->id.'" name="'.$this->name.'">';
+		
+		$id = JRequest::getCmd('id');
+		$station_id = JRequest::getCmd('station_id');
+		$html .= '<option value="'.$id.'" >'.$id.' ('. $station_id .') ' . '</option>';
 		foreach($result as $res){
 			$html .= '<option value="'.$res['id'].'" >'.$res['name'].' ('. $res['unit'] .') ' . '</option>';
 		}

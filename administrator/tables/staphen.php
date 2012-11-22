@@ -16,7 +16,7 @@ jimport('joomla.database.table');
 /**
  * station Table class
  */
-class SensethecityTableStation extends JTable
+class SensethecityTableStaPhen extends JTable
 {
 	/**
 	 * Constructor
@@ -25,7 +25,7 @@ class SensethecityTableStation extends JTable
 	 */
 	public function __construct(&$db)
 	{
-		parent::__construct('#__sensethecity', 'id', $db);
+		parent::__construct('#__sensethecity_sta_phen', 'id', $db);
 	}
 
 	/**
@@ -127,10 +127,10 @@ class SensethecityTableStation extends JTable
 			return false;
 		}
 
-					// If checkin is supported and all rows were adjusted, check them in.
+		// If checkin is supported and all rows were adjusted, check them in.
 		if ($checkin && (count($pks) == $this->_db->getAffectedRows()))
 		{
-			// Checkin the rows.
+			// Checkin the rtionows.
 			foreach($pks as $pk)
 			{
 				$this->checkin($pk);
@@ -159,10 +159,11 @@ class SensethecityTableStation extends JTable
 		if (parent::load($pk, $reset))
 		{
 			// Convert the params field to a registry.
+			/*
 			$params = new JRegistry;
-				
 			$params->loadJSON($this->params);
 			$this->params = $params;
+			*/
 			return true;
 		}
 		else

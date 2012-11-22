@@ -27,6 +27,8 @@ class SensethecityViewStation extends JView
 	protected $lat = '';
 	protected $lon = '';
 	protected $searchterm = '';
+	
+	protected $staphens;
 
 	/**
 	 * Display the view
@@ -36,7 +38,10 @@ class SensethecityViewStation extends JView
 		$this->state	= $this->get('State');
 		$this->item		= $this->get('Item');
 		$this->form		= $this->get('Form');
+		
 		$this->stationStatus = $this->get('StationStatus');
+		$this->staphens = $this->get( 'Items', 'Staphens' );
+		$isNew = ($this->item->id < 1);
 		
 		$lang = $this->state->params->get('maplanguage');
 		$region = $this->state->params->get('mapregion');
@@ -60,10 +65,57 @@ class SensethecityViewStation extends JView
 		}
 
 
-
-		$this->addToolbar();
+		
+		// Disable main menu
+		JRequest::setVar('hidemainmenu', true);
+		// Toolbar
+		if ($isNew) {
+			JToolBarHelper::title( JText::_( 'COM_REGISTRY_STATIONS_NEW' ), 'generic.png' );
+		} else {
+			JToolBarHelper::title( JText::_( 'COM_REGISTRY_STATIONS_EDIT' ), 'generic.png' );
+		}
+		JToolBarHelper::apply('station.apply');
+		JToolBarHelper::save('station.save');
+		JToolBarHelper::save2new('station.save2new');
+		JToolBarHelper::cancel('station.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
+		 
+		// Tasks actions
+		$message = JText::_('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST');
+		
+		$objTasksToolBar = new JToolBar();
+		$html = "<a class=\"toolbar\" onclick=\"Joomla.submitform('staphen.add', document.staphensForm)\" href=\"#\">";
+		$html .= "<span class=\"icon-32-new\"></span>";
+		$html .= JText::_('JTOOLBAR_NEW');
+		$html .= "</a>\n";
+		$objTasksToolBar->appendButton('Custom', $html, 'new');
+		$html = "<a class=\"toolbar\" onclick=\"if (document.staphensForm.boxchecked.value==0){alert('$message');}else{ Joomla.submitform('staphen.edit', document.staphensForm)}\" href=\"#\">";
+		$html .= "<span class=\"icon-32-edit\"></span>";
+		$html .= JText::_('JTOOLBAR_EDIT');
+		$html .= "</a>\n";
+		$objTasksToolBar->appendButton('Custom', $html, 'edit');
+		$msg = JText::_( 'COM_REGISTRY_TASKS_CONFIRM_DELETE' );
+		$html = "<a class=\"toolbar\" onclick=\"if (document.staphensForm.boxchecked.value==0){alert('$message');}else{if (confirm('$msg')){Joomla.submitform('staphens.delete', document.tasksForm);}}\" href=\"#\">";
+		$html .= "<span class=\"icon-32-delete\"></span>";
+		$html .= JText::_('JTOOLBAR_DELETE');
+		$html .= "</a>\n";
+		$objTasksToolBar->appendButton('Custom', $html, 'delete');
+		
+	
+		$this->tasksToolBar = $objTasksToolBar->render();
+		
 		parent::display($tpl);
+		 
+		$document = JFactory::getDocument();
+		$document->addScript(JURI::root() .
+				'/administrator/components/com_sensethecity/models/forms/station.js');
+		$document->addScript(JURI::root() .
+				'/administrator/components/com_sensethecity/models/forms/validation.js');
+		JText::script('COM_REGISTRY_VALIDATION_ERROR');
+		
+		
 
+		//$this->addToolbar();
+		//parent::display($tpl);
 		// Set the document
 		$this->setDocument();
 	}
@@ -129,124 +181,124 @@ class SensethecityViewStation extends JView
 		function zoomIn() {
 		map.setCenter(marker.getPosition());
 		map.setZoom(map.getZoom()+1);
-	}
-
-	function zoomOut() {
-	map.setCenter(marker.getPosition());
-	map.setZoom(map.getZoom()-1);
-	}
-		
-		
-	function codeAddress() {
-	var address = document.getElementById('address').value + ' ".$this->searchterm."';
-	geocoder.geocode( { 'address': address, 'language': '".$this->language."'}, function(results, status) {
-	if (status == google.maps.GeocoderStatus.OK) {
-	map.setCenter(results[0].geometry.location);
-	marker.setPosition(results[0].geometry.location);
-		
-	document.getElementById('jform_latitude').value = results[0].geometry.location.lat();
-	document.getElementById('jform_longitude').value = results[0].geometry.location.lng();
-		
-	updateMarkerAddress(results[0].formatted_address);
-
-	} else {
-	alert('".JText::_('COM_SENSETHECITY_ADDRESS_NOT_FOUND')."');
-	}
-	});
-	}
-		
-		
-	function geocodePosition(pos) {
-	geocoder.geocode({
-	latLng: pos,
-	language: '".$this->language."'
-	}, function(responses) {
-	if (responses && responses.length > 0) {
-	updateMarkerAddress(responses[0].formatted_address);
-	} else {
-	updateMarkerAddress('".JText::_('COM_SENSETHECITY_ADDRESS_NOT_FOUND')."');
-	}
-	});
-	}
-
-	//function updateMarkerStatus(str) {
-	//  document.getElementById('markerStatus').innerHTML = str;
-	//}
-
-	function updateMarkerPosition(latLng) {
-	document.getElementById('info').innerHTML = [
-	latLng.lat(),
-	latLng.lng()
-	].join(', ');
-	//update fields
-	document.getElementById('jform_latitude').value = latLng.lat();
-	document.getElementById('jform_longitude').value = latLng.lng();
-	}
-
-	function updateMarkerAddress(str) {
-	document.getElementById('near_address').innerHTML = str;
-	document.getElementById('jform_address').value = str;
-	}
-
-		
-	function initialize() {
-	var LAT = ".$LAT.";
-	var LON = ".$LON.";
-
-	var latLng = new google.maps.LatLng(LAT, LON);
-	map = new google.maps.Map(document.getElementById('mapCanvas'), {
-	zoom: 17,
-	center: latLng,
-	panControl: false,
-	streetViewControl: false,
-	zoomControlOptions: {
-	style: google.maps.ZoomControlStyle.SMALL
-	},
-	mapTypeId: google.maps.MapTypeId.ROADMAP
-	});
-		
-	marker = new google.maps.Marker({
-	position: latLng,
-	title: '".JText::_('COM_SENSETHECITY_REPORT_LOCATION')."',
-	map: map,
-	draggable: true
-	});
-		
-		
-	var infoString = '".JText::_('COM_SENSETHECITY_DRAG_MARKER')."';
-
-	var infowindow = new google.maps.InfoWindow({
-	content: infoString
-	});
-		
-		
-	// Update current position info.
-	updateMarkerPosition(latLng);
-	geocodePosition(latLng);
-		
-	// Add dragging event listeners.
-	google.maps.event.addListener(marker, 'dragstart', function() {
-	infowindow.close();
-	updateMarkerAddress('".JText::_('COM_SENSETHECITY_MOVING')."');
-	});
-		
-	google.maps.event.addListener(marker, 'drag', function() {
-	updateMarkerPosition(marker.getPosition());
-	});
-		
-	google.maps.event.addListener(marker, 'dragend', function() {
-	infowindow.open(map, marker);
-	geocodePosition(marker.getPosition());
-	});
-		
-
-		
-	infowindow.open(map, marker);
-	}
-
-	// Onload handler to fire off the app.
-	google.maps.event.addDomListener(window, 'load', initialize);
-	";
+		}
+	
+		function zoomOut() {
+		map.setCenter(marker.getPosition());
+		map.setZoom(map.getZoom()-1);
+		}
+			
+			
+		function codeAddress() {
+		var address = document.getElementById('address').value + ' ".$this->searchterm."';
+		geocoder.geocode( { 'address': address, 'language': '".$this->language."'}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+		map.setCenter(results[0].geometry.location);
+		marker.setPosition(results[0].geometry.location);
+			
+		document.getElementById('jform_latitude').value = results[0].geometry.location.lat();
+		document.getElementById('jform_longitude').value = results[0].geometry.location.lng();
+			
+		updateMarkerAddress(results[0].formatted_address);
+	
+		} else {
+		alert('".JText::_('COM_SENSETHECITY_ADDRESS_NOT_FOUND')."');
+		}
+		});
+		}
+			
+			
+		function geocodePosition(pos) {
+		geocoder.geocode({
+		latLng: pos,
+		language: '".$this->language."'
+		}, function(responses) {
+		if (responses && responses.length > 0) {
+		updateMarkerAddress(responses[0].formatted_address);
+		} else {
+		updateMarkerAddress('".JText::_('COM_SENSETHECITY_ADDRESS_NOT_FOUND')."');
+		}
+		});
+		}
+	
+		//function updateMarkerStatus(str) {
+		//  document.getElementById('markerStatus').innerHTML = str;
+		//}
+	
+		function updateMarkerPosition(latLng) {
+		document.getElementById('info').innerHTML = [
+		latLng.lat(),
+		latLng.lng()
+		].join(', ');
+		//update fields
+		document.getElementById('jform_latitude').value = latLng.lat();
+		document.getElementById('jform_longitude').value = latLng.lng();
+		}
+	
+		function updateMarkerAddress(str) {
+		document.getElementById('near_address').innerHTML = str;
+		document.getElementById('jform_address').value = str;
+		}
+	
+			
+		function initialize() {
+		var LAT = ".$LAT.";
+		var LON = ".$LON.";
+	
+		var latLng = new google.maps.LatLng(LAT, LON);
+		map = new google.maps.Map(document.getElementById('mapCanvas'), {
+		zoom: 17,
+		center: latLng,
+		panControl: false,
+		streetViewControl: false,
+		zoomControlOptions: {
+		style: google.maps.ZoomControlStyle.SMALL
+		},
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+			
+		marker = new google.maps.Marker({
+		position: latLng,
+		title: '".JText::_('COM_SENSETHECITY_REPORT_LOCATION')."',
+		map: map,
+		draggable: true
+		});
+			
+			
+		var infoString = '".JText::_('COM_SENSETHECITY_DRAG_MARKER')."';
+	
+		var infowindow = new google.maps.InfoWindow({
+		content: infoString
+		});
+			
+			
+		// Update current position info.
+		updateMarkerPosition(latLng);
+		geocodePosition(latLng);
+			
+		// Add dragging event listeners.
+		google.maps.event.addListener(marker, 'dragstart', function() {
+		infowindow.close();
+		updateMarkerAddress('".JText::_('COM_SENSETHECITY_MOVING')."');
+		});
+			
+		google.maps.event.addListener(marker, 'drag', function() {
+		updateMarkerPosition(marker.getPosition());
+		});
+			
+		google.maps.event.addListener(marker, 'dragend', function() {
+		infowindow.open(map, marker);
+		geocodePosition(marker.getPosition());
+		});
+			
+	
+			
+		infowindow.open(map, marker);
+		}
+	
+		// Onload handler to fire off the app.
+		google.maps.event.addDomListener(window, 'load', initialize);
+		";
 
 		//add the javascript to the head of the html document
 		$document->addScriptDeclaration($googleMapInit);

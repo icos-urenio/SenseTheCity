@@ -10,8 +10,11 @@
 // no direct access
 defined('_JEXEC') or die;
 
+$option = JRequest::getCmd('option');
+
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
+jimport( 'joomla.form.form' );
 $params = $this->form->getFieldsets('params');
 ?>
 <script type="text/javascript">
@@ -142,3 +145,80 @@ $params = $this->form->getFieldsets('params');
 	<?php echo JHtml::_('form.token'); ?>
 	<div class="clr"></div>
 </form>
+
+
+<?php /* MASTER-DETAIL */ ?>
+
+
+<?php if ($this->item->id) : ?>
+<form action="index.php" method="post" name="staphensForm" id="staphensForm">
+	<input type="hidden" name="option" value="<?php echo $option; ?>" />
+	<input type="hidden" name="staphen" value="" />
+	<input type="hidden" name="boxchecked" value="0" />
+	<input type="hidden" name="station_id" value="<?php echo $this->item->id; ?>" />
+	<?php echo JHtml::_('form.token'); ?>
+	
+	<fieldset class="adminform">
+		<legend><?php echo JText::_( 'COM_REGISTRY_TASKS_LIST' ); ?></legend>
+	
+		<?php echo $this->tasksToolBar; ?>
+		
+		<table class="adminlist">
+			<thead>
+				<tr>
+					<th width="1%">
+						<input type="checkbox" onclick="Joomla.checkAll(this)" title="<?php echo JText::_( 'JGLOBAL_CHECK_ALL' ); ?>" value="" name="checkall-toggle">
+					</th>
+					<th>
+						<?php echo JText::_('COM_REGISTRY_TASKS_DESCRIPTION'); ?>
+					</th>
+	
+				
+					<th>
+						<?php echo JText::_('JGLOBAL_FIELD_ID_LABEL'); ?>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+		<?php
+		$k = 0;
+		$i = 0;
+		foreach ($this->staphens as &$row)
+		{
+			$checked = '<input type="checkbox" id="cb' . $i . '" name="cid[]" value="' . $row->id
+				. '" onclick="Joomla.isChecked(this.checked, document.staphensForm);" title="' . JText::sprintf('JGRID_CHECKBOX_ROW_N', ($i + 1)) . '" />';
+			$i++;
+			$link = JRoute::_( 'index.php?option=' . $option . '&task=staphen.edit&id=' . $row->id );
+		?>
+				<tr class="row<?php echo $k; ?>">
+					<td><?php echo $checked; ?></td>
+					<td>
+						<a href="<?php echo $link; ?>">
+							<?php echo $row->phenomenon_id; ?>
+						</a>
+					</td>
+					<td>
+						<a href="<?php echo $link; ?>">
+							<?php echo $row->id; ?>
+						</a>
+					</td>
+				</tr>
+		<?php
+			$k = 1 - $k;
+		}
+		?>
+			</tbody>
+		</table>
+	</fieldset>
+</form>
+<?php endif; ?>
+
+
+
+
+
+
+
+
+
+
