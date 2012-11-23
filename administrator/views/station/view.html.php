@@ -55,31 +55,16 @@ class SensethecityViewStation extends JView
 		$this->lon = (empty($lon) ? 23.01861169311519 : $lon);
 		$this->searchterm = (empty($term) ? "" : $term);
 
-
-
-
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
 			return false;
 		}
 
-
+		$this->addToolbar();
 		
-		// Disable main menu
-		JRequest::setVar('hidemainmenu', true);
-		// Toolbar
-		if ($isNew) {
-			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_TITLE_ITEM_NEW' ), 'generic.png' );
-		} else {
-			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_TITLE_ITEM_EDIT' ), 'generic.png' );
-		}
-		JToolBarHelper::apply('station.apply');
-		JToolBarHelper::save('station.save');
-		JToolBarHelper::save2new('station.save2new');
-		JToolBarHelper::cancel('station.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
-		 
-		// Tasks actions
+		
+		// Phenomenon actions
 		$message = JText::_('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST');
 		
 		$objTasksToolBar = new JToolBar();
@@ -136,8 +121,12 @@ class SensethecityViewStation extends JView
 		}
 		$canDo		= SensethecityHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_SENSETHECITY_TITLE_ITEM'), 'item.png');
-
+		if ($isNew) {
+			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_TITLE_ITEM_NEW' ), 'item.png' );
+		} else {
+			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_TITLE_ITEM_EDIT' ), 'item.png' );
+		}		
+		
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit')||($canDo->get('core.create'))))
 		{
