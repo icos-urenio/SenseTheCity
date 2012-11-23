@@ -27,15 +27,16 @@ $station_id = JRequest::getInt('station_id');
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
 	{
-		if (task == 'station.cancel' || document.formvalidator.isValid(document.id('item-form'))) {
-			Joomla.submitform(task, document.getElementById('item-form'));
+		
+		if (task == 'statphen.cancel' || document.formvalidator.isValid(document.id('station-admin-form'))) {
+			Joomla.submitform(task, document.getElementById('station-admin-form'));
 		}
 		else {
 			alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
 		}
 	}
 </script>
-*/ ?>
+*/?>
 
 <form action="index.php" method="post" name="adminForm" id="station-admin-form" class="form-validate">
 	<input type="hidden" name="option" value="<?php echo $option; ?>" />

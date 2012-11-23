@@ -51,13 +51,28 @@ class JFormFieldMeasurement extends JFormField
 		$html = '<select id="'.$this->id.'" name="'.$this->name.'">';
 		
 		$id = JRequest::getCmd('id');
-		$station_id = JRequest::getCmd('station_id');
-		$html .= '<option value="'.$id.'" >'.$id.' ('. $station_id .') ' . '</option>';
+		
+		
 		foreach($result as $res){
-			$html .= '<option value="'.$res['id'].'" >'.$res['name'].' ('. $res['unit'] .') ' . '</option>';
+			if ($res['id'] == $this->value)
+				$html .= '<option selected="selected" value="'.$res['id'].'" >'.$res['name'].' ('. $res['unit'] .') ' . '</option>';
+			else 
+				$html .= '<option value="'.$res['id'].'" >'.$res['name'].' ('. $res['unit'] .') ' . '</option>';
 		}
 		$html .='</select>';		
+		
 		return $html;
 		
 	}
+	/*
+	public function getInput()
+	{
+		$options = array(
+				'08:00:00' => '8:00 AM',
+				'09:30:00' => '9:30 AM'
+		);
+	
+		return JHtml::_('select.genericlist', $options, $this->name, null, 'value', 'text', $this->value, $this->id);
+	}
+	*/	
 }

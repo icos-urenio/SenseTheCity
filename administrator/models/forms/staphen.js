@@ -1,5 +1,5 @@
 window.addEvent('domready', function() {
-	document.formvalidator.setHandler('minlenght2',
+	document.formvalidator.setHandler('minlength2',
 		function (value) {
 			if (value.length < 2) {
 				return false;

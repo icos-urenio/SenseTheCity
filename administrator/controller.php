@@ -33,12 +33,13 @@ class SensethecityController extends JController
 		
 		
 		$viewName = JRequest::getCmd('view', $this->default_view);
-		 
+		
 		switch ($viewName) {
 			case "station":
 				$document = JFactory::getDocument();
 				$viewType = $document->getType();
-				$viewLayout = JRequest::getCmd('layout', 'default');
+				//$viewLayout = JRequest::getCmd('layout', 'default');
+				$viewLayout = JRequest::getCmd('layout', 'stations');
 		
 				$view = $this->getView($viewName, $viewType, '', array('base_path' => $this->basePath, 'layout' => $viewLayout));
 				

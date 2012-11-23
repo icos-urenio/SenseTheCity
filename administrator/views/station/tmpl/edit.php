@@ -149,7 +149,6 @@ $params = $this->form->getFieldsets('params');
 
 <?php /* MASTER-DETAIL */ ?>
 
-
 <?php if ($this->item->id) : ?>
 <form action="index.php" method="post" name="staphensForm" id="staphensForm">
 	<input type="hidden" name="option" value="<?php echo $option; ?>" />
@@ -188,7 +187,7 @@ $params = $this->form->getFieldsets('params');
 			$checked = '<input type="checkbox" id="cb' . $i . '" name="cid[]" value="' . $row->id
 				. '" onclick="Joomla.isChecked(this.checked, document.staphensForm);" title="' . JText::sprintf('JGRID_CHECKBOX_ROW_N', ($i + 1)) . '" />';
 			$i++;
-			$link = JRoute::_( 'index.php?option=' . $option . '&task=staphen.edit&id=' . $row->id );
+			$link = JRoute::_( 'index.php?option=' . $option . '&task=staphen.edit&id=' . $row->id . '&phenomenon_id=' . $row->phenomenon_id);
 		?>
 				<tr class="row<?php echo $k; ?>">
 					<td><?php echo $checked; ?></td>
