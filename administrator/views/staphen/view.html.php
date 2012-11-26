@@ -29,13 +29,13 @@ class SensethecityViewStaphen extends JView
 		JRequest::setVar('hidemainmenu', true);
 		// Toolbar
 		if ($isNew) {
-			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_STA_PHEN_NEW' ), 'generic.png' );
+			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_STA_PHEN_NEW' ), 'item.png' );
 		} else {
-			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_STA_PHEN_EDIT' ), 'generic.png' );
+			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_STA_PHEN_EDIT' ), 'item.png' );
 		}
 		JToolBarHelper::apply('staphen.apply');
 		JToolBarHelper::save('staphen.save');
-		JToolBarHelper::save2new('staphen.save2new');
+		//JToolBarHelper::save2new('staphen.save2new');
 		JToolBarHelper::cancel('staphen.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
 		 
 		$this->item = $item;

@@ -23,7 +23,7 @@ class SensethecityControllerStations extends JControllerAdmin
 	 */
 	public function &getModel($name = 'station', $prefix = 'SensethecityModel')
 	{
-		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
+		$model = parent::getModel($name, $prefix, array('ignore_request' => false));
 		return $model;
 	}
 }

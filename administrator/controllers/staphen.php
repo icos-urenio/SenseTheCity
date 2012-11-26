@@ -20,9 +20,11 @@ class SensethecityControllerStaphen extends JControllerForm
 
     function __construct() {
         //$this->view_list = 'staphens';
-    	$this->view_list = 'staphen';
-        parent::__construct();
+    	$this->view_list = 'station';
+        
+    	parent::__construct();
     }
+    
     
     public function add()
     {
@@ -37,12 +39,13 @@ class SensethecityControllerStaphen extends JControllerForm
     }
     
     
+    
     public function cancel($key = null)
     {
     	if (parent::cancel($key)) {
     		// Set right layout
     		$app = JFactory::getApplication();
-    		$context = "$this->option.edit.$this->context";
+    		$context = "$this->option.edit.$this->context";	//com_sensethecity.edit.staphen
     
     		$this->setRedirect(
     				JRoute::_(

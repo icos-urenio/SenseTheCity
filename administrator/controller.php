@@ -10,7 +10,7 @@
 
 // No direct access
 defined('_JEXEC') or die;
-
+jimport('joomla.application.component.controller');
 class SensethecityController extends JController
 {
 	/**
@@ -28,18 +28,18 @@ class SensethecityController extends JController
 
 		// Load the submenu.
 		SensethecityHelper::addSubmenu(JRequest::getCmd('view', 'stations'));
+		
+		
 		$view = JRequest::getCmd('view', 'stations');
 		JRequest::setVar('view', $view);
-		
-		
 		$viewName = JRequest::getCmd('view', $this->default_view);
 		
 		switch ($viewName) {
 			case "station":
 				$document = JFactory::getDocument();
 				$viewType = $document->getType();
-				//$viewLayout = JRequest::getCmd('layout', 'default');
-				$viewLayout = JRequest::getCmd('layout', 'stations');
+				$viewLayout = JRequest::getCmd('layout', 'default');
+				//$viewLayout = JRequest::getCmd('layout', 'stations');
 		
 				$view = $this->getView($viewName, $viewType, '', array('base_path' => $this->basePath, 'layout' => $viewLayout));
 				

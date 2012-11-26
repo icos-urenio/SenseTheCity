@@ -15,12 +15,11 @@ $option = JRequest::getCmd('option');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 
-jimport( 'joomla.form.form' );
-$params = $this->form->getFieldsets('params');
+//jimport( 'joomla.form.form' );
+//$params = $this->form->getFieldsets('params');
 
 
 $station_id = JRequest::getInt('station_id');
-
 ?>
 
 <?php /*
@@ -48,9 +47,9 @@ $station_id = JRequest::getInt('station_id');
 	<fieldset class="adminform">
 		<legend><?php echo JText::_( 'COM_SENSETHECITY_STA_PHEN_DETAILS' ); ?></legend>
 		<ul class="adminformlist">
-<?	foreach ($this->form->getFieldset() as $field) { ?>
+			<?	foreach ($this->form->getFieldset() as $field) { ?>
 			<li><?php echo $field->label; ?><?php echo $field->input; ?></li>
-<?	} ?>
+			<?	} ?>
 		</ul>
 	</fieldset>
 </form>

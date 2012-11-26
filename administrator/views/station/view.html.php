@@ -68,18 +68,18 @@ class SensethecityViewStation extends JView
 		$message = JText::_('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST');
 		
 		$objTasksToolBar = new JToolBar();
-		$html = "<a class=\"toolbar\" onclick=\"Joomla.submitform('staphen.add', document.staphensForm)\" href=\"#\">";
+		$html = "<a class=\"toolbar\" onclick=\"Joomla.submitform('staphen.add', document.staphensForm)\" href=\"javascript:void(0);\">";
 		$html .= "<span class=\"icon-32-new\"></span>";
 		$html .= JText::_('JTOOLBAR_NEW');
 		$html .= "</a>\n";
 		$objTasksToolBar->appendButton('Custom', $html, 'new');
-		$html = "<a class=\"toolbar\" onclick=\"if (document.staphensForm.boxchecked.value==0){alert('$message');}else{ Joomla.submitform('staphen.edit', document.staphensForm)}\" href=\"#\">";
+		$html = "<a class=\"toolbar\" onclick=\"if (document.staphensForm.boxchecked.value==0){alert('$message');}else{ Joomla.submitform('staphen.edit', document.staphensForm)}\" href=\"javascript:void(0);\">";
 		$html .= "<span class=\"icon-32-edit\"></span>";
 		$html .= JText::_('JTOOLBAR_EDIT');
 		$html .= "</a>\n";
 		$objTasksToolBar->appendButton('Custom', $html, 'edit');
 		$msg = JText::_( 'COM_REGISTRY_TASKS_CONFIRM_DELETE' );
-		$html = "<a class=\"toolbar\" onclick=\"if (document.staphensForm.boxchecked.value==0){alert('$message');}else{if (confirm('$msg')){Joomla.submitform('staphens.delete', document.staphensForm);}}\" href=\"#\">";
+		$html = "<a class=\"toolbar\" onclick=\"if (document.staphensForm.boxchecked.value==0){alert('$message');}else{if (confirm('$msg')){Joomla.submitform('staphens.delete', document.staphensForm);}}\" href=\"javascript:void(0);\">";
 		$html .= "<span class=\"icon-32-delete\"></span>";
 		$html .= JText::_('JTOOLBAR_DELETE');
 		$html .= "</a>\n";

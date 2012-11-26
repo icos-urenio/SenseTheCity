@@ -17,19 +17,9 @@ JHtml::_('behavior.formvalidation');
 jimport( 'joomla.form.form' );
 $params = $this->form->getFieldsets('params');
 ?>
-<script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		if (task == 'station.cancel' || document.formvalidator.isValid(document.id('item-form'))) {
-			Joomla.submitform(task, document.getElementById('item-form'));
-		}
-		else {
-			alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
-		}
-	}
-</script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_sensethecity&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
+
+<form action="<?php echo JRoute::_('index.php?option=com_sensethecity&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
 	<div class="width-60 fltlft">
 		<fieldset class="adminform">
 			<legend><?php echo JText::_('COM_SENSETHECITY_LEGEND_ITEM'); ?></legend>
@@ -152,9 +142,10 @@ $params = $this->form->getFieldsets('params');
 <?php if ($this->item->id) : ?>
 <form action="index.php" method="post" name="staphensForm" id="staphensForm">
 	<input type="hidden" name="option" value="<?php echo $option; ?>" />
-	<input type="hidden" name="staphen" value="" />
+	<input type="hidden" name="task" value="" />
 	<input type="hidden" name="boxchecked" value="0" />
 	<input type="hidden" name="station_id" value="<?php echo $this->item->id; ?>" />
+	
 	<?php echo JHtml::_('form.token'); ?>
 	
 	<fieldset class="adminform">
@@ -187,7 +178,7 @@ $params = $this->form->getFieldsets('params');
 			$checked = '<input type="checkbox" id="cb' . $i . '" name="cid[]" value="' . $row->id
 				. '" onclick="Joomla.isChecked(this.checked, document.staphensForm);" title="' . JText::sprintf('JGRID_CHECKBOX_ROW_N', ($i + 1)) . '" />';
 			$i++;
-			$link = JRoute::_( 'index.php?option=' . $option . '&task=staphen.edit&id=' . $row->id . '&phenomenon_id=' . $row->phenomenon_id);
+			$link = JRoute::_( 'index.php?option=' . $option . '&task=staphen.edit&id=' . $row->id . '&phenomenon_id=' . $row->phenomenon_id . '&station_id='.$this->item->id);
 		?>
 				<tr class="row<?php echo $k; ?>">
 					<td><?php echo $checked; ?></td>
