@@ -193,7 +193,7 @@ $params = $this->form->getFieldsets('params');
 					<td><?php echo $checked; ?></td>
 					<td>
 						<a href="<?php echo $link; ?>">
-							<?php echo $row->phenomenon_id; ?>
+							<?php echo $row->name; ?>
 						</a>
 					</td>
 					<td>

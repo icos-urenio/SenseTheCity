@@ -97,12 +97,12 @@ class SensethecityModelStaphens extends JModelList
 		$query->select(
 			$this->getState(
 				'list.select',
-				'a.*'
+				'a.*, b.name'
 			)
 		);
 		$query->from('`#__sensethecity_sta_phen` AS a');
 		$query->where('a.station_id = ' . $station_id);
-
+		$query->join('LEFT', '`#__sensethecity_phenomenon` AS b on b.id = a.phenomenon_id');
 
 
 
