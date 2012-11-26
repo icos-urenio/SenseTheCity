@@ -46,7 +46,7 @@ $station_id = JRequest::getInt('station_id');
 	<?php echo JHtml::_('form.token'); ?>
 	
 	<fieldset class="adminform">
-		<legend><?php echo JText::_( 'COM_REGISTRY_TASKS_DETAILS' ); ?></legend>
+		<legend><?php echo JText::_( 'COM_SENSETHECITY_STA_PHEN_DETAILS' ); ?></legend>
 		<ul class="adminformlist">
 <?	foreach ($this->form->getFieldset() as $field) { ?>
 			<li><?php echo $field->label; ?><?php echo $field->input; ?></li>

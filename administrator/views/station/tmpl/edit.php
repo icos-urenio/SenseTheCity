@@ -158,7 +158,7 @@ $params = $this->form->getFieldsets('params');
 	<?php echo JHtml::_('form.token'); ?>
 	
 	<fieldset class="adminform">
-		<legend><?php echo JText::_( 'COM_REGISTRY_TASKS_LIST' ); ?></legend>
+		<legend><?php echo JText::_( 'COM_SENSETHECITY_PHEN_LIST' ); ?></legend>
 	
 		<?php echo $this->tasksToolBar; ?>
 		
@@ -169,7 +169,7 @@ $params = $this->form->getFieldsets('params');
 						<input type="checkbox" onclick="Joomla.checkAll(this)" title="<?php echo JText::_( 'JGLOBAL_CHECK_ALL' ); ?>" value="" name="checkall-toggle">
 					</th>
 					<th>
-						<?php echo JText::_('COM_REGISTRY_TASKS_DESCRIPTION'); ?>
+						<?php echo JText::_('COM_SENSETHECITY_PHEN_DESCRIPTION'); ?>
 					</th>
 	
 				

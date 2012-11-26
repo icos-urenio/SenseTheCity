@@ -29,9 +29,9 @@ class SensethecityViewStaphen extends JView
 		JRequest::setVar('hidemainmenu', true);
 		// Toolbar
 		if ($isNew) {
-			JToolBarHelper::title( JText::_( 'COM_REGISTRY_TASKS_NEW' ), 'generic.png' );
+			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_STA_PHEN_NEW' ), 'generic.png' );
 		} else {
-			JToolBarHelper::title( JText::_( 'COM_REGISTRY_TASKS_EDIT' ), 'generic.png' );
+			JToolBarHelper::title( JText::_( 'COM_SENSETHECITY_STA_PHEN_EDIT' ), 'generic.png' );
 		}
 		JToolBarHelper::apply('staphen.apply');
 		JToolBarHelper::save('staphen.save');
