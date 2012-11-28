@@ -70,7 +70,13 @@ abstract class SensethecityHelper
 		return $html;
 	}	
 	
-	public function formatGraphTabs($phenomenons) {
+	public function formatGoogleGraphTabs($phenomenons) 
+	{
+		
+	}
+	
+	public function formatGraphTabs($phenomenons) 
+	{
 		//print_r($phenomenons);
 		$html = '
 		<div class="tabbable tabs-below" style="margin: 2em 0;"> 
