@@ -197,8 +197,6 @@ class SensethecityViewStations extends JView
 		return $html;
 	}	
 
-
-
 	
 	protected function createCustomMarkers($cats = array())
     {
@@ -253,31 +251,28 @@ class SensethecityViewStations extends JView
 		
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/sensethecity.css');	
-		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/jquery-ui.css');
 		
 
 		//add scripts
 		if($this->loadjquery == 1){
 			$document->addScript(JURI::root(true).'/components/com_sensethecity/js/jquery-1.7.1.min.js');
-			$document->addScript(JURI::root(true).'/components/com_sensethecity/js/jquery-ui-1.9.1.custom.min.js');
 			
 			//jquery noConflict
 			$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
 		}
 				
-		$document->addScriptDeclaration( 'jImc(function() {jImc( "#datepicker_from" ).datepicker();jImc( "#datepicker_to" ).datepicker();	});' );		
-		
 		if($this->loadbootstrap == 1)
 			$document->addScript(JURI::root(true).'/components/com_sensethecity/bootstrap/js/bootstrap.min.js');
 
-		
-		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/sensethecity.js');
 
 		//add google graph 
 		$document->addScript('https://www.google.com/jsapi');
-		//$document->addScriptDeclaration("google.load('visualization', '1.0', {'packages':['corechart']});google.setOnLoadCallback(drawChart());");
-		//$document->addScript(JURI::root(true).'/components/com_sensethecity/js/stc_graph.js');
+		$document->addScriptDeclaration("google.load('visualization', '1.1', {packages: ['corechart', 'controls']});");
 		
+
+		//add component's scrips
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/stc_graph.js');
+		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/sensethecity.js');
 		
 		//add google maps
 		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
@@ -630,44 +625,10 @@ class SensethecityViewStations extends JView
 		$document->addScriptDeclaration($megamenu_js);
 		
 		
-		
 		//also pass base so as to display comment image indicator
 		$js = "var com_sensethecity = {};\n";
 		$js.= "com_sensethecity.base = '".JURI::root(true)."';\n";
 		$document->addScriptDeclaration($js);		
-		
-		
-		$graph = "
-		google.load('visualization', '1.0', {'packages':['corechart']});
-		google.setOnLoadCallback(drawChart());
-		function drawChart() {
-			// Create the data table.
-			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'Topping');
-			data.addColumn('number', 'Slices');
-			data.addRows([
-					['Mushrooms', 3],
-					['Onions', 1],
-					['Olives', 1],
-					['Zucchini', 1],
-					['Pepperoni', 2]
-					]);
-		
-			// Set chart options
-			var options = {
-				'title':'How Much Pizza I Ate Last Night',
-				'width':'100%',
-				'height':300};
-		
-				// Instantiate and draw our chart, passing in some options.
-				var chart = new google.visualization.PieChart(document.getElementById('googlegraph'));
-				chart.draw(data, options);
-		}		
-		";
-		
-		$document->addScriptDeclaration($graph);
-		
-		
 		
 	}
 }

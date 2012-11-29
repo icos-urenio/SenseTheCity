@@ -25,6 +25,13 @@ function getStationData(){
 }
 */
 
+
+$(document).ready(function(){
+	//
+});
+
+
+
 function getStationInfo(stationId, token){
 	var base = window.com_sensethecity.base;
 	jImc('#waitingIndicator').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
