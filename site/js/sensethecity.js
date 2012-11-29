@@ -87,7 +87,7 @@ function getStationMeasuresGraph(stationId, token){
 			jImc('#graphTabs').html(data.html);
 			
 			for(a=0;a<data.phenom.length;a++){
-				basic_graph_thermiSensors("graphContainer"+data.phenom[a].id, 
+				stcGraph("graphContainer"+data.phenom[a].id, 
 										  data.graphdata[data.phenom[a].id],
 										  data.phenom[a].description, 
 										  'Ημερομηνία', 

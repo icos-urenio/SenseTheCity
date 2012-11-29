@@ -89,7 +89,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		</div>
 		
 		<div style="clear: both"></div>
-		
+		<div id="googlegraph"></div>
 		<div id="graphTabs"></div>
 		<div id="waitingIndicatorGraphTabs"></div>	
 

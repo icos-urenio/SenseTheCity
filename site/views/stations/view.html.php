@@ -254,7 +254,7 @@ class SensethecityViewStations extends JView
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/sensethecity.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/jquery-ui.css');
-		$document->addStyleSheet(JURI::root(true).'/components/com_sensethecity/css/flotr2.css');
+		
 
 		//add scripts
 		if($this->loadjquery == 1){
@@ -272,10 +272,13 @@ class SensethecityViewStations extends JView
 
 		
 		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/sensethecity.js');
-		//add flotr2 	
-		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/flotr2.min.js');
-		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/flotr2.functions.js');
-	
+
+		//add google graph 
+		$document->addScript('https://www.google.com/jsapi');
+		//$document->addScriptDeclaration("google.load('visualization', '1.0', {'packages':['corechart']});google.setOnLoadCallback(drawChart());");
+		//$document->addScript(JURI::root(true).'/components/com_sensethecity/js/stc_graph.js');
+		
+		
 		//add google maps
 		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 		$document->addScript(JURI::root(true).'/components/com_sensethecity/js/infobox_packed.js');
@@ -632,5 +635,39 @@ class SensethecityViewStations extends JView
 		$js = "var com_sensethecity = {};\n";
 		$js.= "com_sensethecity.base = '".JURI::root(true)."';\n";
 		$document->addScriptDeclaration($js);		
+		
+		
+		$graph = "
+		google.load('visualization', '1.0', {'packages':['corechart']});
+		google.setOnLoadCallback(drawChart());
+		function drawChart() {
+			// Create the data table.
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Topping');
+			data.addColumn('number', 'Slices');
+			data.addRows([
+					['Mushrooms', 3],
+					['Onions', 1],
+					['Olives', 1],
+					['Zucchini', 1],
+					['Pepperoni', 2]
+					]);
+		
+			// Set chart options
+			var options = {
+				'title':'How Much Pizza I Ate Last Night',
+				'width':'100%',
+				'height':300};
+		
+				// Instantiate and draw our chart, passing in some options.
+				var chart = new google.visualization.PieChart(document.getElementById('googlegraph'));
+				chart.draw(data, options);
+		}		
+		";
+		
+		$document->addScriptDeclaration($graph);
+		
+		
+		
 	}
 }

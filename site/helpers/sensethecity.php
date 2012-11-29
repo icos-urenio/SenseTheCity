@@ -70,11 +70,7 @@ abstract class SensethecityHelper
 		return $html;
 	}	
 	
-	public function formatGoogleGraphTabs($phenomenons) 
-	{
-		
-	}
-	
+
 	public function formatGraphTabs($phenomenons) 
 	{
 		//print_r($phenomenons);
