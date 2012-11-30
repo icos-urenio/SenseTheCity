@@ -53,7 +53,7 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
              // Filter by the date axis.
              'filterColumnIndex': 0,
              'ui': {
-               'chartType': 'BarChart',
+               'chartType': 'LineChart',
                'chartOptions': {
                  'chartArea': {'width': '90%'},
                  'hAxis': {'baselineColor': 'none'}
@@ -68,7 +68,7 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
              }
            },
            // Initial range: 2012-02-09 to 2012-03-20.
-           'state': {'range': {'start': new Date(2012, 1, 9), 'end': new Date(2012, 2, 20)}}
+           'state': {'range': {'start': new Date(2012, 9, 1), 'end': new Date(2012, 10, 1)}}
          });
       
          var chart = new google.visualization.ChartWrapper({
@@ -96,15 +96,15 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
       
          var data = new google.visualization.DataTable();
          data.addColumn('date', 'Date');
-         data.addColumn('number', 'Stock low');
-         data.addColumn('number', 'Stock open');
-         data.addColumn('number', 'Stock close');
-         data.addColumn('number', 'Stock high');
+         data.addColumn('number', 'Κάτω όριο');
+         data.addColumn('number', 'Χαμηλό ημέρας');
+         data.addColumn('number', 'Υψηλό ημέρας');
+         data.addColumn('number', 'Άνω όριο');
       
          // Create random stock values, just like it works in reality.
          var open, close = 300;
          var low, high;
-         for (var day = 1; day < 367; ++day) {
+         for (var day = 1; day < 400; ++day) {
            var change = (Math.sin(day / 2.5 + Math.PI) + Math.sin(day / 3) - Math.cos(day * 0.7)) * 150;
            change = change >= 0 ? change + 10 : change - 10;
            open = close;

@@ -75,12 +75,15 @@ abstract class SensethecityHelper
 	{
 
 		$html = '
+		<div id="waitingIndicatorGraphTabs"></div>
+		<div id="graphToolbar" style="float:right;"></div>
 		<div class="tabbable tabs-below" style="margin: 2em 0;"> 
 			<div class="tab-content">';
 
 		foreach($phenomenons as $phenomenon){
 			$html .= '
 				<div class="tab-pane active" id="tab'.$phenomenon['id'].'">
+					
 					<div id="graphContainer'.$phenomenon['id'].'" style="width:95%; height:280px; margin: 8px auto;">
 				        <div id="graphContainer'.$phenomenon['id'].'chart" style="width: 100%; height: 230px;"></div>
         				<div id="graphContainer'.$phenomenon['id'].'control" style="width: 100%; height: 50px;"></div>							

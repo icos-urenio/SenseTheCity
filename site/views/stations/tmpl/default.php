@@ -10,9 +10,6 @@
 // no direct access
 defined('_JEXEC') or die;
 
-//JHtml::_('behavior.tooltip');
-//JHtml::_('behavior.formvalidation');
-
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 ?>
@@ -90,11 +87,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		
 		<div style="clear: both"></div>
 		
+		
 		<div id="graphTabs"></div>
-		<div id="waitingIndicatorGraphTabs"></div>	
+			
 
-		<div style="clear: both"></div>
-		<div id="graphToolbar"></div>
+		
+		
 		<div style="clear: both"></div>
 		
 		<div id="imc-main-panel-fifty">
