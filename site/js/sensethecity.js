@@ -105,8 +105,8 @@ function getStationMeasuresGraph(stationId, token){
 										  'κάτω όριο',
 										  'άνω όριο'
 										  );
+				break; //do not call all phenomenons together... get it only if user change tab
 			}
-			//basic_bars_thermiSensors("graphContainer3",data.graphdata[3]);
 
 			//trick to allow displaying graphs and also autoheight current tab afterwards
 			jImc('a[href=#tab4]').tab('show');

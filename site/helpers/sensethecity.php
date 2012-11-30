@@ -81,7 +81,10 @@ abstract class SensethecityHelper
 		foreach($phenomenons as $phenomenon){
 			$html .= '
 				<div class="tab-pane active" id="tab'.$phenomenon['id'].'">
-					<div id="graphContainer'.$phenomenon['id'].'" style="width:95%; height:280px; margin: 8px auto;"></div>
+					<div id="graphContainer'.$phenomenon['id'].'" style="width:95%; height:280px; margin: 8px auto;">
+				        <div id="graphContainer'.$phenomenon['id'].'chart" style="width: 100%; height: 230px;"></div>
+        				<div id="graphContainer'.$phenomenon['id'].'control" style="width: 100%; height: 50px;"></div>							
+					</div>
 				</div>';
 		}
 		
