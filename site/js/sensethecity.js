@@ -80,7 +80,7 @@ function getMaxMeasures(token){
 	});
 }
 
-function getStationMeasuresGraph(stationId, token){
+function getStationMeasuresGraphTabs(stationId, token){
 	var base = window.com_sensethecity.base;
 	jImc('#waitingIndicatorGraphTabs').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 
@@ -88,11 +88,48 @@ function getStationMeasuresGraph(stationId, token){
 		type : 'GET',
 		url : 'index.php',
 		datatype: 'json',
-		data: 'option=com_sensethecity&task=measures.getStationObservation&format=json&stationId=' + stationId + '&' + token + '=1',
+		data: 'option=com_sensethecity&task=measures.getStationPhenomenon&format=json&stationId=' + stationId + '&' + token + '=1',
 		success: function(data){
 			jImc('#waitingIndicatorGraphTabs').html('');
 			jImc('#graphTabs').html(data.html);
+
+			//trick to allow displaying graphs and also autoheight current tab afterwards
+			jImc('a[href=#tab'+data.phenom[1].id+']').tab('show');
+			jImc('a[href=#tab'+data.phenom[0].id+']').tab('show');
 			
+			//click on tab to load 1st graph
+			jImc('a[href=#tab'+data.phenom[0].id+']').click();
+			
+		}		
+	});
+}
+
+function getStaPhenObservationGraph(stationId, phenId, token){
+	var base = window.com_sensethecity.base;
+	jImc('#waitingIndicatorGraphTabs').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+
+	jImc.ajax({
+		type : 'GET',
+		url : 'index.php',
+		datatype: 'json',
+		data: 'option=com_sensethecity&task=measures.getStaPhenObservation&format=json&stationId=' + stationId + '&phenId=' + phenId + '&' + token + '=1',
+		success: function(data){
+			jImc('#waitingIndicatorGraphTabs').html('');
+			jImc('#graphTabs').html(data.html);
+
+			stcGraph("graphContainer"+data.phenom[0].id, 
+					  data.graphdata[data.phenom[0].id],
+					  data.phenom[0].description, 
+					  'Ημερομηνία', 
+					  data.phenom[0].unit, 
+					  data.phenom[0].name,
+					  data.phenom[0].lower,
+					  data.phenom[0].upper,
+					  'κάτω όριο',
+					  'άνω όριο'
+					  );
+			
+			/*
 			for(a=0;a<data.phenom.length;a++){
 				stcGraph("graphContainer"+data.phenom[a].id, 
 										  data.graphdata[data.phenom[a].id],
@@ -105,16 +142,13 @@ function getStationMeasuresGraph(stationId, token){
 										  'κάτω όριο',
 										  'άνω όριο'
 										  );
+				
 				break; //do not call all phenomenons together... get it only if user change tab
 			}
-
-			//trick to allow displaying graphs and also autoheight current tab afterwards
-			jImc('a[href=#tab4]').tab('show');
-			jImc('a[href=#tab3]').tab('show');
+			*/
+			
 		}		
 	});
 }
-
-
 
 

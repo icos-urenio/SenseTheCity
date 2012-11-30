@@ -294,6 +294,7 @@ class SensethecityViewStations extends JView
 			var GeoMarker;
 			var gmarkers = [];
 			
+			
 			function zoomIn() {
 				map.setCenter(marker.getPosition());
 				map.setZoom(map.getZoom()+1);
@@ -376,7 +377,8 @@ class SensethecityViewStations extends JView
 						position: point,
 						title: name,
 						icon: icon.icon,
-						shadow: icon.shadow
+						shadow: icon.shadow,
+						s: false
 					});
 					
 					marker.catid = catid;
@@ -510,12 +512,13 @@ class SensethecityViewStations extends JView
 			function markerclick(id) {
 				var index;
 				for (var i=0; i<gmarkers.length; i++) {				
+					gmarkers[i].s = false;
 					if(gmarkers[i].id == id){
 						index = i;
-						
+						gmarkers[i].s = true;	
 					}
+					
 				}			
-				//alert(i);
 				google.maps.event.trigger(gmarkers[index],'click');
 			}			
 
@@ -542,12 +545,33 @@ class SensethecityViewStations extends JView
 			}			
 			//marker.id
 			function showInfo(id){
+			
+				var index;
+				for (var i=0; i<gmarkers.length; i++) {				
+					gmarkers[i].s = false;
+					if(gmarkers[i].id == id){
+						index = i;
+						gmarkers[i].s = true;	
+					}
+					
+				}				
+			
 				getStationInfo(id, '".JUtility::getToken()."');
 				getLatestStationMeasures(id, '".JUtility::getToken()."');
-				getStationMeasuresGraph(id, '".JUtility::getToken()."');
+				getStationMeasuresGraphTabs(id, '".JUtility::getToken()."');
 				getMaxMeasures('".JUtility::getToken()."');
 			}
 
+			function getCurrentStationId(){
+				var sid;
+				for (var i=0; i<gmarkers.length; i++) {				
+					if(gmarkers[i].s == true){
+						sid = gmarkers[i].id;
+					}
+				}
+				return sid;
+			}
+			
 			// Onload handler to fire off the app.
 			google.maps.event.addDomListener(window, 'load', initialize);
 		";

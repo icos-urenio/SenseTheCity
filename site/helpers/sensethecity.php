@@ -73,7 +73,7 @@ abstract class SensethecityHelper
 
 	public function formatGraphTabs($phenomenons) 
 	{
-		//print_r($phenomenons);
+
 		$html = '
 		<div class="tabbable tabs-below" style="margin: 2em 0;"> 
 			<div class="tab-content">';
@@ -107,6 +107,19 @@ abstract class SensethecityHelper
 				</ul>
 			</div>
 		';
+		
+		//set also onclick for each tab
+		$html .= '<script type="text/javascript">';
+		foreach($phenomenons as $phenomenon){
+			$html .= "
+			jImc('a[href=#tab".$phenomenon['id']."]').click(function (e) {
+				e.preventDefault();
+				getStaPhenObservationGraph(getCurrentStationId(), ".$phenomenon['id'].", '".JUtility::getToken()."');
+			})
+			";
+		}
+		$html .= '</script>';		
+		
 		return $html;
 	}
 	

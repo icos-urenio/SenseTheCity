@@ -86,44 +86,59 @@ class SensethecityControllerMeasures extends JController
 		return;		
 	}*/
 	
-	public function getStationObservation()
+	public function getStaPhenObservation()
 	{
 		JRequest::checkToken('get') or jexit('Invalid Token');
 		
 		
 		//get request
-		$stationId = JRequest::getInt('stationId');		
+		$stationId = JRequest::getInt('stationId');
+		$phenId = JRequest::getInt('phenId');
 
 		$model = $this->getModel('measurements');
 
-		//get station offering (and pass it over to create the tabs dynamically)
 		$phenomenons = $model->getStationPhenomenon($stationId);		
 		
 		//get data items for every phenomenon
 		$items = array();
-		
 		$phenom = array();
-
-		$i=0;
-		foreach($phenomenons as $phen){
-			$items[$phen['id']] = $model->getObservation($stationId, $phen['id']);
-			$phenom[$i] = array('id' => $phen['id'], 
-								'name' => $phen['name'], 
-								'unit' => $phen['unit'], 
-								'description' => $phen['description'], 
-								'upper' => $phen['upper'], 
-								'lower' => $phen['lower']);
-			
-			$i++;
-		}
 		
-		$ret['html'] = SensethecityHelper::formatGraphTabs($phenomenons);
+		foreach($phenomenons as $phen){
+			if($phen['id'] == $phenId) {
+				$items[0] = $model->getObservation($stationId, $phen['id']);
+				$phenom[0] = array('id' => $phen['id'], 
+									'name' => $phen['name'], 
+									'unit' => $phen['unit'], 
+									'description' => $phen['description'], 
+									'upper' => $phen['upper'], 
+									'lower' => $phen['lower']);
+				break;			
+			}
+		}
+
 		$ret['graphdata'] = $items;
 		$ret['phenom'] = $phenom;
 
 		echo json_encode($ret);
 		return;
 	}
+	
+	
+	public function getStationPhenomenon()
+	{
+		JRequest::checkToken('get') or jexit('Invalid Token');
+
+		//get request
+		$stationId = JRequest::getInt('stationId');
+		$model = $this->getModel('measurements');
+		
+		$phenomenons = $model->getStationPhenomenon($stationId);
+		$ret['phenom'] = $phenomenons;
+		$ret['html'] = SensethecityHelper::formatGraphTabs($phenomenons);
+		echo json_encode($ret);
+		return;
+	}
+	
 	
 	
 
