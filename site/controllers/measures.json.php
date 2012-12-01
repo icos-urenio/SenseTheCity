@@ -103,6 +103,7 @@ class SensethecityControllerMeasures extends JController
 		$items = array();
 		$phenom = array();
 		
+		//array is always of size 1
 		foreach($phenomenons as $phen){
 			if($phen['id'] == $phenId) {
 				$items[0] = $model->getObservation($stationId, $phen['id']);

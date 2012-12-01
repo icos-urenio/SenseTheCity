@@ -136,6 +136,8 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}
 	
+	
+	
 	function getMaxMeasures()
 	{
 		/*

@@ -126,7 +126,8 @@ function getStaPhenObservationGraph(stationId, phenId, token){
 					  data.phenom[0].lower,
 					  data.phenom[0].upper,
 					  'κάτω όριο',
-					  'άνω όριο'
+					  'άνω όριο',
+					  token
 					  );
 			
 			/*

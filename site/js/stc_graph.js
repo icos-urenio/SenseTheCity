@@ -6,7 +6,7 @@
  * @author      Ioannis Tsampoulatidis for the Information Technologies Institute (CERTH/ITI)
  */
 
-function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label) {
+function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label, token) {
 	
 	function draw() {
 		//drawChart();
