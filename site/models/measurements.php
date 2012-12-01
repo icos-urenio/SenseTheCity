@@ -119,7 +119,7 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}
 	
-	function getStationPhenomenon($stationId)
+	function getStationPhenomenon($stationId, $phenId = null)
 	{
 		// Create a new query object.
 		$db		= $this->getDbo();
@@ -128,8 +128,10 @@ class SensethecityModelMeasurements extends JModel
 		$query->select('b.id AS id, b.name AS name, b.unit AS unit, b.description AS description, a.max_phen_value AS upper, a.min_phen_value AS lower');
 		$query->from('#__sensethecity_sta_phen AS a');
 		$query->where('a.station_id='.$stationId);
+		if($phenId != null)
+			$query->where('b.id='.$phenId);
 		$query->join('LEFT', '`#__sensethecity_phenomenon` AS b on b.id = a.phenomenon_id');
-	
+
 		$db->setQuery($query);
 		$result = $db->loadAssocList();
 
@@ -194,11 +196,13 @@ class SensethecityModelMeasurements extends JModel
 		$result = $db->loadRowList();
 	
 		//convert datetime so as to display graphically (ticks)
+		/*
 		$i = 0;
 		foreach($result as $res){
 			$result[$i][0] = (int)(strtotime( $res[0] )*1000 );
 			$i++;
 		}
+		*/
 		
 		
 		return $result;

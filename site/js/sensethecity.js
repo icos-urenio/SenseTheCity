@@ -105,6 +105,7 @@ function getStationMeasuresGraphTabs(stationId, token){
 }
 
 function getStaPhenObservationGraph(stationId, phenId, token){
+
 	var base = window.com_sensethecity.base;
 	jImc('#waitingIndicatorGraphTabs').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
 
@@ -116,14 +117,14 @@ function getStaPhenObservationGraph(stationId, phenId, token){
 		success: function(data){
 			jImc('#waitingIndicatorGraphTabs').html('');
 
-			stcGraph("graphContainer"+data.phenom[0].id, 
-					  data.graphdata[data.phenom[0].id],
-					  data.phenom[0].description, 
+			stcGraph("graphContainer"+data.phenom.id, 
+					  data.graphdata,
+					  data.phenom.description, 
 					  'Ημερομηνία', 
-					  data.phenom[0].unit, 
-					  data.phenom[0].name,
-					  data.phenom[0].lower,
-					  data.phenom[0].upper,
+					  data.phenom.unit, 
+					  data.phenom.name,
+					  data.phenom.lower,
+					  data.phenom.upper,
 					  'κάτω όριο',
 					  'άνω όριο',
 					  token

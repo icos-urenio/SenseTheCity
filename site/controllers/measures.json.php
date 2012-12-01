@@ -97,13 +97,17 @@ class SensethecityControllerMeasures extends JController
 
 		$model = $this->getModel('measurements');
 
-		$phenomenons = $model->getStationPhenomenon($stationId);		
-		
+		$phenom = $model->getStationPhenomenon($stationId, $phenId);		
+		$graphdata = $model->getObservation($stationId, $phenId);
+
 		//get data items for every phenomenon
-		$items = array();
-		$phenom = array();
+		//$items = array();
+		//$phenom = array();
+		
+		
 		
 		//array is always of size 1
+		/*
 		foreach($phenomenons as $phen){
 			if($phen['id'] == $phenId) {
 				$items[0] = $model->getObservation($stationId, $phen['id']);
@@ -116,10 +120,11 @@ class SensethecityControllerMeasures extends JController
 				break;			
 			}
 		}
-
-		$ret['graphdata'] = $items;
-		$ret['phenom'] = $phenom;
-
+		*/
+		
+		$ret['graphdata'] = $graphdata;
+		$ret['phenom'] = $phenom[0];
+		
 		echo json_encode($ret);
 		return;
 	}

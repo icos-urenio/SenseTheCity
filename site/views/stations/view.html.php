@@ -394,7 +394,8 @@ class SensethecityViewStations extends JView
 				resetBounds();
 
 				google.maps.event.addListenerOnce(map, 'idle', function(){
-					google.maps.event.trigger(gmarkers[gmarkers.length-1], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings) 
+					google.maps.event.trigger(gmarkers[gmarkers.length-1], 'click'); //FIRST POI IS SELECTED BY DEFAULT (TODO: set this on settings)
+					 
 				});
 				
 				jImc(\"#loading\").hide();

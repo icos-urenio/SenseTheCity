@@ -76,7 +76,7 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
          // Create random stock values, just like it works in reality.
          var open, close = 300;
          var low, high;
-         for (var day = 1; day < 400; ++day) {
+         for (var day = 1; day < 365; ++day) {
            var change = (Math.sin(day / 2.5 + Math.PI) + Math.sin(day / 3) - Math.cos(day * 0.7)) * 150;
            change = change >= 0 ? change + 10 : change - 10;
            open = close;
@@ -87,7 +87,7 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
            var date = new Date(2012, 0 ,day);
            data.addRow([date, Math.round(low), Math.round(open), Math.round(close), Math.round(high)]);
          }
-      
+         
          dashboard.bind(control, chart);
          dashboard.draw(data);
     }	
