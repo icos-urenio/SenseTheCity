@@ -115,7 +115,6 @@ function getStaPhenObservationGraph(stationId, phenId, token){
 		data: 'option=com_sensethecity&task=measures.getStaPhenObservation&format=json&stationId=' + stationId + '&phenId=' + phenId + '&' + token + '=1',
 		success: function(data){
 			jImc('#waitingIndicatorGraphTabs').html('');
-			jImc('#graphTabs').html(data.html);
 
 			stcGraph("graphContainer"+data.phenom[0].id, 
 					  data.graphdata[data.phenom[0].id],
