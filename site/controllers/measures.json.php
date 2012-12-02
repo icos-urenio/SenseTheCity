@@ -122,10 +122,47 @@ class SensethecityControllerMeasures extends JController
 		}
 		*/
 		
-		$ret['graphdata'] = $graphdata;
-		$ret['phenom'] = $phenom[0];
+
 		
-		echo json_encode($ret);
+		$dataTable = array(
+			'cols' => array(
+				// each column needs an entry here, like this:
+				array('label' => 'Ημερομηνία', 'type' => 'datetime'),
+				array('label' => 'Κάτω όριο', 'type' => 'number'),
+				array('label' => 'Χαμηλή μέτρηση ημέρας', 'type' => 'number'),
+				array('label' => 'Υψηλή μέτρηση ημέρας', 'type' => 'number'),
+				array('label' => 'Άνω όριο', 'type' => 'number')
+			)
+		);	
+
+		
+		foreach($graphdata as $data) {
+			
+			$date = DateTime::createFromFormat("Y-n-d G:i:s", $data[0]);
+			$year =  $date->format("Y");
+			$month =  $date->format("n");
+			$day =  $date->format("d");
+			$hour =  $date->format("G");
+			$minute =  intval($date->format("i"));
+			$second =  $date->format("s");
+									
+			
+			$dataTable['rows'][] = array(
+				'c' => array (
+					array('v' => "Date({$year},{$month},{$day},{$hour},{$minute},{$second})", 'f' => "{$data[0]}"),
+					array('v' => $phenom[0]['lower']+0),
+					array('v' => $data[1]+0),
+					array('v' => $data[1]+100),
+					array('v' => $phenom[0]['upper']+0)
+				)
+			);
+		}		
+		
+		//$ret['graphdata'] = $dataTable;	//raw db records from table observation for specified station and phenomenon
+		//$ret['phenom'] = $phenom[0];	//phenom is one record containing phenomenon names and min,max values
+		
+		
+		echo json_encode($dataTable);
 		return;
 	}
 	

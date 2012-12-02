@@ -6,7 +6,12 @@
  * @author      Ioannis Tsampoulatidis for the Information Technologies Institute (CERTH/ITI)
  */
 
-function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label, token) {
+//function stcCandleStickGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label, token) {
+function stcCandleStickGraph(element, input, phenId, token) {
+
+	mainTitle = 'test';
+	stationId = 3;
+
 	
 	function draw() {
 		drawVisualization();
@@ -28,7 +33,7 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
                'chartType': 'LineChart',
                'chartOptions': {
                  'chartArea': {'width': '90%'},
-                 'hAxis': {'baselineColor': 'none'}
+                 'hAxis': {'baselineColor': 'red'}
                },
                // Display a single series that shows the closing value of the stock.
                // Thus, this view has two columns: the date (axis) and the stock value (line series).
@@ -40,21 +45,22 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
              }
            },
            // Initial range: 2012-02-09 to 2012-03-20.
-           'state': {'range': {'start': new Date(2012, 9, 1), 'end': new Date(2012, 10, 1)}}
+           'state': {'range': {'start': new Date(2012, 11, 15), 'end': new Date(2012, 11, 16)}}
          });
       
          var chart = new google.visualization.ChartWrapper({
            'chartType': 'CandlestickChart',
            'containerId': element+'chart',
            'options': {
-        	 'title':mainTitle,
+        	 'title': mainTitle,
              // Use the same chart area width as the control for axis alignment.
              'chartArea': {'height': '80%', 'width': '90%'},
              'hAxis': {'slantedText': false},
-             'vAxis': {'viewWindow': {'min': 0, 'max': 2000}},
+             'vAxis': {'viewWindow': {'min': -30, 'max': 300}},
              'legend': {'position': 'none'}
            },
            // Convert the first column from 'date' to 'string'.
+           
            'view': {
              'columns': [
                {
@@ -64,8 +70,10 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
                  'type': 'string'
                }, 1, 2, 3, 4]
            }
+           
          });
       
+         /*
          var data = new google.visualization.DataTable();
          data.addColumn('date', 'Date');
          data.addColumn('number', 'Κάτω όριο');
@@ -87,6 +95,9 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
            var date = new Date(2012, 0 ,day);
            data.addRow([date, Math.round(low), Math.round(open), Math.round(close), Math.round(high)]);
          }
+         */
+         var data = new google.visualization.DataTable(input);
+         
          
          dashboard.bind(control, chart);
          dashboard.draw(data);
@@ -95,8 +106,8 @@ function stcGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper
 	
     function drawToolbar() {
         var components = [
-            {type: 'html', datasource: 'https://spreadsheets.google.com/tq?key=pCQbetd-CptHnwJEfo8tALA'},
-            {type: 'csv', datasource:  'https://spreadsheets.google.com/tq?key=pCQbetd-CptHnwJEfo8tALA'},
+            {type: 'html', datasource: 'index.php?option=com_sensethecity&task=measures.getStaPhenObservation&format=json&stationId=' + stationId + '&phenId=' + phenId + '&' + token + '=1;out:html'},
+            {type: 'csv', datasource:  'index.php?option=com_sensethecity&task=measures.getStaPhenObservation&format=json&stationId=' + stationId + '&phenId=' + phenId + '&' + token + '=1;out:html'}
         ];
 
         var container = document.getElementById('graphToolbar');

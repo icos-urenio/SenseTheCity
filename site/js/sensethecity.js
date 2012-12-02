@@ -117,7 +117,11 @@ function getStaPhenObservationGraph(stationId, phenId, token){
 		success: function(data){
 			jImc('#waitingIndicatorGraphTabs').html('');
 
-			stcGraph("graphContainer"+data.phenom.id, 
+			stcCandleStickGraph("graphContainer"+phenId, data, phenId, token);
+			
+			
+			/*
+			stcCandleStickGraph("graphContainer"+data.phenom.id, 
 					  data.graphdata,
 					  data.phenom.description, 
 					  'Ημερομηνία', 
@@ -130,7 +134,7 @@ function getStaPhenObservationGraph(stationId, phenId, token){
 					  token
 					  );
 			
-			/*
+			
 			for(a=0;a<data.phenom.length;a++){
 				stcGraph("graphContainer"+data.phenom[a].id, 
 										  data.graphdata[data.phenom[a].id],

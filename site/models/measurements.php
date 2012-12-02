@@ -181,7 +181,7 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}	
 	
-	function getObservation($stationId, $phenomenonId = 1)
+	function getObservation($stationId, $phenomenonId)
 	{
 		// Create a new query object.
 		$db		= $this->getDbo();
@@ -191,6 +191,7 @@ class SensethecityModelMeasurements extends JModel
 		$query->from('`#__sensethecity_observation` AS a');
 		$query->where('a.station_id='.$stationId);
 		$query->where('a.phenomenon_id='.$phenomenonId);
+		$query->order('a.measurement_datetime ASC');
 		
 		$db->setQuery($query);
 		$result = $db->loadRowList();
