@@ -193,6 +193,7 @@ class SensethecityModelMeasurements extends JModel
 		$query->where('a.phenomenon_id='.$phenomenonId);
 		$query->order('a.measurement_datetime ASC');
 		
+		$query .= " limit 200";
 		$db->setQuery($query);
 		$result = $db->loadRowList();
 	

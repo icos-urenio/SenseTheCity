@@ -45,7 +45,7 @@ function stcCandleStickGraph(element, input, phenId, token) {
              }
            },
            // Initial range: 2012-02-09 to 2012-03-20.
-           'state': {'range': {'start': new Date(2012, 11, 15), 'end': new Date(2012, 11, 16)}}
+           'state': {'range': {'start': new Date(2004, 11, 15), 'end': new Date(2012, 11, 19)}}
          });
       
          var chart = new google.visualization.ChartWrapper({
@@ -81,7 +81,8 @@ function stcCandleStickGraph(element, input, phenId, token) {
          data.addColumn('number', 'Υψηλό ημέρας');
          data.addColumn('number', 'Άνω όριο');
       
-         // Create random stock values, just like it works in reality.
+         // Create random stock values, just like it works in reality
+      .
          var open, close = 300;
          var low, high;
          for (var day = 1; day < 365; ++day) {
