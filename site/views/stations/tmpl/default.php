@@ -25,6 +25,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	</h1>
 	<?php endif; ?>	
 
+	<?php /*
 	<div id="imc-header">
 		<div id="imc-menu" class="issueslist">
 			<!-- Filters -->
@@ -71,6 +72,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			</form>	
 		</div>
 	</div>
+	*/?>
 	
 	<div id="loading"><img src="<?php echo JURI::base().'components/com_sensethecity/images/ajax-loader.gif';?>" /></div>
 	
