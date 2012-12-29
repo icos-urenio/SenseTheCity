@@ -21,10 +21,6 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, low
 	var startDate = new Date(year, month, day);
 	startDate.setDate(startDate.getDate() - 2);
 	var endDate = new Date(year, month, day);
-		
-		var date = new Date();
-	date.setDate(date.getDate() + 1);
-	
 	
 	function draw() {
 		drawVisualization();
@@ -57,7 +53,7 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, low
                'minRangeSize': 86400000 / 8
              }
            },
-           // Initial range: 2012-02-09 to 2012-03-20.
+           // Initial range: 2 days
            'state': {'range': {'start': startDate, 'end': endDate }}
          });
       
@@ -66,11 +62,12 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, low
            'containerId': element+'chart',
            'options': {
         	 'title': mainTitle,
-             // Use the same chart area width as the control for axis alignment.
              'hAxis': {'slantedText': false},
+             'vAxis': {'slantedText': false, 'title':unit},
+
              //'vAxis': {'viewWindow': {'min': lower, 'max': upper}},
              'legend': {'position':'right'},
-             'chartArea':{'left':20,'top':5,'width':"85%",'height':"80%"}             
+             'chartArea':{'left':20,'top':20, 'width':"85%",'height':"70%"}             
            },
            // Convert the first column from 'date' to 'string'.
            
@@ -85,10 +82,8 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, low
            }
            
          });
-      
 
          var data = new google.visualization.DataTable(input);
-         
          
          dashboard.bind(control, chart);
          dashboard.draw(data);

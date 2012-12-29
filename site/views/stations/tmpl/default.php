@@ -78,43 +78,47 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		
 		<?php /*<a href="javascript:void(0);" onclick="alert(GeoMarker.getAccuracy());">test: get accuracy in meters</a>*/?>
 		
-		<div id="stationInfo"></div>
-		
-		<div id="wrapper-map">
-			<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>
-			<?php if($this->credits == 1) : ?>
-				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_SENSETHECITY_INFOALERT');?></div>
-			<?php endif; ?>
+		<div class="row-fluid">
+			<div class="span12">
+				<div id="stationInfo"></div>
+			</div>
 		</div>
 		
-		<div style="clear: both"></div>
+		<div class="row-fluid">
+			<div class="span12">
+				<div id="mapCanvas"><?php echo JText::_('COM_SENSETHECITY');?></div>
+				<?php if($this->credits == 1) : ?>
+					<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_SENSETHECITY_INFOALERT');?></div>
+				<?php endif; ?>
+			</div>
+		</div>
 		
+		<div class="row-fluid">
+			<div class="span12">
+				<div id="graphTabs"></div>
+			</div>
+		</div>
 		
-		<div id="graphTabs"></div>
-			
-
-		
-		
-		<div style="clear: both"></div>
-		
-		<div id="imc-main-panel-fifty">
-			<?php if(empty($this->items)) : ?>
-				<div class="alert alert-error width75">
-				<?php echo JText::_('COM_SENSETHECITY_FILTER_REVISION'); ?>
+		<div class="row-fluid">
+			<div class="span6">
+				<?php if(empty($this->items)) : ?>
+					<div class="alert alert-error width75">
+					<?php echo JText::_('COM_SENSETHECITY_FILTER_REVISION'); ?>
+					</div>
+				<?php endif; ?>
+				<div id="wrapper-info">	
+					<div id="waitingIndicator"></div>
+					<div id="stationLatestMeasures">&nbsp;</div>
+				</div>				
+			</div>
+			<div class="span6">
+				<div class="stcStatistics">
+					<div id="waitingIndicatorStatistics"></div>
+					<div id="measureStatistics"></div>
 				</div>
-			<?php endif; ?>
-			<div id="wrapper-info">	
-				<div id="waitingIndicator"></div>
-				<div id="stationLatestMeasures">&nbsp;</div>
 			</div>
 		</div>
 		
-		<div id="imc-details-sidebar-fifty">
-			<div class="stcStatistics">
-				<div id="waitingIndicatorStatistics"></div>
-				<div id="measureStatistics"></div>
-			</div>
-		</div>	
 	</div>
 </div>
 

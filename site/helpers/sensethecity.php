@@ -74,10 +74,21 @@ abstract class SensethecityHelper
 	public function formatGraphTabs($phenomenons) 
 	{
 
+	
+		
 		$html = '
-		<div id="waitingIndicatorGraphTabs"></div>
-		<div id="graphToolbar" style="float:right;"></div>
-		<div class="tabbable tabs-below" style="margin: 2em 0;"> 
+		<div class="row-fluid">
+			<div class="span12">
+				
+			<div id="waitingIndicatorGraphTabs"></div>
+			
+			<div class="row-fluid"	
+				<div class="span12">
+					<div id="graphToolbar" class="pull-right"></div>
+				</div>
+			</div>	
+				
+			<div class="tabbable tabs-below" style="margin: 2em 0;"> 
 			<div class="tab-content">';
 
 		foreach($phenomenons as $phenomenon){
@@ -110,6 +121,12 @@ abstract class SensethecityHelper
 				</ul>
 			</div>
 		';
+		
+		$html .= '
+			</div>
+		</div>					
+		';
+		
 		
 		//set also onclick for each tab
 		$html .= '<script type="text/javascript">';
