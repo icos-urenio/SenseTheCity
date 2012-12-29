@@ -158,11 +158,12 @@ class SensethecityControllerMeasures extends JController
 			);
 		}		
 		
-		//$ret['graphdata'] = $dataTable;	//raw db records from table observation for specified station and phenomenon
-		//$ret['phenom'] = $phenom[0];	//phenom is one record containing phenomenon names and min,max values
+		$ret['graphdata'] = $dataTable;	//raw db records from table observation for specified station and phenomenon
+		$ret['phenom'] = $phenom[0];	//phenom is one record containing phenomenon names and min,max values
 		
 		
-		echo json_encode($dataTable);
+		//echo json_encode($dataTable);
+		echo json_encode($ret);
 		return;
 	}
 	

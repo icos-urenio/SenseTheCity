@@ -7,12 +7,10 @@
  */
 
 //function stcCandleStickGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label, token) {
-function stcCandleStickGraph(element, input, phenId, token) {
+function stcCandleStickGraph(element, input, phenId, stationId, title, unit, token) {
 
-	mainTitle = 'test';
-	stationId = 3;
-
-	
+	mainTitle = title + " (" + unit + ")";
+		
 	function draw() {
 		drawVisualization();
 		drawToolbar();
@@ -49,7 +47,7 @@ function stcCandleStickGraph(element, input, phenId, token) {
          });
       
          var chart = new google.visualization.ChartWrapper({
-           'chartType': 'CandlestickChart',
+           'chartType': 'LineChart',
            'containerId': element+'chart',
            'options': {
         	 'title': mainTitle,
@@ -114,12 +112,8 @@ function stcCandleStickGraph(element, input, phenId, token) {
         var container = document.getElementById('graphToolbar');
         google.visualization.drawToolbar(container, components);
     };
-	
-	
-	
+    
 	google.setOnLoadCallback(draw());
-
-
 	
 }
 

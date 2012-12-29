@@ -30,7 +30,7 @@ abstract class SensethecityHelper
 		$html .= '<h2>' . $data['title'] . '</h2>';
 		$html .= '<span class="extra-info"><i title="'.JText::_('COM_SENSETHECITY_EXTRA_INFO').'" class="icon-info-sign"></i> ' .$data['description'] . '</span>';
 		$html .= '<span class="extra-info"><i title="'.JText::_('COM_SENSETHECITY_GEOLOCATION').'"class="icon-map-marker"></i> LAT: ' . $data['latitude'].' , LON: '.$data['longitude'] . '</span>';
-		$html .= '<span class="extra-info"><i title="'.JText::_('COM_SENSETHECITY_MEASUREMENTS').'"class="icon-th-list"></i> ' .$phenList . '</span>';
+		//$html .= '<span class="extra-info"><i title="'.JText::_('COM_SENSETHECITY_MEASUREMENTS').'"class="icon-th-list"></i> ' .$phenList . '</span>';
 		$html .= '</div>';
 		
 		return $html;

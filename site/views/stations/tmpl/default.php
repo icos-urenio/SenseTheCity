@@ -75,7 +75,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	<div id="loading"><img src="<?php echo JURI::base().'components/com_sensethecity/images/ajax-loader.gif';?>" /></div>
 	
 	<div id="imc-content">
-		<a href="javascript:void(0);" onclick="alert(GeoMarker.getAccuracy());">test: get accuracy in meters</a>
+		
+		<?php /*<a href="javascript:void(0);" onclick="alert(GeoMarker.getAccuracy());">test: get accuracy in meters</a>*/?>
+		
 		<div id="stationInfo"></div>
 		
 		<div id="wrapper-map">
