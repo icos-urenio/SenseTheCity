@@ -129,6 +129,10 @@ class SensethecityModelStaphen extends JModelAdmin
 			}
 
 		}
+		
+		$table->b = ($table->y2*$table->x1-$table->x2*$table->y1)/($table->x1-$table->x2);
+		$table->a = ($table->y1-$table->b)/$table->x1;
+		
 
 	}
 }
