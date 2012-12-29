@@ -7,10 +7,25 @@
  */
 
 //function stcCandleStickGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label, token) {
-function stcCandleStickGraph(element, input, phenId, stationId, title, unit, token) {
+function stcCandleStickGraph(element, input, phenId, stationId, title, unit, lower, upper, token) {
 
 	mainTitle = title + " (" + unit + ")";
 		
+	var i =input.rows.length - 1;
+	var d = input.rows[i].c[0].f;
+	var n = d.split(" "); 
+	var res = n[0].split("-");
+	var year = res[0];
+	var month = res[1];
+	var day = res[2];
+	var startDate = new Date(year, month, day);
+	startDate.setDate(startDate.getDate() - 2);
+	var endDate = new Date(year, month, day);
+		
+		var date = new Date();
+	date.setDate(date.getDate() + 1);
+	
+	
 	function draw() {
 		drawVisualization();
 		drawToolbar();
@@ -30,7 +45,7 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, tok
              'ui': {
                'chartType': 'LineChart',
                'chartOptions': {
-                 'chartArea': {'width': '90%'},
+                 'chartArea': {'width': '100%'},
                  'hAxis': {'baselineColor': 'red'}
                },
                // Display a single series that shows the closing value of the stock.
@@ -39,11 +54,11 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, tok
                  'columns': [0, 3]
                },
                // 1 day in milliseconds = 24 * 60 * 60 * 1000 = 86,400,000
-               'minRangeSize': 86400000
+               'minRangeSize': 86400000 / 8
              }
            },
            // Initial range: 2012-02-09 to 2012-03-20.
-           'state': {'range': {'start': new Date(2004, 11, 15), 'end': new Date(2012, 11, 19)}}
+           'state': {'range': {'start': startDate, 'end': endDate }}
          });
       
          var chart = new google.visualization.ChartWrapper({
@@ -52,10 +67,10 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, tok
            'options': {
         	 'title': mainTitle,
              // Use the same chart area width as the control for axis alignment.
-             'chartArea': {'height': '80%', 'width': '90%'},
              'hAxis': {'slantedText': false},
-             'vAxis': {'viewWindow': {'min': -30, 'max': 300}},
-             'legend': {'position': 'none'}
+             //'vAxis': {'viewWindow': {'min': lower, 'max': upper}},
+             'legend': {'position':'right'},
+             'chartArea':{'left':20,'top':5,'width':"85%",'height':"80%"}             
            },
            // Convert the first column from 'date' to 'string'.
            
@@ -66,35 +81,12 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, tok
                    return dataTable.getFormattedValue(rowIndex, 0);
                  },
                  'type': 'string'
-               }, 1, 2, 3, 4]
+               }, 1, 2, 3]
            }
            
          });
       
-         /*
-         var data = new google.visualization.DataTable();
-         data.addColumn('date', 'Date');
-         data.addColumn('number', 'Κάτω όριο');
-         data.addColumn('number', 'Χαμηλό ημέρας');
-         data.addColumn('number', 'Υψηλό ημέρας');
-         data.addColumn('number', 'Άνω όριο');
-      
-         // Create random stock values, just like it works in reality
-      .
-         var open, close = 300;
-         var low, high;
-         for (var day = 1; day < 365; ++day) {
-           var change = (Math.sin(day / 2.5 + Math.PI) + Math.sin(day / 3) - Math.cos(day * 0.7)) * 150;
-           change = change >= 0 ? change + 10 : change - 10;
-           open = close;
-           close = Math.max(50, open + change);
-           low = Math.min(open, close) - (Math.cos(day * 1.7) + 1) * 15;
-           low = Math.max(0, low);
-           high = Math.max(open, close) + (Math.cos(day * 1.3) + 1) * 15;
-           var date = new Date(2012, 0 ,day);
-           data.addRow([date, Math.round(low), Math.round(open), Math.round(close), Math.round(high)]);
-         }
-         */
+
          var data = new google.visualization.DataTable(input);
          
          

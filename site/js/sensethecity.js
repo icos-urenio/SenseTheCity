@@ -123,6 +123,8 @@ function getStaPhenObservationGraph(stationId, phenId, token){
 								stationId,
 								data.phenom.description,
 								data.phenom.unit,
+								data.phenom.lower,
+								data.phenom.upper,
 								token );
 			
 			

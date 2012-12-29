@@ -187,11 +187,13 @@ class SensethecityModelMeasurements extends JModel
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 		
-		$query->select('a.measurement_datetime, a.corrected_value');
+		//$query->select('a.measurement_datetime, a.corrected_value');
+		$query->select('a.timestamp, a.corrected_value');
 		$query->from('`#__sensethecity_observation` AS a');
 		$query->where('a.station_id='.$stationId);
 		$query->where('a.phenomenon_id='.$phenomenonId);
-		$query->order('a.measurement_datetime ASC');
+		//$query->order('a.measurement_datetime ASC');
+		$query->order('a.timestamp ASC');
 		
 		$query .= " limit 200";
 		$db->setQuery($query);
