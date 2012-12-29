@@ -128,11 +128,11 @@ class SensethecityControllerMeasures extends JController
 			'cols' => array(
 				// each column needs an entry here, like this:
 				array('label' => 'Ημερομηνία', 'type' => 'datetime'),
-				array('label' => 'Κάτω όριο', 'type' => 'number'),
+				array('label' => 'Άνω όριο', 'type' => 'number'),
 				//array('label' => 'Χαμηλή μέτρηση ημέρας', 'type' => 'number'),
 				//array('label' => 'Υψηλή μέτρηση ημέρας', 'type' => 'number'),
 				array('label' => 'Μέτρηση', 'type' => 'number'),
-				array('label' => 'Άνω όριο', 'type' => 'number')
+				array('label' => 'Κάτω όριο', 'type' => 'number')
 			)
 		);	
 
@@ -151,10 +151,10 @@ class SensethecityControllerMeasures extends JController
 			$dataTable['rows'][] = array(
 				'c' => array (
 					array('v' => "Date({$year},{$month},{$day},{$hour},{$minute},{$second})", 'f' => "{$data[0]}"),
-					array('v' => $phenom[0]['lower']),
+					array('v' => $phenom[0]['upper']),
 					//array('v' => $data[1]),
 					array('v' => $data[1]),
-					array('v' => $phenom[0]['upper'])
+					array('v' => $phenom[0]['lower'])
 				)
 			);
 		}		
