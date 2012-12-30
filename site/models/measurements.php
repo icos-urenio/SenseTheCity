@@ -138,6 +138,25 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}
 	
+
+	function getStaPhenAB($stationId, $phenId)
+	{
+		// Create a new query object.
+		$db		= $this->getDbo();
+		$query	= $db->getQuery(true);
+	
+		$query->select('a.a, a.b');
+		$query->from('#__sensethecity_sta_phen AS a');
+		$query->where('a.station_id='.$stationId);
+		$query->where('a.phenomenon_id='.$phenId);
+	
+		$db->setQuery($query);
+		$result = $db->loadAssocList();
+	
+		return $result;
+	}
+	
+	
 	
 	
 	function getMaxMeasures()
@@ -195,7 +214,9 @@ class SensethecityModelMeasurements extends JModel
 		//$query->order('a.measurement_datetime ASC');
 		$query->order('a.timestamp ASC');
 		
+		//TODO: Debug only.. remove limit
 		$query .= " limit 200";
+		
 		$db->setQuery($query);
 		$result = $db->loadRowList();
 	

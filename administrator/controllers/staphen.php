@@ -25,6 +25,36 @@ class SensethecityControllerStaphen extends JControllerForm
     	parent::__construct();
     }
     
+    public function edit()
+    {
+        if (parent::edit()) {
+    		$app = JFactory::getApplication();
+    		$context = "$this->option.edit.$this->context";
+    			
+    		$app->setUserState($context . '.station_id', JRequest::getCmd('station_id'));
+    		$app->setUserState($context . '.phenomenon_id', JRequest::getCmd('phenomenon_id'));
+    			
+    		return true;
+    	}
+    	
+    }
+    
+    public function calibrateValues()
+    {
+    	$app = JFactory::getApplication();
+    	$context = "$this->option.edit.$this->context";
+    	 
+    	
+		$station_id = $app->getUserState($context . '.station_id');
+		$phen_id = $app->getUserState($context . '.phenomenon_id');
+		$date = JRequest::getCmd('date');
+    	echo "calibrate batch <br />";
+    	echo "station =  ". $station_id ."<br />";
+    	echo "phen =  ". $phen_id ."<br />";
+    	echo "date =  ". $date ."<br />";
+    	
+    	die;
+    }
     
     public function add()
     {

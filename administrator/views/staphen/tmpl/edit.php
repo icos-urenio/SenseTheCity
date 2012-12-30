@@ -20,6 +20,9 @@ JHtml::_('behavior.formvalidation');
 
 
 $station_id = JRequest::getInt('station_id');
+$phen_id = JRequest::getInt('phenomenon_id');
+
+echo $phen_id;
 ?>
 
 <?php /*
@@ -43,13 +46,38 @@ $station_id = JRequest::getInt('station_id');
 	<input type="hidden" name="station_id" value="<?php echo $station_id; ?>" />
 	<input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
 	<?php echo JHtml::_('form.token'); ?>
-	
-	<fieldset class="adminform">
-		<legend><?php echo JText::_( 'COM_SENSETHECITY_STA_PHEN_DETAILS' ); ?></legend>
-		<ul class="adminformlist">
-			<?	foreach ($this->form->getFieldset() as $field) { ?>
-			<li><?php echo $field->label; ?><?php echo $field->input; ?></li>
-			<?	} ?>
-		</ul>
-	</fieldset>
+	<div class="width-60 fltlft">
+		<fieldset class="adminform">
+			<legend><?php echo JText::_( 'COM_SENSETHECITY_STA_PHEN_DETAILS' ); ?></legend>
+			<ul class="adminformlist">
+				<?	foreach ($this->form->getFieldset() as $field) { ?>
+				<li><?php echo $field->label; ?><?php echo $field->input; ?></li>
+				<?	} ?>
+			</ul>
+		</fieldset>
+	</div>
 </form>
+
+	<div class="width-40 fltrt">
+		<fieldset class="adminform">
+			<legend><?php echo JText::_( 'COM_SENSETHECITY_UPDATE_CALIBRATION' ); ?></legend>
+				<p>batch here</p>
+				<form action="index.php?option=com_sensethecity&task=staphen.calibrateValues" method="post" name="calibrate" id="calibrate-form">
+					<input type="hidden" name="station_id" value="<?php echo $station_id; ?>" />
+					<input type="hidden" name="phen_id" value="<?php echo $this->item->id; ?>" />
+					Update Values up to Date:
+					<input type="text" name="date" />
+					<input type="submit" />
+					
+					<?php echo JHtml::_('form.token'); ?>
+				</form>
+				
+
+		</fieldset>
+	
+	</div>	
+	
+	
+	
+	
+
