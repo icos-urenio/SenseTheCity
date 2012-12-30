@@ -22,7 +22,6 @@ JHtml::_('behavior.formvalidation');
 $station_id = JRequest::getInt('station_id');
 $phen_id = JRequest::getInt('phenomenon_id');
 
-echo $phen_id;
 ?>
 
 <?php /*
@@ -61,13 +60,23 @@ echo $phen_id;
 	<div class="width-40 fltrt">
 		<fieldset class="adminform">
 			<legend><?php echo JText::_( 'COM_SENSETHECITY_UPDATE_CALIBRATION' ); ?></legend>
-				<p>batch here</p>
 				<form action="index.php?option=com_sensethecity&task=staphen.calibrateValues" method="post" name="calibrate" id="calibrate-form">
+					<!-- 
 					<input type="hidden" name="station_id" value="<?php echo $station_id; ?>" />
 					<input type="hidden" name="phen_id" value="<?php echo $this->item->id; ?>" />
-					Update Values up to Date:
-					<input type="text" name="date" />
-					<input type="submit" />
+					 -->
+					 
+					<input type="hidden" name="id" value="<?php echo JRequest::getInt('id'); ?>" /> 
+					<input type="hidden" name="a" value="<?php echo $this->item->a; ?>" /> 
+					<input type="hidden" name="b" value="<?php echo $this->item->b; ?>" /> 
+					 
+					<label for="datefrom">Update Values FROM Date:</label>
+					<input type="text" id="datefrom" name="datefrom" class="inputbox" />
+					<label for="dateto">Update Values TO Date:</label>
+					<input type="text" id="dateto" name="dateto" class="inputbox" value="<?php echo date("Y-m-d H:i:s");?>" />
+					<div style="clear:both;"></div>
+					<p><input type="submit" style="cursor:pointer;" value="Batch change all values within range" /></p>
+					
 					
 					<?php echo JHtml::_('form.token'); ?>
 				</form>

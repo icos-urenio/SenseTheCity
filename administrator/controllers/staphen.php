@@ -41,19 +41,48 @@ class SensethecityControllerStaphen extends JControllerForm
     
     public function calibrateValues()
     {
+    	JRequest::checkToken() or jexit('Invalid Token');
+    	
     	$app = JFactory::getApplication();
     	$context = "$this->option.edit.$this->context";
-    	 
     	
 		$station_id = $app->getUserState($context . '.station_id');
 		$phen_id = $app->getUserState($context . '.phenomenon_id');
-		$date = JRequest::getCmd('date');
-    	echo "calibrate batch <br />";
+		$dateFrom = JRequest::getCmd('datefrom');
+		$dateTo = JRequest::getCmd('dateto');
+		$id = JRequest::getCmd('id');	//needed for proper redirection
+		$a = JRequest::getCmd('a');	//needed for proper redirection
+		$b = JRequest::getCmd('b');	//needed for proper redirection
+    	
+		
+		echo "calibrate batch <br />";
     	echo "station =  ". $station_id ."<br />";
     	echo "phen =  ". $phen_id ."<br />";
-    	echo "date =  ". $date ."<br />";
+    	echo "dateFrom =  ". $dateFrom ."<br />";
+    	echo "dateTo =  ". $dateTo ."<br />";
+    	echo "id =  ". $id ."<br />";
+    	echo "a =  ". $a ."<br />";
+    	echo "b =  ". $b ."<br />";
     	
     	die;
+		//call the model
+    	//Φαινόμενο = (Voltage - b)/a
+    	
+    	//set an appropriate msg
+    	JFactory::getApplication()->enqueueMessage('Values updated');
+    	
+    	//redirect back to edit page
+    	$this->setRedirect(
+    			JRoute::_(
+    					'index.php?option=' . $this->option 
+    					. '&view=staphen' 
+    					. '&layout=edit'
+    					. '&id=' . $id 
+    					, false
+    			)
+    	);
+    	
+    	return true;
     }
     
     public function add()
