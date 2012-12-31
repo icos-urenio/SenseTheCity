@@ -50,21 +50,9 @@ class SensethecityControllerStaphen extends JControllerForm
 		$phen_id = $app->getUserState($context . '.phenomenon_id');
 		$dateFrom = JRequest::getVar('datefrom');
 		$dateTo = JRequest::getVar('dateto');
-		$id = JRequest::getInt('id');	//needed for proper redirection
-		$a = JRequest::getCmd('a');	//needed for proper redirection
-		$b = JRequest::getCmd('b');	//needed for proper redirection
-    	
-		
-		/*
-		echo "calibrate batch <br />";
-    	echo "station =  ". $station_id ."<br />";
-    	echo "phen =  ". $phen_id ."<br />";
-    	echo "dateFrom =  ". $dateFrom ."<br />";
-    	echo "dateTo =  ". $dateTo ."<br />";
-    	echo "id =  ". $id ."<br />";
-    	echo "a =  ". $a ."<br />";
-    	echo "b =  ". $b ."<br />";
-    	*/
+		$id = JRequest::getInt('id');	//needed only for proper redirection
+		$a = JRequest::getCmd('a');	
+		$b = JRequest::getCmd('b');	
 
 		//call the model
     	$model = $this->getModel('staphen');
