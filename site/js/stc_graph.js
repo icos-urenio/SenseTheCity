@@ -11,6 +11,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
 
 	mainTitle = title + " (" + unit + ")";
 		
+	/* USE THIS FOR ALL MEASUREMENTS
 	var i =input.rows.length - 1;
 	var d = input.rows[i].c[0].f;
 	var n = d.split(" "); 
@@ -21,6 +22,20 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
 	var startDate = new Date(year, month, day);
 	startDate.setDate(startDate.getDate() - 2);
 	var endDate = new Date(year, month, day);
+	*/
+	
+	/* USE THIS FOR DAILY AVERAGE  */
+	var i =input.rows.length - 1;
+	var d = input.rows[i].c[0].f;
+	var res = d.split("-"); 
+	var year = res[0];
+	var month = res[1];
+	var day = res[2];
+	var startDate = new Date(year, month, day);
+	startDate.setDate(startDate.getDate() - 2);
+	var endDate = new Date(year, month, day);
+
+	
 	
 	function draw() {
 		drawVisualization();
@@ -30,7 +45,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
 	function drawVisualization() {
         var dashboard = new google.visualization.Dashboard(
              document.getElementById(element));
-      
+        
          var control = new google.visualization.ControlWrapper({
            'controlType': 'ChartRangeFilter',
            'containerId': element+'control',
@@ -42,15 +57,16 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
                'chartType': 'LineChart',
                'chartOptions': {
                  'chartArea': {'width': '100%'},
-                 'hAxis': {'baselineColor': 'red'}
+                 'hAxis': {'baselineColor': '#ffffff'}
+
                },
-               // Display a single series that shows the closing value of the stock.
-               // Thus, this view has two columns: the date (axis) and the stock value (line series).
+               // Display a single series that shows the timeline.
+               // Thus, this view has two columns: the date (axis) and the daily average (line series).
                'chartView': {
-                 'columns': [0, 3]
+                 'columns': [0, 2]
                },
                // 1 day in milliseconds = 24 * 60 * 60 * 1000 = 86,400,000
-               'minRangeSize': 86400000 / 8
+               'minRangeSize': 86400000 * 2
              }
            },
            // Initial range: 2 days
@@ -66,6 +82,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
              //'vAxis': {'slantedText': false, 'title':unit},
 
              //'vAxis': {'viewWindow': {'min': lower, 'max': upper}},
+             'colors': ['#DC3912','#3366CC','#9F4E3B'],
              'legend': {'position':'right'},
              'chartArea':{'left':40,'top':20, 'width':"85%",'height':"70%"}             
            },
@@ -87,6 +104,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
          
          dashboard.bind(control, chart);
          dashboard.draw(data);
+                  
     }	
 	
 	

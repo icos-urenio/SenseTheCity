@@ -98,39 +98,16 @@ class SensethecityControllerMeasures extends JController
 		$model = $this->getModel('measurements');
 
 		$phenom = $model->getStationPhenomenon($stationId, $phenId);		
-		$graphdata = $model->getObservation($stationId, $phenId);
-
-		//get data items for every phenomenon
-		//$items = array();
-		//$phenom = array();
-		
-		
-		
-		//array is always of size 1
-		/*
-		foreach($phenomenons as $phen){
-			if($phen['id'] == $phenId) {
-				$items[0] = $model->getObservation($stationId, $phen['id']);
-				$phenom[0] = array('id' => $phen['id'], 
-									'name' => $phen['name'], 
-									'unit' => $phen['unit'], 
-									'description' => $phen['description'], 
-									'upper' => $phen['upper'], 
-									'lower' => $phen['lower']);
-				break;			
-			}
-		}
-		*/
-		
+		//$graphdata = $model->getObservation($stationId, $phenId);
+		$graphdata = $model->getObservationDailyAvg($stationId, $phenId);
 
 		
 		$dataTable = array(
 			'cols' => array(
 				// each column needs an entry here, like this:
-				array('label' => 'Ημερομηνία', 'type' => 'datetime'),
+				//array('label' => 'Ημερομηνία', 'type' => 'datetime'),
+				array('label' => 'Ημερομηνία', 'type' => 'date'),
 				array('label' => 'Άνω όριο', 'type' => 'number'),
-				//array('label' => 'Χαμηλή μέτρηση ημέρας', 'type' => 'number'),
-				//array('label' => 'Υψηλή μέτρηση ημέρας', 'type' => 'number'),
 				array('label' => 'Μέτρηση', 'type' => 'number'),
 				array('label' => 'Κάτω όριο', 'type' => 'number')
 			)
@@ -139,30 +116,31 @@ class SensethecityControllerMeasures extends JController
 		
 		foreach($graphdata as $data) {
 			
-			$date = DateTime::createFromFormat("Y-n-d G:i:s", $data[0]);
+			//$date = DateTime::createFromFormat("Y-n-d G:i:s", $data[0]);
+			$date = DateTime::createFromFormat("Y-n-d", $data[0]);
 			$year =  $date->format("Y");
 			$month =  $date->format("n");
 			$day =  $date->format("d");
-			$hour =  $date->format("G");
-			$minute =  intval($date->format("i"));
-			$second =  $date->format("s");
+			//$hour =  $date->format("G");
+			//$minute =  intval($date->format("i"));
+			//$second =  $date->format("s");
 									
 			
 			$dataTable['rows'][] = array(
 				'c' => array (
-					array('v' => "Date({$year},{$month},{$day},{$hour},{$minute},{$second})", 'f' => "{$data[0]}"),
+					//array('v' => "Date({$year},{$month},{$day},{$hour},{$minute},{$second})", 'f' => "{$data[0]}"),
+					array('v' => "Date({$year},{$month},{$day})", 'f' => "{$data[0]}"),
 					array('v' => $phenom[0]['upper']),
-					//array('v' => $data[1]),
 					array('v' => $data[1]),
 					array('v' => $phenom[0]['lower'])
 				)
 			);
 		}		
 		
+		
 		$ret['graphdata'] = $dataTable;	//raw db records from table observation for specified station and phenomenon
 		$ret['phenom'] = $phenom[0];	//phenom is one record containing phenomenon names and min,max values
-		
-		
+
 		//echo json_encode($dataTable);
 		echo json_encode($ret);
 		return;

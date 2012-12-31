@@ -82,13 +82,19 @@ abstract class SensethecityHelper
 				
 			<div id="waitingIndicatorGraphTabs"></div>
 			
-			<div class="row-fluid"	
-				<div class="span12">
+			<div class="row-fluid">	
+				<div class="span6">
+					<h2>Μέση ημερήσια τιμή</h2>
+				</div>
+				
+				<div class="span6">
 					<div id="graphToolbar" class="pull-right"></div>
 				</div>
+					
 			</div>	
-				
-			<div class="tabbable tabs-below" style="margin: 2em 0;"> 
+			
+								
+			<div class="tabbable tabs-below"> 
 			<div class="tab-content">';
 
 		foreach($phenomenons as $phenomenon){

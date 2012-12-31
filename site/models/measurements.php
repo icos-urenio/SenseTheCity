@@ -239,4 +239,47 @@ class SensethecityModelMeasurements extends JModel
 		
 		return $result;
 	}	
+	
+	function getObservationDailyAvg($stationId, $phenomenonId)
+	{
+		// Create a new query object.
+		$db		= $this->getDbo();
+		$query	= $db->getQuery(true);
+
+		$query->select('DATE( (a.`timestamp`) ) AS `timestamp`,	AVG(a.`corrected_value`) AS `corrected_value`');
+		$query->from('`#__sensethecity_observation` AS a');
+		$query->where('a.station_id='.$stationId);
+		$query->where('a.phenomenon_id='.$phenomenonId);
+		$query->group('DATE( (a.`timestamp`) )');
+		$query->order('a.timestamp ASC');
+	
+
+		/*
+		 
+		SELECT 
+			DATE( (a.`timestamp`) ) AS `timestamp`, 
+			AVG(a.`corrected_value`) AS `corrected_value`
+		
+		FROM `batb5_sensethecity_observation` AS a
+		WHERE 
+			a.`station_id` = 3 AND
+		        a.`phenomenon_id` = 7
+			
+		GROUP BY DATE( (a.`timestamp`) )
+		ORDER BY a.`timestamp`
+				
+		
+		
+		*/		
+
+	
+		$db->setQuery($query);
+		$result = $db->loadRowList();
+
+	
+		return $result;
+	}	
+	
+	
+	
 }
