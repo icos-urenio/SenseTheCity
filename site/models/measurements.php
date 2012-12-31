@@ -45,8 +45,15 @@ class SensethecityModelMeasurements extends JModel
 						$dtString = $station['datetime'];
 						$dt = str_split($dtString, 2);
 						$dt = "20{$dt[0]}-{$dt[1]}-{$dt[2]} {$dt[3]}:{$dt[4]}:00";
-												
-						$sql .= "('{$station['id']}','{$dt}','{$data['sensor']}','{$data['raw']}','{$data['value']}','{$station['battery']}','{$station['temperature']}','{$station['serial']}')," . "\r";
+						
+
+						//get a, b for calibration
+						$ab = $this->getStaPhenAB($station['id'], $data['sensor']);
+						$a = $ab[0]['a'];
+						$b = $ab[0]['b'];
+						$calibrated = ($data['value'] - $b) / $a;												
+						
+						$sql .= "('{$station['id']}','{$dt}','{$data['sensor']}','{$data['raw']}','{$calibrated}','{$station['battery']}','{$station['temperature']}','{$station['serial']}')," . "\r";
 					}
 					else{
 						$errors++;

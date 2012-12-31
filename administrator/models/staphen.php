@@ -134,9 +134,10 @@ class SensethecityModelStaphen extends JModelAdmin
 		$table->a = ($table->y1-$table->b)/$table->x1;
 	}
 	
+	
 	public function calibrateValuesInRange($station_id, $phen_id, $a, $b, $dateTo, $dateFrom = '2000-01-01 00:00:00')
 	{
-		
+
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
 	
