@@ -117,7 +117,7 @@ function getStaPhenObservationGraph(stationId, phenId, token){
 		success: function(data){
 			jImc('#waitingIndicatorGraphTabs').html('');
 			
-			stcCandleStickGraph("graphContainer"+phenId, 
+			stcLineGraph("graphContainer"+phenId, 
 								data.graphdata, 
 								phenId, 
 								stationId,

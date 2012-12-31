@@ -7,7 +7,7 @@
  */
 
 //function stcCandleStickGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label, token) {
-function stcCandleStickGraph(element, input, phenId, stationId, title, unit, lower, upper, token) {
+function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upper, token) {
 
 	mainTitle = title + " (" + unit + ")";
 		
@@ -63,11 +63,11 @@ function stcCandleStickGraph(element, input, phenId, stationId, title, unit, low
            'options': {
         	 'title': mainTitle,
              'hAxis': {'slantedText': false},
-             'vAxis': {'slantedText': false, 'title':unit},
+             //'vAxis': {'slantedText': false, 'title':unit},
 
              //'vAxis': {'viewWindow': {'min': lower, 'max': upper}},
              'legend': {'position':'right'},
-             'chartArea':{'left':20,'top':20, 'width':"85%",'height':"70%"}             
+             'chartArea':{'left':40,'top':20, 'width':"85%",'height':"70%"}             
            },
            // Convert the first column from 'date' to 'string'.
            
