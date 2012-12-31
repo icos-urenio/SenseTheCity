@@ -132,7 +132,28 @@ class SensethecityModelStaphen extends JModelAdmin
 		
 		$table->b = ($table->y2*$table->x1-$table->x2*$table->y1)/($table->x1-$table->x2);
 		$table->a = ($table->y1-$table->b)/$table->x1;
+	}
+	
+	public function calibrateValuesInRange($station_id, $phen_id, $a, $b, $dateTo, $dateFrom = '2000-01-01 00:00:00')
+	{
 		
-
+		$db		= $this->getDbo();
+		$query	= $db->getQuery(true);
+	
+		//corrected_value = (numeric_value - b)/a
+		$query->update('`#__sensethecity_observation` AS a');
+		$query->set('a.corrected_value = (a.numeric_value - '.$b.') / '. $a);
+		$query->where('a.station_id = '.$station_id);
+		$query->where('a.phenomenon_id = '.$phen_id);
+		$query->where("a.timestamp >= '".$dateFrom."'");
+		$query->where("a.timestamp <= '".$dateTo."'");
+		$db->setQuery($query);
+		$res = $db->query();
+		
+		if($res)
+			return $db->getAffectedRows($res);
+		
+		return false;		
+		
 	}
 }

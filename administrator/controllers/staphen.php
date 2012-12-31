@@ -48,13 +48,14 @@ class SensethecityControllerStaphen extends JControllerForm
     	
 		$station_id = $app->getUserState($context . '.station_id');
 		$phen_id = $app->getUserState($context . '.phenomenon_id');
-		$dateFrom = JRequest::getCmd('datefrom');
-		$dateTo = JRequest::getCmd('dateto');
-		$id = JRequest::getCmd('id');	//needed for proper redirection
+		$dateFrom = JRequest::getVar('datefrom');
+		$dateTo = JRequest::getVar('dateto');
+		$id = JRequest::getInt('id');	//needed for proper redirection
 		$a = JRequest::getCmd('a');	//needed for proper redirection
 		$b = JRequest::getCmd('b');	//needed for proper redirection
     	
 		
+		/*
 		echo "calibrate batch <br />";
     	echo "station =  ". $station_id ."<br />";
     	echo "phen =  ". $phen_id ."<br />";
@@ -63,14 +64,18 @@ class SensethecityControllerStaphen extends JControllerForm
     	echo "id =  ". $id ."<br />";
     	echo "a =  ". $a ."<br />";
     	echo "b =  ". $b ."<br />";
-    	
-    	die;
+    	*/
+
 		//call the model
-    	//Φαινόμενο = (Voltage - b)/a
+    	$model = $this->getModel('staphen');
+    	if(empty($dateFrom))
+    		$res = $model->calibrateValuesInRange($station_id, $phen_id, $a, $b, $dateTo);
+    	else    	
+    		$res = $model->calibrateValuesInRange($station_id, $phen_id, $a, $b, $dateTo, $dateFrom);
     	
     	//set an appropriate msg
-    	JFactory::getApplication()->enqueueMessage('Values updated');
-    	
+    	JFactory::getApplication()->enqueueMessage('Rows affected: '. $res);
+
     	//redirect back to edit page
     	$this->setRedirect(
     			JRoute::_(
