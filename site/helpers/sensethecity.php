@@ -73,9 +73,6 @@ abstract class SensethecityHelper
 
 	public function formatGraphTabs($phenomenons) 
 	{
-
-	
-		
 		$html = '
 		<div class="row-fluid">
 			<div class="span12">
@@ -83,11 +80,11 @@ abstract class SensethecityHelper
 			<div id="waitingIndicatorGraphTabs"></div>
 			
 			<div class="row-fluid">	
-				<div class="span6">
-					<h2>Μέση ημερήσια τιμή</h2>
+				<div class="span8">
+					<h3>'.JText::_('COM_SENSETHECITY_DAILY_AVG').'</h3>
 				</div>
 				
-				<div class="span6">
+				<div class="span4">
 					<div id="graphToolbar" class="pull-right"></div>
 				</div>
 					

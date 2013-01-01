@@ -32,7 +32,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
 	var month = res[1];
 	var day = res[2];
 	var startDate = new Date(year, month, day);
-	startDate.setDate(startDate.getDate() - 2);
+	startDate.setDate(startDate.getDate() - 4);
 	var endDate = new Date(year, month, day);
 
 	
@@ -69,7 +69,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
                'minRangeSize': 86400000 * 2
              }
            },
-           // Initial range: 2 days
+           // Initial range: 
            'state': {'range': {'start': startDate, 'end': endDate }}
          });
       
@@ -110,7 +110,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
 	
     function drawToolbar() {
         var components = [
-            {type: 'html', datasource: 'index.php?option=com_sensethecity&task=measures.getStaPhenObservation&format=json&stationId=' + stationId + '&phenId=' + phenId + '&' + token + '=1;out:html'},
+            //{type: 'html', datasource: 'index.php?option=com_sensethecity&task=measures.getStaPhenObservation&format=json&stationId=' + stationId + '&phenId=' + phenId + '&' + token + '=1;out:html'},
             {type: 'csv', datasource:  'index.php?option=com_sensethecity&task=measures.getStaPhenObservation&format=json&stationId=' + stationId + '&phenId=' + phenId + '&' + token + '=1;out:html'}
         ];
 
