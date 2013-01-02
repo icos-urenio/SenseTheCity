@@ -24,6 +24,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
 	var endDate = new Date(year, month, day);
 	*/
 	
+	
 	/* USE THIS FOR DAILY AVERAGE  */
 	var i =input.rows.length - 1;
 	var d = input.rows[i].c[0].f;
@@ -84,7 +85,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
              //'vAxis': {'viewWindow': {'min': lower, 'max': upper}},
              'colors': ['#DC3912','#3366CC','#9F4E3B'],
              'legend': {'position':'right'},
-             'chartArea':{'left':40,'top':20, 'width':"85%",'height':"70%"}             
+             'chartArea':{'left':40,'top':20, 'width':"80%",'height':"70%"}             
            },
            // Convert the first column from 'date' to 'string'.
            
