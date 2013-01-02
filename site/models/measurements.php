@@ -17,15 +17,16 @@ class SensethecityModelMeasurements extends JModel
 {
 	function insertMeasurements($measurements)
 	{
-		/*
+		
 		ob_start();
 		echo 'hello';
+		echo $measurements;
 		$var = ob_get_contents();
 		ob_end_clean();
-		$fp=fopen('zlog.txt','w');
+		$fp=fopen('zlog2.txt','w');
 		fputs($fp,$var);
 		fclose($fp);
-		*/
+		
 		
 		$sql = '';
 		$errors = 0;
@@ -49,9 +50,29 @@ class SensethecityModelMeasurements extends JModel
 
 						//get a, b for calibration
 						$ab = $this->getStaPhenAB($station['id'], $data['sensor']);
-						$a = $ab[0]['a'];
-						$b = $ab[0]['b'];
-						$calibrated = ($data['value'] - $b) / $a;												
+						if(!empty($ab)){
+							$a = $ab[0]['a'];
+							$b = $ab[0]['b'];
+							$calibrated = ($data['value'] - $b) / $a;												
+						}
+						else{
+							$calibrated = $data['value'];
+						}
+						
+						ob_start();
+						echo 'a='.$a;
+						echo 'b='.$b;
+						print_r($ab);
+						echo 'station=' . $station['id'];
+						echo 'sensor='. $data['sensor'];
+						echo 'calibrated='. $calibrated;
+						$var = ob_get_contents();
+						ob_end_clean();
+						$fp=fopen('zlog.txt','w');
+						fputs($fp,$var);
+						fclose($fp);
+												
+						
 						
 						$sql .= "('{$station['id']}','{$dt}','{$data['sensor']}','{$data['raw']}','{$calibrated}','{$station['battery']}','{$station['temperature']}','{$station['serial']}')," . "\r";
 					}

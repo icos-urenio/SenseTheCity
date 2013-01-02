@@ -108,7 +108,7 @@ class SensethecityControllerMeasures extends JController
 				//array('label' => 'Ημερομηνία', 'type' => 'datetime'),
 				array('label' => 'Ημερομηνία', 'type' => 'date'),
 				array('label' => 'Άνω όριο', 'type' => 'number'),
-				array('label' => 'Μέτρηση', 'type' => 'number'),
+				array('label' => 'Μέση ημερήσια τιμή', 'type' => 'number'),
 				array('label' => 'Κάτω όριο', 'type' => 'number')
 			)
 		);	
