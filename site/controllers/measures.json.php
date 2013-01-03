@@ -116,11 +116,11 @@ class SensethecityControllerMeasures extends JController
 		
 		foreach($graphdata as $data) {
 			
-			//$date = DateTime::createFromFormat("Y-n-d G:i:s", $data[0]);
-			$date = DateTime::createFromFormat("Y-n-d", $data[0]);
+			//$date = DateTime::createFromFormat("Y-n-j G:i:s", $data[0]);
+			$date = DateTime::createFromFormat("Y-n-j", $data[0]);
 			$year =  $date->format("Y");
 			$month =  $date->format("n");
-			$day =  $date->format("d");
+			$day =  $date->format("j");
 			//$hour =  $date->format("G");
 			//$minute =  intval($date->format("i"));
 			//$second =  $date->format("s");
