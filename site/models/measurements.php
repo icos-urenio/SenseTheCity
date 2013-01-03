@@ -17,7 +17,7 @@ class SensethecityModelMeasurements extends JModel
 {
 	function insertMeasurements($measurements)
 	{
-		
+		/*
 		ob_start();
 		echo 'hello';
 		echo $measurements;
@@ -26,7 +26,7 @@ class SensethecityModelMeasurements extends JModel
 		$fp=fopen('zlog2.txt','w');
 		fputs($fp,$var);
 		fclose($fp);
-		
+		*/
 		
 		$sql = '';
 		$errors = 0;
@@ -36,7 +36,7 @@ class SensethecityModelMeasurements extends JModel
 			return -1;
 		
 		foreach ($input as $station){
-			if(!empty($station['measurements']) && !empty($station['datetime']) ){
+			if(!empty($station['measurements']) && !empty($station['datetime']) && $station['id'] != '?'){
 				$sql .= 'INSERT INTO `#__sensethecity_observation` (`station_id`, `measurement_datetime`, `phenomenon_id`, `numeric_value`, `corrected_value`, `battery`, `temperature`, `serial`) VALUES '. "\r";
 				foreach($station['measurements'] as $data){
 					if(  isset($data['raw'])  && isset($data['value']) ) {
@@ -53,13 +53,15 @@ class SensethecityModelMeasurements extends JModel
 						if(!empty($ab)){
 							$a = $ab[0]['a'];
 							$b = $ab[0]['b'];
-							$calibrated = ($data['value'] - $b) / $a;												
+							$calibrated = ($data['raw'] - $b) / $a;												
 						}
 						else{
-							$calibrated = $data['value'];
+							$calibrated = $data['raw'];
 						}
 						
+						/*
 						ob_start();
+						echo 'raw=' . $data['raw'];
 						echo 'a='.$a;
 						echo 'b='.$b;
 						print_r($ab);
@@ -71,8 +73,7 @@ class SensethecityModelMeasurements extends JModel
 						$fp=fopen('zlog.txt','w');
 						fputs($fp,$var);
 						fclose($fp);
-												
-						
+						*/						
 						
 						$sql .= "('{$station['id']}','{$dt}','{$data['sensor']}','{$data['raw']}','{$calibrated}','{$station['battery']}','{$station['temperature']}','{$station['serial']}')," . "\r";
 					}
