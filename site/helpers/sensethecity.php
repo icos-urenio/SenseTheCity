@@ -186,12 +186,13 @@ abstract class SensethecityHelper
 	
 	public function formatSummaryTable($stations) {
 		$html  = '
-		<table class="table table-striped">
+		<table class="table sumtable">
 	
 		<caption>'.JText::_('COM_SENSETHECITY_SUMMARY_TABLE').'</caption>
 		<thead>
 		<tr>
-		<th>'.JText::_('COM_SENSETHECITY_MEASURE').'</th>';
+		';
+		
 		foreach($stations as $station){
 			$html .='<th><a href="javascript:void(0);" onclick="markerclick('.$station['id'].')">' . $station['title']. '</a></th>';
 		}
@@ -201,20 +202,31 @@ abstract class SensethecityHelper
 		</thead>
 		<tbody>
 		';
-		$html .= '</tbody></table>';
-		return $html;
-		//print_r($stations);die;
-		/*	
+		
+		$i = 0;
 		foreach($stations as $station){
-			$html .='<tr>';
-			$html .= '<td>' . $item['name'] . '</td> ';
-			$html .= '<td><a href="javascript:void(0);" onclick="markerclick('.$item['id'].')">' . $item['station'] . '</a></td> ';
-
-			$html .='</tr>';
+			foreach($station['latest'] as $item){
+				$i++;
+				$html .='<tr>';
+				
+				//station 1
+				$html .= '<td class="cell_under"><span>' . $item['name'] . '</span></td> ';
+				//station 2
+				$html .= '<td class="cell_under"><span>' . $item['name'] . '</span></td> ';
+				//station 3
+				$html .= '<td class="cell_under"><span>' . $item['name'] . '</span></td> ';
+				//station 4
+				if($i == 4)
+					$html .= '<td class="cell_over"><span>' . $item['name'] . '</span></td> ';
+				else
+					$html .= '<td class="cell_under"><span>' . $item['name'] . '</span></td> ';
+				
+				$html .='</tr>';
+			}
 		}
 	
 		$html .= '</tbody></table>';
-		*/
+
 	
 		return $html;
 	}	

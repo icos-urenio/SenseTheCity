@@ -19,6 +19,20 @@
 
 tr.under {color: green;}
 tr.over {color: red;}
+td.cell_over, td.cell_under {
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	margin: 3px;
+}
+td.cell_under {background-color: green;}
+td.cell_over {background-color: red;}
+.sumtable td {border: none;color: #fff;}
+	
+.sumtable {
+	border-collapse: separate;
+    border-spacing: 2px;	
+}
+
 
 .tab-content{
 	background-color: #fff;
