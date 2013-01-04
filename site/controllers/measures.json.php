@@ -45,7 +45,7 @@ class SensethecityControllerMeasures extends JController
 		JRequest::checkToken('get') or jexit('Invalid Token');
 	
 		//get request
-		$stationId = JRequest::getInt('stationId');
+		$stationId = JRequest::getInt('stationId', -1);
 	
 		//get station info
 		$model = $this->getModel('measurements');
@@ -81,7 +81,36 @@ class SensethecityControllerMeasures extends JController
 		echo json_encode($ret);
 		return;
 	}	
+
 	
+	public function getSummaryTable()
+	{
+		JRequest::checkToken('get') or jexit('Invalid Token');
+
+		$model = $this->getModel('measurements');
+
+		$stations = $model->getStations();
+		$a = 0;
+		foreach($stations as $station){
+			//get station last measures from sensors
+			$latest = $model->getStationLastMeasures($station['id']);
+			//for every phenonomenon get daily average and merge
+			$i = 0;
+			foreach($latest as $item){
+				$avg = $model->getLatestObservationDailyAvg($station['id'], $item['id']);
+				$latest[$i]['avg'] = $avg;
+				$i++;
+			}
+			$stations[$a]['latest'] = $latest;
+			$a++;	
+		}
+		
+	
+		$ret['html'] = SensethecityHelper::formatSummaryTable($stations);
+		echo json_encode($ret);
+		return;
+	}
+		
 	/*
 	public function getStationOffering()
 	{
@@ -145,7 +174,7 @@ class SensethecityControllerMeasures extends JController
 			);
 		}		
 		
-		
+
 		$ret['graphdata'] = $dataTable;	//raw db records from table observation for specified station and phenomenon
 		$ret['phenom'] = $phenom[0];	//phenom is one record containing phenomenon names and min,max values
 

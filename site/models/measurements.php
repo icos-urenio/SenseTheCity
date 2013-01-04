@@ -128,13 +128,31 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}	
 	
+	
+	function getStations()
+	{
+		// Create a new query object.
+		$db		= $this->getDbo();
+		$query	= $db->getQuery(true);
+	
+		$query->select('a.id, a.title');
+		$query->from('`#__sensethecity` AS a');
+		$query->where('a.state=1');
+	
+		$db->setQuery($query);
+		$result = $db->loadAssocList();
+		return $result;
+	}	
+	
+	
 	function getStationLastMeasures($stationId)
 	{
+
 		// Create a new query object.
 		$db		= $this->getDbo();
 
 		$query = '
-			SELECT a.*, c.id, c.name, c.unit, s.max_phen_value  
+			SELECT a.*, c.id, c.name, c.unit, s.max_phen_value, s.min_phen_value 
 			FROM `#__sensethecity_observation` AS a
 			LEFT JOIN `#__sensethecity_phenomenon` AS c on c.id = a.phenomenon_id 
 			LEFT JOIN `#__sensethecity_sta_phen` AS s on c.id = s.phenomenon_id AND s.station_id = ' .$stationId. '
@@ -188,8 +206,6 @@ class SensethecityModelMeasurements extends JModel
 	}
 	
 	
-	
-	
 	function getMaxMeasures()
 	{
 		// Create a new query object.
@@ -205,7 +221,6 @@ class SensethecityModelMeasurements extends JModel
 		$result = $db->loadAssocList();
 		return $result;
 	}	
-	
 	
 	
 	function getOffering()

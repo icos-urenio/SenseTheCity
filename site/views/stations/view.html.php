@@ -560,6 +560,7 @@ class SensethecityViewStations extends JView
 				getLatestStationMeasures(id, '".JUtility::getToken()."');
 				getStationMeasuresGraphTabs(id, '".JUtility::getToken()."');
 				//getMaxMeasures('".JUtility::getToken()."');
+				getSummaryTable('".JUtility::getToken()."');
 			}
 
 			function getCurrentStationId(){

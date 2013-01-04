@@ -38,6 +38,9 @@ abstract class SensethecityHelper
 	
 	public function formatLatestStationMeasures($latest) {
 	
+		if(empty($latest))
+			return "";
+		
 		//latest values
 		$html = '
 		<table class="table table-striped">
@@ -55,7 +58,7 @@ abstract class SensethecityHelper
 		';
 		
 		foreach($latest as $item){
-			$html .= ($item['corrected_value'] > $item['max_phen_value'] ? '<tr class="over">':'<tr class="under">');
+			$html .= ($item['corrected_value'] > $item['max_phen_value'] || $item['corrected_value'] < $item['min_phen_value'] ? '<tr class="over">':'<tr class="under">');
 			$html .= '<td>' . $item['name'] . '</td> ';
 			$html .= '<td>' . number_format(round(floatval($item['corrected_value']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 			$html .=  '<td>' . $item['max_phen_value'] . ' ' . $item['unit'] . '</td> ';
@@ -180,6 +183,42 @@ abstract class SensethecityHelper
 		return $html;
 	}
 		
+	
+	public function formatSummaryTable($stations) {
+		$html  = '
+		<table class="table table-striped">
+	
+		<caption>'.JText::_('COM_SENSETHECITY_SUMMARY_TABLE').'</caption>
+		<thead>
+		<tr>
+		<th>'.JText::_('COM_SENSETHECITY_MEASURE').'</th>';
+		foreach($stations as $station){
+			$html .='<th><a href="javascript:void(0);" onclick="markerclick('.$station['id'].')">' . $station['title']. '</a></th>';
+		}
+
+		$html .= '
+		</tr>
+		</thead>
+		<tbody>
+		';
+		$html .= '</tbody></table>';
+		return $html;
+		//print_r($stations);die;
+		/*	
+		foreach($stations as $station){
+			$html .='<tr>';
+			$html .= '<td>' . $item['name'] . '</td> ';
+			$html .= '<td><a href="javascript:void(0);" onclick="markerclick('.$item['id'].')">' . $item['station'] . '</a></td> ';
+
+			$html .='</tr>';
+		}
+	
+		$html .= '</tbody></table>';
+		*/
+	
+		return $html;
+	}	
+	
 	public static function getRelativeTime($time)
 	{
 		if(strtotime($time) <= 0)

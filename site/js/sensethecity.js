@@ -80,6 +80,22 @@ function getMaxMeasures(token){
 	});
 }
 
+function getSummaryTable(token){
+	var base = window.com_sensethecity.base;
+	jImc('#waitingIndicatorStatistics').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');
+
+	jImc.ajax({
+		type : 'GET',
+		url : 'index.php',
+		datatype: 'json',
+		data: 'option=com_sensethecity&task=measures.getSummaryTable&format=json&' + token + '=1',
+		success: function(data){
+			jImc('#waitingIndicatorStatistics').html('');
+			jImc('#measureStatistics').html(data.html);
+		}		
+	});
+}
+
 function getStationMeasuresGraphTabs(stationId, token){
 	var base = window.com_sensethecity.base;
 	jImc('#waitingIndicatorGraphTabs').html('<div id="ajaxBusy"><p><img src="'+base+'/components/com_sensethecity/images/ajax-loader.gif"></p></div>');

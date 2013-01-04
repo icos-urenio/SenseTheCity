@@ -8,7 +8,10 @@
 
 //function stcCandleStickGraph(element, input, mainTitle, xtitle, ytitle, label, lower, upper, low_label, upp_label, token) {
 function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upper, token) {
-
+	
+	if (typeof input.rows === 'undefined')
+		return;
+	
 	mainTitle = title + " (" + unit + ")";
 		
 	/* USE THIS FOR ALL MEASUREMENTS
