@@ -134,14 +134,16 @@ class SensethecityModelMeasurements extends JModel
 		$db		= $this->getDbo();
 
 		$query = '
-			SELECT a.*, c.name, c.unit  
+			SELECT a.*, c.id, c.name, c.unit, s.max_phen_value  
 			FROM `#__sensethecity_observation` AS a
-			LEFT JOIN `#__sensethecity_phenomenon` AS c on c.id = a.phenomenon_id
+			LEFT JOIN `#__sensethecity_phenomenon` AS c on c.id = a.phenomenon_id 
+			LEFT JOIN `#__sensethecity_sta_phen` AS s on c.id = s.phenomenon_id AND s.station_id = ' .$stationId. '
 			WHERE a.measurement_datetime = ( 
 			SELECT MAX( b.measurement_datetime ) AS latest
 			FROM `#__sensethecity_observation` AS b
 			WHERE b.station_id = '.$stationId.' ) AND a.station_id = ' . $stationId . ' '.
 			'ORDER BY c.id'; 
+		
 		
 		$db->setQuery($query);
 		$result = $db->loadAssocList();
@@ -190,14 +192,6 @@ class SensethecityModelMeasurements extends JModel
 	
 	function getMaxMeasures()
 	{
-		/*
-		 SELECT c.title, b.name, MAX(a.corrected_value) AS maximum, b.unit, DATE_FORMAT(a.time_stamp_inserted,"%W, %M %e, %Y @ %h:%i %p") AS inserted
-		FROM batb5_sensethecity_observation AS a
-		LEFT JOIN batb5_sensethecity_phenomenon AS b on b.id = a.phenomenon_id
-		LEFT JOIN batb5_sensethecity AS c on c.id = a.station_id
-		GROUP BY a.phenomenon_id
-		 */	
-		
 		// Create a new query object.
 		$db		= $this->getDbo();
 		$query	= $db->getQuery(true);
@@ -262,6 +256,7 @@ class SensethecityModelMeasurements extends JModel
 		return $result;
 	}	
 	
+	
 	function getObservationDailyAvg($stationId, $phenomenonId)
 	{
 		// Create a new query object.
@@ -303,5 +298,24 @@ class SensethecityModelMeasurements extends JModel
 	}	
 	
 	
+	function getLatestObservationDailyAvg($stationId, $phenomenonId)
+	{
+		// Create a new query object.
+		$db		= $this->getDbo();
+		$query	= $db->getQuery(true);
+	
+		$query->select('AVG(a.`corrected_value`) AS `corrected_value`');
+		$query->from('`#__sensethecity_observation` AS a');
+		$query->where('a.station_id='.$stationId);
+		$query->where('a.phenomenon_id='.$phenomenonId);
+		$query->group('DATE( (a.`timestamp`) )');
+		$query->order('a.timestamp DESC LIMIT 1');
+	
+		$db->setQuery($query);
+		$result = $db->loadResult();
+	
+	
+		return $result;
+	}	
 	
 }

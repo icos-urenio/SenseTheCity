@@ -555,11 +555,11 @@ class SensethecityViewStations extends JView
 					}
 					
 				}				
-			
+				
 				getStationInfo(id, '".JUtility::getToken()."');
 				getLatestStationMeasures(id, '".JUtility::getToken()."');
 				getStationMeasuresGraphTabs(id, '".JUtility::getToken()."');
-				getMaxMeasures('".JUtility::getToken()."');
+				//getMaxMeasures('".JUtility::getToken()."');
 			}
 
 			function getCurrentStationId(){

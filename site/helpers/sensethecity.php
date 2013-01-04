@@ -47,19 +47,19 @@ abstract class SensethecityHelper
 		<tr>
 		<th>'.JText::_('COM_SENSETHECITY_MEASURE').'</th>
 		<th>'.JText::_('COM_SENSETHECITY_VALUE').'</th>
+		<th>'.JText::_('COM_SENSETHECITY_LIMIT').'</th>
+		<th>'.JText::_('COM_SENSETHECITY_AVG').'</th>
 		</tr>
 		</thead>
 		<tbody>
 		';
-	
+		
 		foreach($latest as $item){
-			$html .='<tr>';
+			$html .= ($item['corrected_value'] > $item['max_phen_value'] ? '<tr class="over">':'<tr class="under">');
 			$html .= '<td>' . $item['name'] . '</td> ';
-			
-			//$val = ($item['name'] == 'CO2' ? $item['corrected_value'] / 1.0e+156 : $item['corrected_value'] );
-			$val = $item['corrected_value'];
-			
-			$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
+			$html .= '<td>' . number_format(round(floatval($item['corrected_value']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
+			$html .=  '<td>' . $item['max_phen_value'] . ' ' . $item['unit'] . '</td> ';
+			$html .=  '<td>' . number_format(round(floatval($item['avg']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 			$html .='</tr>';
 		}
 		
@@ -168,11 +168,7 @@ abstract class SensethecityHelper
 			$html .='<tr>';
 			$html .= '<td>' . $item['name'] . '</td> ';
 			$html .= '<td><a href="javascript:void(0);" onclick="markerclick('.$item['id'].')">' . $item['station'] . '</a></td> ';
-			
-			//$val = ($item['name'] == 'CO2' ? $item['maximum'] / 1.0e+156 : $item['maximum'] );
-			$val = $item['maximum'];
-			
-			$html .= '<td>' . number_format(round(floatval($val),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
+			$html .= '<td>' . number_format(round(floatval($item['maximum']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 
 			$html .= '<td>' . date("d/m/Y H:i",strtotime($item['inserted'])) . '</td> ';
 			$html .='</tr>';

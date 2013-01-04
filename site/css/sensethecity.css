@@ -17,6 +17,8 @@
 
 #graphToolbar{margin: 10px 0;}
 
+tr.under {color: green;}
+tr.over {color: red;}
 
 .tab-content{
 	background-color: #fff;

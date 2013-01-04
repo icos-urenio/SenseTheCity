@@ -51,6 +51,14 @@ class SensethecityControllerMeasures extends JController
 		$model = $this->getModel('measurements');
 		//get station last measures from sensors
 		$latest = $model->getStationLastMeasures($stationId);
+		
+		//for every phenonomenon get daily average and merge
+		$i = 0;
+		foreach($latest as $item){
+			$avg = $model->getLatestObservationDailyAvg($stationId, $item['id']);
+			$latest[$i]['avg'] = $avg;
+			$i++;
+		}
 	
 		$ret['html'] = SensethecityHelper::formatLatestStationMeasures($latest);
 		echo json_encode($ret);
