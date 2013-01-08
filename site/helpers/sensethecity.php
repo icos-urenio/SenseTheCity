@@ -49,20 +49,21 @@ abstract class SensethecityHelper
 		<thead>
 		<tr>
 		<th>'.JText::_('COM_SENSETHECITY_MEASURE').'</th>
-		<th>'.JText::_('COM_SENSETHECITY_VALUE').'</th>
-		<th>'.JText::_('COM_SENSETHECITY_LIMIT').'</th>
 		<th>'.JText::_('COM_SENSETHECITY_AVG').'</th>
+		<th>'.JText::_('COM_SENSETHECITY_LIMIT').'</th>
+		
 		</tr>
 		</thead>
 		<tbody>
 		';
 		
 		foreach($latest as $item){
-			$html .= ($item['corrected_value'] > $item['max_phen_value'] || $item['corrected_value'] < $item['min_phen_value'] ? '<tr class="over">':'<tr class="under">');
+			$status = ($item['avg'] > $item['max_phen_value'] ? 'over':'under');
+			$html .= '<tr>';
 			$html .= '<td>' . $item['name'] . '</td> ';
-			$html .= '<td>' . number_format(round(floatval($item['corrected_value']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
+			//$html .= '<td>' . number_format(round(floatval($item['corrected_value']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
+			$html .=  '<td class="'.$status.'">' . number_format(round(floatval($item['avg']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 			$html .=  '<td>' . $item['max_phen_value'] . ' ' . $item['unit'] . '</td> ';
-			$html .=  '<td>' . number_format(round(floatval($item['avg']),1), 1, ',', '') . ' ' . $item['unit'] . '</td> ';
 			$html .='</tr>';
 		}
 		
@@ -212,14 +213,14 @@ abstract class SensethecityHelper
 				for($i=0;$i < $s; $i++){
 					//$html .= '<td class="cell_under"><span>' . $item['name'] . '</span></td> ';
 					if(isset($stations[$i]['latest'][$a]['name'])){
-						$over = ($stations[$i]['latest'][$a]['corrected_value'] > $stations[$i]['latest'][$a]['max_phen_value'] || $stations[$i]['latest'][$a]['corrected_value'] < $stations[$i]['latest'][$a]['min_phen_value'] ? true:false);
-						$value = number_format(round(floatval($stations[$i]['latest'][$a]['corrected_value']),1), 1, ',', '') . $stations[$i]['latest'][$a]['unit'];
-						$lower = number_format(round(floatval($stations[$i]['latest'][$a]['min_phen_value']),1), 1, ',', '') . $stations[$i]['latest'][$a]['unit'];
+						$over = ($stations[$i]['latest'][$a]['avg'] > $stations[$i]['latest'][$a]['max_phen_value'] ? true:false);
+						$value = number_format(round(floatval($stations[$i]['latest'][$a]['avg']),1), 1, ',', '') . $stations[$i]['latest'][$a]['unit'];
+						//$lower = number_format(round(floatval($stations[$i]['latest'][$a]['min_phen_value']),1), 1, ',', '') . $stations[$i]['latest'][$a]['unit'];
 						$upper = number_format(round(floatval($stations[$i]['latest'][$a]['max_phen_value']),1), 1, ',', ''). $stations[$i]['latest'][$a]['unit'];
 						$timestamp = $stations[$i]['latest'][$a]['timestamp'];
 						
 						if($over)
-							$html .= '<td title="Η τελευταία μέτρηση στις '.$timestamp.', '.$value.' είναι εκτός ορίων ('.$lower.' - '.$upper.')" class="cell_over"><span>' . $stations[$i]['latest'][$a]['name'] . '</span></td> ';
+							$html .= '<td title="Παρατηρήθηκαν ψηλές τιμές συγκεντρώσεων, άνω των '.$upper.'" class="cell_over"><span>' . $stations[$i]['latest'][$a]['name'] . '</span></td> ';
 						else
 							$html .= '<td title="Μέτρηση εντός ορίων ('.$value.')" class="cell_under"><span>' . $stations[$i]['latest'][$a]['name'] . '</span></td> ';
 					}
@@ -228,7 +229,7 @@ abstract class SensethecityHelper
 				}
 				$html .='</tr>';
 			}
-			
+			break;
 		}
 		
 	

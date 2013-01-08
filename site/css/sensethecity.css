@@ -17,8 +17,9 @@
 
 #graphToolbar{margin: 10px 0;}
 
-tr.under {color: green;}
-tr.over {color: red;}
+
+td.under {color: green;}
+td.over {color: red;}
 td.cell_over, td.cell_under, td.cell_nan {
 	-moz-border-radius: 8px;
 	border-radius: 8px;
