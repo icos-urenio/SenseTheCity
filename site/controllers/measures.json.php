@@ -146,7 +146,7 @@ class SensethecityControllerMeasures extends JController
 				array('label' => 'Ημερομηνία', 'type' => 'date'),
 				array('label' => 'Άνω όριο', 'type' => 'number'),
 				array('label' => 'Μέση ημερήσια τιμή', 'type' => 'number'),
-				array('label' => 'Κάτω όριο', 'type' => 'number')
+				//array('label' => 'Κάτω όριο', 'type' => 'number')
 			)
 		);	
 
@@ -169,7 +169,7 @@ class SensethecityControllerMeasures extends JController
 					array('v' => "Date({$year},{$month},{$day})", 'f' => "{$data[0]}"),
 					array('v' => $phenom[0]['upper']),
 					array('v' => $data[1]),
-					array('v' => $phenom[0]['lower'])
+					//array('v' => $phenom[0]['lower'])
 				)
 			);
 		}		

@@ -99,7 +99,7 @@ function stcLineGraph(element, input, phenId, stationId, title, unit, lower, upp
                    return dataTable.getFormattedValue(rowIndex, 0);
                  },
                  'type': 'string'
-               }, 1, 2, 3]
+               }, 1, 2]
            }
            
          });
