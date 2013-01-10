@@ -16,8 +16,11 @@ defined('_JEXEC') or die;
 class SensethecityModelMeasurements extends JModel
 {
 	
-	private function IsGarbage($calibratedValue, $phenId)
+	function IsGarbage($calibratedValue, $phenId)
 	{
+		$limits = $this->getCarbageLimits($phenId);
+		if( $calibratedValue > $limits['garbagemax'] || $calibratedValue < $limits['garbagemin'])
+			return true;
 		return false;
 	} 
 	
@@ -136,6 +139,23 @@ class SensethecityModelMeasurements extends JModel
 		
 		$db->setQuery($query);
 		$result = $db->loadAssoc();	
+		return $result;
+	}	
+	
+	
+	function getCarbageLimits($phenId)
+	{
+		// Create a new query object.
+		$db		= $this->getDbo();
+		$query	= $db->getQuery(true);
+	
+		$query->select('a.garbagemin, a.garbagemax');
+		$query->from('`#__sensethecity_phenomenon` AS a');
+		$query->where('a.id='.$phenId);
+		$query->where('a.state=1');
+	
+		$db->setQuery($query);
+		$result = $db->loadAssoc();
 		return $result;
 	}	
 	
