@@ -70,9 +70,9 @@ class SensethecityModelMeasurements extends JModel
 						
 						
 						//check if calibrated value is outside garbage limits.
-						if ( $this->IsGarbage($calibrated, $data['sensor']) )
-							return -1;
-						
+						if ( $this->IsGarbage($calibrated, $data['sensor']) == false ){
+							$sql .= "('{$station['id']}','{$dt}','{$data['sensor']}','{$data['raw']}','{$calibrated}','{$station['battery']}','{$station['temperature']}','{$station['serial']}')," . "\r";							
+						}
 						/*
 						ob_start();
 						echo 'raw=' . $data['raw'];
@@ -89,7 +89,7 @@ class SensethecityModelMeasurements extends JModel
 						fclose($fp);
 						*/						
 						
-						$sql .= "('{$station['id']}','{$dt}','{$data['sensor']}','{$data['raw']}','{$calibrated}','{$station['battery']}','{$station['temperature']}','{$station['serial']}')," . "\r";
+						
 					}
 					else{
 						$errors++;
