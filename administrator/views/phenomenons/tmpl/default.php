@@ -68,6 +68,16 @@ $saveOrder	= $listOrder == 'a.ordering';
                     <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_HEADING_UNIT', 'a.unit', $listDirn, $listOrder); ?>
                 </th>
                 <?php } ?>					
+                <?php if (isset($this->items[0]->garbagemin)) { ?>
+                <th width="30%" class="nowrap">
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_FIELD_GARBAGEMIN_LABEL', 'a.garbagemin', $listDirn, $listOrder); ?>
+                </th>
+                <?php } ?>	
+                <?php if (isset($this->items[0]->garbagemax)) { ?>
+                <th width="30%" class="nowrap">
+                    <?php echo JHtml::_('grid.sort',  'COM_SENSETHECITY_SENSETHECITY_FIELD_GARBAGEMAX_LABEL', 'a.garbagemax', $listDirn, $listOrder); ?>
+                </th>
+                <?php } ?>	                                
                 <?php if (isset($this->items[0]->state)) { ?>
 				<th width="5%">
 					<?php echo JHtml::_('grid.sort',  'JPUBLISHED', 'a.state', $listDirn, $listOrder); ?>
@@ -143,7 +153,23 @@ $saveOrder	= $listOrder == 'a.ordering';
 					</a>		
 					<br />
 				</td>
-                <?php } ?>                
+                <?php } ?>   
+               <?php if (isset($this->items[0]->garbagemin)) { ?>
+				<td>
+					<a href="<?php echo JRoute::_('index.php?option=com_sensethecity&task=phenomenon.edit&id=' . $item->id); ?>">
+						<?php echo $item->garbagemin; ?>
+					</a>		
+					<br />
+				</td>
+                <?php } ?>                          
+               <?php if (isset($this->items[0]->garbagemax)) { ?>
+				<td>
+					<a href="<?php echo JRoute::_('index.php?option=com_sensethecity&task=phenomenon.edit&id=' . $item->id); ?>">
+						<?php echo $item->garbagemax; ?>
+					</a>		
+					<br />
+				</td>
+                <?php } ?>                     
                 <?php if (isset($this->items[0]->state)) { ?>
 				    <td class="center">
 					    <?php echo JHtml::_('jgrid.published', $item->state, $i, 'phenomenons.', $canChange, 'cb'); ?>

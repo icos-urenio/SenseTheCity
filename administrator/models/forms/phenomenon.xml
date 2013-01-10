@@ -43,7 +43,26 @@
 			default=""
 			rows="5"
 			cols="200"
-		/>				
+		/>	
+		<field
+			name="garbagemin"
+			type="text"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_GARBAGEMIN_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_GARBAGEMIN_DESC"
+			size="46"
+			required="true"
+			default=""
+		/>
+		<field
+			name="garbagemax"
+			type="text"
+			label="COM_SENSETHECITY_SENSETHECITY_FIELD_GARBAGEMAX_LABEL"
+			description="COM_SENSETHECITY_SENSETHECITY_FIELD_GARBAGEMAX_DESC"
+			size="46"
+			required="true"
+			default=""
+		/>					
+							
 		<field
 			name="userid"
 			type="hidden"
