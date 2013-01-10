@@ -15,6 +15,12 @@ defined('_JEXEC') or die;
  */
 class SensethecityModelMeasurements extends JModel
 {
+	
+	private function IsGarbage($calibratedValue, $phenId)
+	{
+		return false;
+	} 
+	
 	function insertMeasurements($measurements)
 	{
 		/*
@@ -58,6 +64,11 @@ class SensethecityModelMeasurements extends JModel
 						else{
 							$calibrated = $data['raw'];
 						}
+						
+						
+						//check if calibrated value is outside garbage limits.
+						if ( $this->IsGarbage($calibrated, $data['sensor']) )
+							return -1;
 						
 						/*
 						ob_start();
