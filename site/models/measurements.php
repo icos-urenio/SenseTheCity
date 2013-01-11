@@ -32,7 +32,7 @@ class SensethecityModelMeasurements extends JModel
 		echo $measurements;
 		$var = ob_get_contents();
 		ob_end_clean();
-		$fp=fopen('zlog2.txt','w');
+		$fp=fopen('zlog222.txt','w');
 		fputs($fp,$var);
 		fclose($fp);
 		*/
