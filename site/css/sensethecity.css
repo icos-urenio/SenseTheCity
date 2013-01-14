@@ -30,7 +30,10 @@ td.cell_under {background-color: green;}
 td.cell_over {background-color: red;}
 td.cell_nan {background-color: #ccc;}
 .sumtable td {border: none;color: #fff;}
-.sumtable tbody tr:hover td{background-color: #12E512;}
+.sumtable tbody tr:hover td.cell_under{background-color: green;}
+.sumtable tbody tr:hover td.cell_over{background-color: red;}
+.sumtable tbody tr:hover td.cell_nan{background-color: #ccc;}
+ 
 	
 .sumtable {
 	border-collapse: separate;
