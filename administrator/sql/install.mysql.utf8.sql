@@ -45,15 +45,15 @@ CREATE TABLE IF NOT EXISTS `#__sensethecity_phenomenon` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT COLLATE=utf8_general_ci;
 
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('temperature','measurements of temperature expressed as double value', 'oC', -20, 80);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('humidity','percentage of humidity', '%', 0, 100);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('CO','measurements of carbon monoxide expressed as double value', 'ug/m3', 0, 10);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('CO2','measurements of carbon dioxide expressed as double value', 'ug/m3', 0, 1500);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('NO2','measurements of nitrogen dioxide expressed as double value', 'ug/m3', 0.1, 1);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('NH3','measurements of ammonium hydroxide or ammonia expressed as double value', 'ug/m3', 0, 400);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('SH2','measurements of Hydrogen sulfide expressed as double value', 'ug/m3', 0, 0.1);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('C2H6O', 'measurements of ethanol expressed as double value', 'ug/m3', 0, 1500);
-INSERT INTO `#__sensethecity_phenomenon` (name, description, unit) VALUES ('C7H8', 'measurements of toluene expressed as double value', 'ug/m3',0, 900);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('temperature','measurements of temperature expressed as double value', 'oC', -20, 80);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('humidity','percentage of humidity', '%', 0, 100);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('CO','measurements of carbon monoxide expressed as double value', 'ug/m3', 0, 10);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('CO2','measurements of carbon dioxide expressed as double value', 'ug/m3', 0, 1500);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('NO2','measurements of nitrogen dioxide expressed as double value', 'ug/m3', 0.1, 1);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('NH3','measurements of ammonium hydroxide or ammonia expressed as double value', 'ug/m3', 0, 400);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('SH2','measurements of Hydrogen sulfide expressed as double value', 'ug/m3', 0, 0.1);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('C2H6O', 'measurements of ethanol expressed as double value', 'ug/m3', 0, 1500);
+INSERT INTO `#__sensethecity_phenomenon` (name, description, unit, garbagemin, garbagemax) VALUES ('C7H8', 'measurements of toluene expressed as double value', 'ug/m3',0, 900);
 
 CREATE TABLE IF NOT EXISTS `#__sensethecity_observation` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
